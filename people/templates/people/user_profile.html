@@ -4,7 +4,6 @@
 
 <head>
     <style>
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -26,10 +25,15 @@
         .ng-anchor {
             position: absolute;
         }
+
+        /* Fix for Join button disappearing at 764px width */
+        @media (max-width: 768px) {
+            .buttons-show-on-desktop .button-container {
+                display: flex !important;
+            }
+        }
     </style>
     <style type="text/css">
-        
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -60,7 +64,6 @@
     <script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script>
 
     <style>
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -84,8 +87,6 @@
         }
     </style>
     <style type="text/css">
-        
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -117,7 +118,6 @@
     <script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script>
     <script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script>
     <style>
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -141,7 +141,6 @@
         }
     </style>
     <style type="text/css">
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -170,8 +169,6 @@
     <script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script>
     <script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script>
     <style>
-        
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -195,8 +192,6 @@
         }
     </style>
     <style type="text/css">
-        
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -228,8 +223,6 @@
     <script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script>
     <script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script>
     <style>
-        
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -253,8 +246,6 @@
         }
     </style>
     <style type="text/css">
-        
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -286,8 +277,6 @@
     <script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script>
     <script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script>
     <style>
-        
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -311,8 +300,6 @@
         }
     </style>
     <style type="text/css">
-        
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -341,8 +328,6 @@
     <script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script>
     <script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script>
     <style>
-        
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -366,8 +351,6 @@
         }
     </style>
     <style type="text/css">
-        
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -399,8 +382,6 @@
     <script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/extend-native-history-api.js"></script>
     <script src="chrome-extension://eppiocemhmnlbhjplcgkofciiegomcon/libs/requests.js"></script><!--<![endif]-->
     <style>
-        
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -424,8 +405,6 @@
         }
     </style>
     <style type="text/css">
-        
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -541,8 +520,6 @@
         }
     </style>
     <style>
-        
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -566,8 +543,6 @@
         }
     </style>
     <style type="text/css">
-        
-
         [ng\:cloak],
         [ng-cloak],
         [data-ng-cloak],
@@ -4831,8 +4806,7 @@
                                                     <div role="presentation"
                                                         class="absolute inset-[0] transition-colors group-hover/interactable:bg-[var(--color-state-hover)] group-active/interactable:bg-[var(--color-state-press)] group-disabled/interactable:bg-none"
                                                         bis_skin_checked="1"></div><span
-                                                        class="padding-y-xsmall text-truncate-end text-no-wrap">Add
-                                                        Connection</span>
+                                                        class="padding-y-xsmall text-truncate-end text-no-wrap">Add Connection</span>
                                                 </button>
                                             </div>
                                             <div bis_skin_checked="1">
