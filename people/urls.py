@@ -8,4 +8,6 @@ urlpatterns = [
     path('people/<int:user_id>/login/', views.login_page, name='login_page'),
     path('people/<int:user_id>/login/submit/', views.login_user, name='login_user'),
     path('people/<int:user_id>/logout/', views.logout_user, name='logout_user'),
+    # API endpoint for the status app
+    path('api/setStatus/', views.api_set_status, name='api_set_status'),
 ]

