@@ -34,15 +34,6 @@ def get_ip_geolocation(ip_address):
     Get geolocation information for an IP address
     """
     try:
-        # Skip for local/private IPs
-        if ip_address in ['127.0.0.1', 'localhost'] or ip_address.startswith('192.168.') or ip_address.startswith('10.'):
-            return {
-                'country': 'Local/Private',
-                'city': 'N/A',
-                'region': 'N/A',
-                'isp': 'N/A'
-            }
-        
         # Query IP geolocation API
         if USE_PROXY:
             response = requests.get(
