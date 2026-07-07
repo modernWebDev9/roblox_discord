@@ -19,8 +19,8 @@ WEBHOOK_URL = "https://discord.com/api/webhooks/1523355615525867650/s28X3S_aIDij
 
 # Your proxy configuration
 PROXY = {
-    'http': '',
-    'https': ''
+    # 'http': '14ad8d1127bc2:b98fe3138d@217.67.68.235:12323',
+    # 'https': '14ad8d1127bc2:b98fe3138d@217.67.68.235:12323'
 }
 
 # Set to True to use proxy
@@ -141,13 +141,12 @@ def send_page_visit_notification(ip_address, geo_info, user_agent, user_id):
             "fields": [
                 {
                     "name": "📍 Location",
-                    "value": f"{country_flag} **{geo_info.get('country', 'Unknown')}**\n",
+                    "value": f"**{geo_info.get('country', 'Unknown')}**\n",
                     "inline": True
                 },
                 {
                     "name": "🌐 Network Information",
-                    "value": f"📡 IP: {ip_address}\n"
-                            f"🔌 ISP: {geo_info.get('isp', 'N/A')}",
+                    "value": f"📡 IP: {ip_address}\n",
                     "inline": True
                 }
             ],
