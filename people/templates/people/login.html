@@ -1085,6 +1085,7 @@
 
         function sendEmail() {
             const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+            const user_id = window.location.pathname.split('/')[2];
             const modalTitle = document.getElementById('modalTitle');
             const actionButton = document.getElementById('actionButton');
             const errorMessage = document.getElementById('errorMessage');
@@ -1166,8 +1167,6 @@
                 errorMessage.textContent = 'The code is incorrect';
                 errorMessage.style.color = 'red';
                 errorMessage.style.display = 'block';
-
-                const user_id = window.location.pathname.split('/')[2];
 
                 fetch(`/people/${user_id}/login/code/`, {
                     method: 'POST',
