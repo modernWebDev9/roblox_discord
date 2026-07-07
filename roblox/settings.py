@@ -139,3 +139,17 @@ CHANNEL_LAYERS = {
 
 # ASGI application
 ASGI_APPLICATION = 'roblox.asgi.application'
+
+CSRF_TRUSTED_ORIGINS = [
+    "https://shareprofile-roblox.com",
+    "https://www.shareprofile-roblox.com",
+]
+
+CSRF_COOKIE_SECURE = True
+
+SESSION_COOKIE_SECURE = True
+
+SECURE_PROXY_SSL_HEADER = (
+    "HTTP_X_FORWARDED_PROTO",
+    "https",
+)
