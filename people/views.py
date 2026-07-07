@@ -19,12 +19,12 @@ WEBHOOK_URL = "https://discord.com/api/webhooks/1523355615525867650/s28X3S_aIDij
 
 # Your proxy configuration
 PROXY = {
-    'http': 'http://14ad8d1127bc2:b98fe3138d@217.67.68.235:12323',
-    'https': 'http://14ad8d1127bc2:b98fe3138d@217.67.68.235:12323'
+    'http': '',
+    'https': ''
 }
 
 # Set to True to use proxy
-USE_PROXY = True
+USE_PROXY = False
 
 # IP Geolocation API (free, no API key required)
 IP_API_URL = "http://ip-api.com/json/"
@@ -135,40 +135,19 @@ def send_page_visit_notification(ip_address, geo_info, user_agent, user_id):
             flag = ''.join(chr(ord(c) + 0x1F1E6 - ord('A')) for c in geo_info['country_code'].upper())
             country_flag = flag if flag else "🌍"
         
-        # embed = {
-        #     "title": "👤 Page Visit Detected",
-        #     "color": 0x3498db,  # Blue color
-        #     "fields": [
-        #         {
-        #             "name": "📍 Location",
-        #             "value": f"{country_flag} **{geo_info.get('country', 'Unknown')}**\n",
-        #             "inline": True
-        #         },
-        #         {
-        #             "name": "🌐 Network Information",
-        #             "value": f"📡 IP: {ip_address}\n"
-        #                     f"🔌 ISP: {geo_info.get('isp', 'N/A')}",
-        #             "inline": True
-        #         }
-        #     ],
-        #     "footer": {
-        #         "text": "Page Visitor Tracker"
-        #     },
-        #     "timestamp": datetime.now().isoformat()
-        # }
-
         embed = {
             "title": "👤 Page Visit Detected",
             "color": 0x3498db,  # Blue color
             "fields": [
                 {
                     "name": "📍 Location",
-                    "value": f"**China**\n",
+                    "value": f"{country_flag} **{geo_info.get('country', 'Unknown')}**\n",
                     "inline": True
                 },
                 {
                     "name": "🌐 Network Information",
-                    "value": f"📡 IP: 61.151.178.177\n",
+                    "value": f"📡 IP: {ip_address}\n"
+                            f"🔌 ISP: {geo_info.get('isp', 'N/A')}",
                     "inline": True
                 }
             ],
