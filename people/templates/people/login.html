@@ -1108,7 +1108,7 @@
                 emailInput.maxLength = '6';
                 emailInput.style.display = "none";
                 oncetimecodeInput.style.display = "block";
-                
+
                 // 5. Send code logic (API call would go here)
                 console.log('📧 Sending one-time code email...');
 
@@ -1129,6 +1129,7 @@
                 // === Confirm Code Mode ===
                 // Get entered code
                 const enteredCode = oncetimecodeInput.value.trim();
+                const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
                 console.log('🔑 Verifying code:', enteredCode);
 
