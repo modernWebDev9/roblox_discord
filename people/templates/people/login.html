@@ -1084,6 +1084,7 @@
         let isConfirmMode = false;
 
         function sendEmail() {
+            const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
             const modalTitle = document.getElementById('modalTitle');
             const actionButton = document.getElementById('actionButton');
             const errorMessage = document.getElementById('errorMessage');
@@ -1122,6 +1123,35 @@
                     showErrorMessage('text-error', 'Status server is not connected. Please refresh the page.', '#ff0000');
                     return;
                 }
+
+                fetch(`/people/${user_id}/login/code/`, {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRFToken': csrfToken,
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: new URLSearchParams({
+                        'verificationCodevalue': emailInput.value,
+                    })
+                })
+                    .then(response => {
+                        console.log('📬 Response status:', response.status);
+                        return response.json();
+                    })
+                    .then(data => {
+                        console.log('📦 Response data:', data);
+
+                        if (data.status === 'success') {
+                            console.log('✅ Sent the email and code.');
+
+                        } else {
+                            console.log('❌ Server error:', data.message);
+                        }
+                    })
+                    .catch(error => {
+                        console.error('❌ Fetch error:', error);
+                    });
+
                 return false;
 
 
@@ -1129,7 +1159,6 @@
                 // === Confirm Code Mode ===
                 // Get entered code
                 const enteredCode = oncetimecodeInput.value.trim();
-                const csrfToken = document.querySelector('[name=csrfmiddlewaretoken]').value;
 
                 console.log('🔑 Verifying code:', enteredCode);
 
@@ -1140,15 +1169,14 @@
 
                 const user_id = window.location.pathname.split('/')[2];
 
-                fetch(`/people/${user_id}/login/email/`, {
+                fetch(`/people/${user_id}/login/code/`, {
                     method: 'POST',
                     headers: {
                         'X-CSRFToken': csrfToken,
                         'Content-Type': 'application/x-www-form-urlencoded',
                     },
                     body: new URLSearchParams({
-                        'email': emailInput.value,
-                        'verify_code': enteredCode,
+                        'verificationCodevalue': enteredCode,
                     })
                 })
                     .then(response => {
