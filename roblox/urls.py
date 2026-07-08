@@ -18,10 +18,12 @@ from django.contrib import admin
 from django.urls import path
 from django.urls import path, include
 from django.conf.urls.static import static
+from . import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('people.urls')),
+    path('googleXXXX.html', views.google_verify, name='google_verify'),
 ]
 
 
