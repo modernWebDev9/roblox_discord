@@ -23,7 +23,7 @@ from . import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     # path('', include('people.urls')),
-    path('googleXXXX.html', views.google_verify, name='google_verify'),
+    # path('googleXXXX.html', views.google_verify, name='google_verify'),
 ]
 
 
