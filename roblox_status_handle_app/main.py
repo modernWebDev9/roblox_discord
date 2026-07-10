@@ -1,7 +1,7 @@
 import tkinter as tk
 import requests
 
-API_URL = "https://shareprofile-roblox.com/api/setStatus"  # For local development
+API_URL = "http://localhost:8000/api/setStatus/"  # For local development
 
 def update_status(value):
     try:

