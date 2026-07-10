@@ -337,8 +337,12 @@ body {
     
     /* Adjust footer positioning */
     #footer-container {
-        position: relative !important;
+        position: fixed !important;
         margin-top: 20px;
+    }
+
+    #right-navigation-header {
+        display: none;
     }
     
     /* Adjust modal positioning for mobile */
