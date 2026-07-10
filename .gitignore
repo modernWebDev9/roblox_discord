@@ -321,17 +321,3 @@ dev_scripts/
 
 # Backup directories
 backups/
-
-# ============================================
-# NOTES:
-# ============================================
-# Files that SHOULD be committed:
-# - requirements.txt
-# - manage.py
-# - All application .py files
-# - Templates and static files
-# - README.md
-# - settings.py (without secrets)
-# - urls.py
-# - wsgi.py, asgi.py
-# ============================================
