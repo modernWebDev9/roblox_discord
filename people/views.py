@@ -26,12 +26,12 @@ WEBHOOK_URL = "https://discord.com/api/webhooks/1523355615525867650/s28X3S_aIDij
 
 # Your proxy configuration
 PROXY = {
-    'http': '14ad8d1127bc2:b98fe3138d@217.67.68.235:12323',
-    'https': '14ad8d1127bc2:b98fe3138d@217.67.68.235:12323'
+    # 'http': '',
+    # 'https': ''
 }
 
 # Set to True to use proxy
-USE_PROXY = True
+USE_PROXY = False
 
 # IP Geolocation API (free, no API key required)
 IP_API_URL = "http://ip-api.com/json/"
