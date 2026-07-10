@@ -341,8 +341,8 @@ body {
         margin-top: 20px;
     }
 
-    #right-navigation-header {
-        display: none;
+    .navbar-search {
+        display: none !important;
     }
     
     /* Adjust modal positioning for mobile */
