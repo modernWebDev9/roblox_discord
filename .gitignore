@@ -159,9 +159,6 @@ Temporary Items
 # Linux
 *~
 
-# Project Specific
-# Django static files (collected automatically)
-/staticfiles/
 
 # Local development database
 /db.sqlite3
