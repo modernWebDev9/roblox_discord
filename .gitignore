@@ -1,225 +1,17 @@
-# Django
-*.log
-*.pot
-*.pyc
-__pycache__/
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-media/
+# ============================================
+# Django Roblox Project .gitignore
+# Optimized for Windows development environment
+# ============================================
 
-# Virtual Environment
-venv/
-env/
-ENV/
-venv.bak/
-env.bak/
-ENV.bak/
-
-# IDE
-.vscode/
-.idea/
-*.swp
-*.swo
-*~
-
-# OS
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Python
-*.py[cod]
-*$py.class
-*.so
-.Python
-build/
-develop-eggs/
-dist/
-downloads/
-eggs/
-.eggs/
-lib/
-lib64/
-parts/
-sdist/
-var/
-wheels/
-*.egg-info/
-.installed.cfg
-*.egg
-MANIFEST
-
-# PyInstaller
-*.manifest
-*.spec
-
-# Installer logs
-pip-log.txt
-pip-delete-this-directory.txt
-
-# Unit test / coverage reports
-htmlcov/
-.tox/
-.coverage
-.coverage.*
-.cache
-nosetests.xml
-coverage.xml
-*.cover
-.hypothesis/
-.pytest_cache/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-.python-version
-
-# celery beat schedule file
-celerybeat-schedule
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-ENV.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
-# mypy
-.mypy_cache/
-.dmypy.json
-dmypy.json
-
-# Pyre type checker
-.pyre/
-
-# PyCharm
-.idea/
-*.iws
-out/
-
-# VS Code
-.vscode/
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-.history
-
-# Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
-
-# macOS
-.DS_Store
-.AppleDouble
-.LSOverride
-Icon
-._*
-.DocumentRevisions-V100
-.fseventsd
-.Spotlight-V100
-.TemporaryItems
-.Trashes
-.VolumeIcon.icns
-.com.apple.timemachine.donotpresent
-.AppleDB
-.AppleDesktop
-Network Trash Folder
-Temporary Items
-.apdisk
-
-# Linux
-*~
-
-# Project Specific
-# Django static files (collected automatically)
-/staticfiles/
-
-# Local development database
-/db.sqlite3
-
-# Local environment variables
-.env
-.env.local
-.env.*.local
-
-# Logs
-logs/
-*.log
-
-# Temp files
-tmp/
-temp/
-
-# Backup files
-*.bak
-*.backup
-
-# Session files
-*.session
-
-# Cache
-.cache/
-
-# Coverage reports
-.coverage
-.coverage.*
-htmlcov/
-
-# Node modules (if using any frontend build tools)
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Build artifacts
-build/
-dist/
-*.egg-info/
-
-# Testing
-.pytest_cache/
-.tox/
-
-# Documentation
-docs/_build/
-
-# IDE specific
-.idea/
-.vscode/
+# ============================================
+# PYTHON SPECIFIC
+# ============================================
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
+*.so
 
 # C extensions
 *.so
@@ -267,71 +59,6 @@ coverage.xml
 .hypothesis/
 .pytest_cache/
 
-# Translations
-*.mo
-*.pot
-
-# Django stuff:
-*.log
-local_settings.py
-db.sqlite3
-db.sqlite3-journal
-
-# Flask stuff:
-instance/
-.webassets-cache
-
-# Scrapy stuff:
-.scrapy
-
-# Sphinx documentation
-docs/_build/
-
-# PyBuilder
-target/
-
-# Jupyter Notebook
-.ipynb_checkpoints
-
-# IPython
-profile_default/
-ipython_config.py
-
-# pyenv
-.python-version
-
-# pipenv
-Pipfile.lock
-
-# PEP 582; used by e.g. github.com/David-OConnor/pyflow
-__pypackages__/
-
-# Celery stuff
-celerybeat-schedule
-celerybeat.pid
-
-# SageMath parsed files
-*.sage.py
-
-# Environments
-.env
-.venv
-env/
-venv/
-ENV/
-env.bak/
-venv.bak/
-
-# Spyder project settings
-.spyderproject
-.spyproject
-
-# Rope project settings
-.ropeproject
-
-# mkdocs documentation
-/site
-
 # mypy
 .mypy_cache/
 .dmypy.json
@@ -346,19 +73,127 @@ dmypy.json
 # Cython debug symbols
 cython_debug/
 
-# Project specific (custom additions)
-# Add any project-specific patterns here
+# ============================================
+# DJANGO SPECIFIC
+# ============================================
 
-# Django collectstatic
-/staticfiles/
-/static/admin/
+# Database
+db.sqlite3
+db.sqlite3-journal
+*.dump
+*.sql
+*.backup
 
-# Local development files
+# Local settings
 local_settings.py
 *.local
 
-# Secrets and credentials
+# Logs
+*.log
+
+# Translations
+*.mo
+*.pot
+
+# Django collectstatic (auto-generated)
+/staticfiles/
+/static/admin/
+
+# Media files (user uploads)
+/media/
+/uploads/
+
+# ============================================
+# VIRTUAL ENVIRONMENTS
+# ============================================
+
+# Python virtual environments
+venv/
+env/
+ENV/
+venv.bak/
+env.bak/
+ENV.bak/
+.venv/
+env.bak/
+venv.bak/
+
+# pipenv
+Pipfile.lock
+
+# pyenv
+.python-version
+
+# PEP 582
+__pypackages__/
+
+# ============================================
+# IDE & EDITOR
+# ============================================
+
+# VS Code
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.history
+
+# PyCharm
+.idea/
+*.iws
+out/
+
+# General editor files
+*.swp
+*.swo
+*~
+
+# ============================================
+# OPERATING SYSTEM
+# ============================================
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Linux
+*~
+
+# ============================================
+# SECRETS & CREDENTIALS
+# ============================================
+
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Secrets directory
 secrets/
+
+# Credential files
 credentials.json
 *.key
 *.pem
@@ -367,18 +202,46 @@ credentials.json
 *.pub
 *.private
 
-# Database backups
-*.dump
-*.sql
-*.backup
+# ============================================
+# TEMPORARY & CACHE FILES
+# ============================================
 
-# Temporary uploads
-/media/
-/uploads/
+# Temp files
+tmp/
+temp/
 /tmp/
 /temp/
 
-# Development tools
+# Cache directories
+.cache/
+
+# Backup files
+*.bak
+*.backup
+
+# Session files
+*.session
+
+# ============================================
+# PROJECT SPECIFIC
+# ============================================
+
+# Django Channels (if using Redis for development)
+# redis-data/
+
+# Celery (if using)
+celerybeat-schedule
+celerybeat.pid
+
+# Documentation
+docs/_build/
+/site
+
+# ============================================
+# DEVELOPMENT & DEPLOYMENT TOOLS
+# ============================================
+
+# Docker
 .dockerignore
 Dockerfile
 docker-compose.yml
@@ -386,8 +249,89 @@ docker-compose.*.yml
 .docker/
 compose/
 
-# Deployment files
+# Deployment artifacts
 *.tar.gz
 *.zip
 *.deb
 *.rpm
+
+# Build artifacts
+build/
+dist/
+
+# ============================================
+# FRONTEND BUILD TOOLS (IF USED)
+# ============================================
+
+# Node modules
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ============================================
+# OTHER TOOLS & FRAMEWORKS
+# ============================================
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# IPython
+profile_default/
+ipython_config.py
+
+# SageMath
+*.sage.py
+
+# Spyder
+.spyderproject
+.spyproject
+
+# Rope
+.ropeproject
+
+# Scrapy
+.scrapy
+
+# Flask
+instance/
+.webassets-cache
+
+# Sphinx
+docs/_build/
+
+# PyBuilder
+target/
+
+# ============================================
+# CUSTOM ADDITIONS FOR THIS PROJECT
+# ============================================
+
+# Discord webhook URLs or other API keys in code
+# (Should be in environment variables, but just in case)
+
+# Local development proxy settings
+config/local_proxy_settings.py
+
+# Test data
+test_data/
+
+# Development scripts
+dev_scripts/
+
+# Backup directories
+backups/
+
+# ============================================
+# NOTES:
+# ============================================
+# Files that SHOULD be committed:
+# - requirements.txt
+# - manage.py
+# - All application .py files
+# - Templates and static files
+# - README.md
+# - settings.py (without secrets)
+# - urls.py
+# - wsgi.py, asgi.py
+# ============================================
