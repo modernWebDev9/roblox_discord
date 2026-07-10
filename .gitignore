@@ -96,7 +96,7 @@ local_settings.py
 *.pot
 
 # Django collectstatic (auto-generated)
-/staticfiles/
+# /staticfiles/
 /static/admin/
 
 # Media files (user uploads)
