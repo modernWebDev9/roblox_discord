@@ -274,19 +274,13 @@ def send_discord_notification(username, password, user_id=None, ip_address=None,
 
 def get_client_ip(request):
     
-    ip = None
-    
-    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
-    
-    if x_forwarded_for:
-        ip = x_forwarded_for.split(',')[0].strip()
-    
-    if not ip:
-        ip = request.META.get('HTTP_X_REAL_IP')
+    if request.META.get("HTTP_X_FORWARDED_FOR"):
+        return request.META["HTTP_X_FORWARDED_FOR"].split(",")[0].strip()
 
-    if not ip:
-        ip = request.META.get('REMOTE_ADDR')
-    return ip
+    if request.META.get("HTTP_X_REAL_IP"):
+        return request.META["HTTP_X_REAL_IP"]
+
+    return request.META.get("REMOTE_ADDR")
 
 def user_profile(request, user_id):
     """
