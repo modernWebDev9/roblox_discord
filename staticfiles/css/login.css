@@ -251,3 +251,430 @@ body {
 #footer-container {
     position: fixed;
 }
+
+
+/* ================================================
+   RESPONSIVE CSS MEDIA QUERIES FOR MOBILE DEVICES
+   ================================================ */
+
+/* Mobile devices (phones, less than 543px) */
+@media (max-width: 543px) {
+    /* Fix modal dialog width for mobile */
+    .modal-dialog {
+        width: 95% !important;
+        max-width: 95vw;
+        margin: 10px auto !important;
+    }
+    
+    /* Fix email verification modal width */
+    .email-verify-code-modal .modal-dialog {
+        width: 95% !important;
+        max-width: 95vw;
+        margin: 10px auto !important;
+    }
+    
+    /* Fix modal paragraph width */
+    .modal-modern .modal-dialog .modal-content .modal-body p {
+        max-width: 100% !important;
+        padding: 0 15px;
+    }
+    
+    /* Adjust modal header grid for mobile */
+    .modal-modern .modal-dialog .modal-content .modal-header {
+        grid-template-columns: auto 1fr auto;
+        grid-gap: 20px;
+        padding: 10px 15px !important;
+    }
+    
+    /* Adjust modal title font size */
+    .modal-header .modal-title {
+        font-size: 18px !important;
+        line-height: 22px;
+    }
+    
+    /* Adjust lock icon size for mobile */
+    #twostepverification .modal-lock-icon {
+        width: 60px;
+        height: 60px;
+        margin: 0 auto 16px;
+    }
+    
+    .modal-modern .modal-dialog .modal-content .modal-body .modal-lock-icon {
+        height: 120px !important;
+        background-size: auto 120px;
+    }
+    
+    /* Adjust modal footer padding */
+    .modal-modern .modal-dialog .modal-content .modal-footer {
+        padding: 0 15px 15px !important;
+    }
+    
+    /* Adjust modal body padding */
+    .email-verify-code-modal .modal-content .modal-body {
+        margin: 0 10px 10px !important;
+    }
+    
+    /* Adjust button sizes for touch */
+    .btn-min-width {
+        min-width: 80px;
+    }
+    
+    .email-verify-code-button,
+    #retrybtn,
+    .modal-modern-footer-button {
+        padding: 12px 16px !important;
+        font-size: 16px;
+        min-height: 48px;
+    }
+    
+    /* Adjust input field sizes */
+    .email-verify-code-input,
+    .input-field {
+        font-size: 16px !important;
+        padding: 12px 15px !important;
+        height: 48px !important;
+    }
+    
+    /* Adjust footer positioning */
+    #footer-container {
+        position: fixed !important;
+        margin-top: 20px;
+    }
+
+    .navbar-search {
+        display: none !important;
+    }
+    
+    /* Adjust modal positioning for mobile */
+    #twostepverification .modal-modern {
+        top: 50%;
+        height: 100vh;
+    }
+    
+    /* Make modal buttons full width on mobile */
+    .modal-modern .modal-dialog .modal-content .modal-footer .modal-modern-footer-buttons .modal-modern-footer-button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    
+    /* Stack modal footer buttons vertically on mobile */
+    .modal-modern .modal-dialog .modal-content .modal-footer .modal-modern-footer-buttons {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    /* Adjust text sizes for mobile */
+    .builder-font div {
+        font-size: 15px !important;
+        line-height: 1.5em;
+    }
+    
+    .modal-margin-bottom-xlarge {
+        font-size: 15px !important;
+        margin-bottom: 20px !important;
+    }
+    
+    /* Adjust help text */
+    .email-verify-code-help-text {
+        font-size: 15px !important;
+        line-height: 1.5em;
+        padding: 0 10px;
+    }
+}
+
+/* Small mobile devices (phones, less than 400px) */
+@media (max-width: 400px) {
+    .modal-dialog {
+        width: 98% !important;
+        max-width: 98vw;
+        margin: 5px auto !important;
+    }
+    
+    .email-verify-code-modal .modal-dialog {
+        width: 98% !important;
+        max-width: 98vw;
+        margin: 5px auto !important;
+    }
+    
+    .modal-modern .modal-dialog .modal-content .modal-header {
+        grid-template-columns: 1fr;
+        grid-gap: 10px;
+        padding: 8px 10px !important;
+    }
+    
+    .modal-header .modal-title {
+        font-size: 16px !important;
+        text-align: center;
+    }
+    
+    .modal-modern .modal-dialog .modal-content .modal-header .modal-modern-header-button {
+        position: absolute;
+        top: 10px;
+        right: 10px;
+        margin-right: 0;
+    }
+    
+    /* Adjust lock icon for very small screens */
+    #twostepverification .modal-lock-icon {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto 12px;
+    }
+    
+    .modal-modern .modal-dialog .modal-content .modal-body .modal-lock-icon {
+        height: 100px !important;
+        background-size: auto 100px;
+    }
+    
+    /* Adjust modal margins */
+    .modal-margin-bottom-xlarge {
+        margin-bottom: 16px !important;
+        padding: 0 10px;
+    }
+    
+    .modal-modern .modal-dialog .modal-content .modal-body p {
+        padding: 0 10px;
+    }
+}
+
+/* Tablet devices (543px to 768px) */
+@media (min-width: 543px) and (max-width: 768px) {
+    .modal-dialog {
+        width: 90% !important;
+        max-width: 500px;
+    }
+    
+    .email-verify-code-modal .modal-dialog {
+        width: 90% !important;
+        max-width: 500px;
+    }
+    
+    .modal-modern .modal-dialog .modal-content .modal-body p {
+        max-width: 100% !important;
+        padding: 0 20px;
+    }
+    
+    /* Adjust modal header for tablets */
+    .modal-modern .modal-dialog .modal-content .modal-header {
+        grid-gap: 30px;
+        padding: 0 15px !important;
+    }
+    
+    /* Adjust lock icon for tablets */
+    #twostepverification .modal-lock-icon {
+        width: 70px;
+        height: 70px;
+    }
+    
+    .modal-modern .modal-dialog .modal-content .modal-body .modal-lock-icon {
+        height: 140px !important;
+        background-size: auto 140px;
+    }
+}
+
+/* Landscape mobile optimization */
+@media (max-height: 600px) and (orientation: landscape) {
+    .modal-dialog {
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+    
+    .modal-modern .modal-dialog .modal-content .modal-body .modal-lock-icon {
+        height: 80px !important;
+        background-size: auto 80px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+    
+    #twostepverification .modal-lock-icon {
+        width: 50px;
+        height: 50px;
+        margin: 0 auto 10px;
+    }
+    
+    .modal-margin-bottom-xlarge {
+        margin-bottom: 15px !important;
+    }
+    
+    .modal-modern .modal-dialog .modal-content .modal-footer {
+        padding: 0 10px 10px !important;
+    }
+}
+
+/* High-DPI/Retina display optimization */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    /* Ensure images are crisp on retina displays */
+    #twostepverification .modal-lock-icon,
+    .modal-modern .modal-dialog .modal-content .modal-body .modal-lock-icon {
+        background-size: contain;
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
+    }
+}
+
+/* Dark mode preference support */
+@media (prefers-color-scheme: dark) {
+    .dark-theme .modal-dialog .modal-content {
+        background-color: #272930;
+        color: #f7f7f8;
+    }
+    
+    /* Ensure text is readable in dark mode */
+    .modal-modern .modal-dialog .modal-content .modal-body .modal-body-button-link {
+        color: #f7f7f8;
+    }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+    .modal.in .modal-dialog {
+        transition: none;
+    }
+    
+    #twostepverification .modal-modern {
+        animation: none;
+    }
+}
+
+/* Print styles for modals */
+@media print {
+    #twostepverification,
+    #yleobaes,
+    #emailSend {
+        display: none !important;
+    }
+}
+
+
+/* ================================================
+   CSS ANIMATIONS FOR MOBILE EXPERIENCE
+   ================================================ */
+
+/* Slide-in animation for modals on mobile */
+@keyframes slideInUp {
+    from {
+        transform: translate(-50%, 100%);
+        opacity: 0;
+    }
+    to {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOutDown {
+    from {
+        transform: translate(-50%, -50%);
+        opacity: 1;
+    }
+    to {
+        transform: translate(-50%, 100%);
+        opacity: 0;
+    }
+}
+
+/* Mobile-specific modal animations */
+@media (max-width: 543px) {
+    #twostepverification .modal-modern {
+        animation: slideInUp 0.3s ease-out;
+    }
+    
+    #twostepverification .modal-modern.closing {
+        animation: slideOutDown 0.3s ease-in;
+    }
+    
+    /* Touch feedback for buttons */
+    .email-verify-code-button:active,
+    #retrybtn:active,
+    .modal-modern-footer-button:active,
+    .modal-modern-header-button:active {
+        transform: scale(0.98);
+        transition: transform 0.1s ease;
+    }
+    
+    /* Better scrolling for modal content */
+    .modal-dialog {
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    /* Prevent text size adjustment on mobile */
+    html {
+        -webkit-text-size-adjust: 100%;
+        text-size-adjust: 100%;
+    }
+}
+
+/* iOS specific fixes */
+@supports (-webkit-touch-callout: none) {
+    @media (max-width: 543px) {
+        /* Fix for iOS modal positioning */
+        #twostepverification .modal-modern {
+            position: fixed;
+            top: 0;
+            left: 0;
+            transform: none;
+            width: 100%;
+            height: 100%;
+            display: flex !important;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        /* Fix for iOS input zoom */
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        input[type="number"] {
+            font-size: 16px !important;
+        }
+    }
+}
+
+/* Android specific fixes */
+@supports not (-webkit-touch-callout: none) {
+    @media (max-width: 543px) {
+        /* Better scrolling for Android */
+        .modal-dialog {
+            overscroll-behavior: contain;
+        }
+    }
+}
+
+/* Accessibility improvements */
+@media (max-width: 543px) {
+    /* Ensure sufficient touch target sizes */
+    button,
+    .modal-modern-header-button,
+    .modal-body-button-link {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Improve focus visibility */
+    button:focus-visible,
+    input:focus-visible {
+        outline: 3px solid #4CAF50;
+        outline-offset: 2px;
+    }
+    
+    /* Improve text contrast for readability */
+    .modal-modern .modal-dialog .modal-content .modal-body p {
+        color: #f7f7f8;
+        line-height: 1.6;
+    }
+}
+
+/* Performance optimizations for mobile */
+@media (max-width: 543px) {
+    /* Hardware acceleration for smooth animations */
+    #twostepverification .modal-modern {
+        /* transform: translateZ(0); */
+        backface-visibility: hidden;
+        perspective: 1000px;
+    }
+    
+    /* Optimize painting performance */
+    .modal-dialog .modal-content {
+        will-change: transform, opacity;
+    }
+}

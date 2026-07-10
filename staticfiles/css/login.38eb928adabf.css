@@ -337,12 +337,8 @@ body {
     
     /* Adjust footer positioning */
     #footer-container {
-        position: fixed !important;
+        position: relative !important;
         margin-top: 20px;
-    }
-
-    .navbar-search {
-        display: none !important;
     }
     
     /* Adjust modal positioning for mobile */

@@ -342,7 +342,7 @@ body {
     }
 
     .navbar-search {
-        display: none !important;
+        display: none;
     }
     
     /* Adjust modal positioning for mobile */
