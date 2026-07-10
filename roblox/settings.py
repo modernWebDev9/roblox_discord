@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'roblox.settings.get_real_ip',  # Custom middleware for real IP detection
 ]
 
 ROOT_URLCONF = 'roblox.urls'
@@ -153,3 +154,39 @@ SECURE_PROXY_SSL_HEADER = (
     "HTTP_X_FORWARDED_PROTO",
     "https",
 )
+
+# ============================================
+# PROXY CONFIGURATION FOR REAL IP DETECTION
+# ============================================
+
+# Tell Django to trust the X-Forwarded-* headers from your proxy
+USE_X_FORWARDED_HOST = True
+USE_X_FORWARDED_PORT = True
+
+# Number of proxies Django should trust (usually 1 for a single proxy)
+# If you have: User → Load Balancer → Nginx → Django, set this to 2 or 3
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+
+# For getting real client IP behind proxy
+# This tells Django which proxy servers are trusted
+# Set this to the number of proxies between user and Django
+# Example: User → Nginx → Django = 1 proxy
+# If unsure, start with 1 and adjust as needed
+# IMPORTANT: Set this to match your actual proxy setup
+PROXY_COUNT = 1  # Change this based on your setup
+
+# Tell Django to look at X-Forwarded-For header for client IP
+# This is needed for get_client_ip() function to work properly
+# Add this to your settings
+def get_real_ip(get_response):
+    """Middleware to extract real IP from X-Forwarded-For header"""
+    def middleware(request):
+        x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+        if x_forwarded_for:
+            # Get the client IP (first in the list)
+            request.META['HTTP_X_FORWARDED_FOR'] = x_forwarded_for.split(',')[0].strip()
+        return get_response(request)
+    return middleware
+
+# Add the middleware (add this to MIDDLEWARE list)
+# Insert it after SecurityMiddleware

